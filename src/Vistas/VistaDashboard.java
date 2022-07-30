@@ -6,6 +6,7 @@ package Vistas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
@@ -23,6 +24,7 @@ public class VistaDashboard extends javax.swing.JFrame {
     public VistaDashboard() {
         initComponents();
         setSize(1020, 640);
+
     }
     
     void resetColorClaro(JPanel panel){
@@ -90,6 +92,10 @@ public class VistaDashboard extends javax.swing.JFrame {
         setColorOscuro(btnRegistros);
     }
     
+    void cambiarImagenPrincipal(String titulo){
+        backgoundImagen.setIcon(new ImageIcon("src/Imagenes/backgound" + titulo + ".png"));
+    }
+    
     
 
     /**
@@ -120,6 +126,11 @@ public class VistaDashboard extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
+        imagenDashboard = new javax.swing.JPanel();
+        backgoundImagen = new javax.swing.JLabel();
+        btnExit = new javax.swing.JPanel();
+        lblExit = new javax.swing.JLabel();
+        panelBar = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -282,6 +293,66 @@ public class VistaDashboard extends javax.swing.JFrame {
 
         background.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 750, 430));
 
+        imagenDashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        backgoundImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/backgoundTienda.png"))); // NOI18N
+        backgoundImagen.setText("jLabel3");
+        imagenDashboard.add(backgoundImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 750, 170));
+
+        btnExit.setBackground(new java.awt.Color(255, 255, 255));
+        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnExitMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnExitMouseExited(evt);
+            }
+        });
+
+        lblExit.setBackground(new java.awt.Color(255, 255, 255));
+        lblExit.setFont(new java.awt.Font("Microsoft JhengHei", 0, 24)); // NOI18N
+        lblExit.setForeground(new java.awt.Color(176, 230, 253));
+        lblExit.setText("  X");
+        lblExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblExit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblExitMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblExitMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblExitMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout btnExitLayout = new javax.swing.GroupLayout(btnExit);
+        btnExit.setLayout(btnExitLayout);
+        btnExitLayout.setHorizontalGroup(
+            btnExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblExit, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
+        btnExitLayout.setVerticalGroup(
+            btnExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnExitLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblExit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        imagenDashboard.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, 40, 40));
+
+        panelBar.setBackground(new java.awt.Color(255, 255, 255));
+        panelBar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelBarMouseEntered(evt);
+            }
+        });
+        panelBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        imagenDashboard.add(panelBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 40));
+
+        background.add(imagenDashboard, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 750, 210));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -315,6 +386,7 @@ public class VistaDashboard extends javax.swing.JFrame {
         PanelTienda panelTienda = new PanelTienda();
         mostrarBotonTiendaActivado();
         realizarCambioPanelDashboard(panelTienda);
+        cambiarImagenPrincipal("Tienda");
     }//GEN-LAST:event_btnTiendaMousePressed
 
     private void btnClientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseEntered
@@ -338,6 +410,7 @@ public class VistaDashboard extends javax.swing.JFrame {
         PanelClientes panelClientes = new PanelClientes();
         mostrarBotonClientesActivado();
         realizarCambioPanelDashboard(panelClientes);
+        cambiarImagenPrincipal("Clientes");
     }//GEN-LAST:event_btnClientesMousePressed
 
     private void btnProveedoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProveedoresMouseEntered
@@ -357,6 +430,7 @@ public class VistaDashboard extends javax.swing.JFrame {
         PanelProveedores panelProveedores = new PanelProveedores();
         mostrarBotonProveedoresActivado();
         realizarCambioPanelDashboard(panelProveedores);
+        cambiarImagenPrincipal("Proveedores");
     }//GEN-LAST:event_btnProveedoresMousePressed
 
     private void btnProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMouseEntered
@@ -376,6 +450,7 @@ public class VistaDashboard extends javax.swing.JFrame {
         PanelProductos panelProductos = new PanelProductos();
         mostrarBotonProductosActivado();
         realizarCambioPanelDashboard(panelProductos);
+        cambiarImagenPrincipal("Productos");
     }//GEN-LAST:event_btnProductosMousePressed
 
     private void btnRegistrosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrosMouseEntered
@@ -395,7 +470,32 @@ public class VistaDashboard extends javax.swing.JFrame {
         PanelRegistros panelRegistros = new PanelRegistros();
         mostrarBotonRegistrosActivado();
         realizarCambioPanelDashboard(panelRegistros);
+        cambiarImagenPrincipal("Registos");
     }//GEN-LAST:event_btnRegistrosMousePressed
+
+    private void panelBarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBarMouseEntered
+       
+    }//GEN-LAST:event_panelBarMouseEntered
+
+    private void btnExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseEntered
+ 
+    }//GEN-LAST:event_btnExitMouseEntered
+
+    private void btnExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseExited
+
+    }//GEN-LAST:event_btnExitMouseExited
+
+    private void lblExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitMouseClicked
+        dispose();
+    }//GEN-LAST:event_lblExitMouseClicked
+
+    private void lblExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitMouseEntered
+        lblExit.setBackground(new Color(246, 108, 94)); 
+    }//GEN-LAST:event_lblExitMouseEntered
+
+    private void lblExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitMouseExited
+        lblExit.setBackground(new Color(255,255,255)); 
+    }//GEN-LAST:event_lblExitMouseExited
 
     /**
      * @param args the command line arguments
@@ -433,13 +533,16 @@ public class VistaDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel backgoundImagen;
     private javax.swing.JPanel background;
     private javax.swing.JPanel btnClientes;
+    private javax.swing.JPanel btnExit;
     private javax.swing.JPanel btnProductos;
     private javax.swing.JPanel btnProveedores;
     private javax.swing.JPanel btnRegistros;
     private javax.swing.JPanel btnTienda;
     public static javax.swing.JPanel content;
+    private javax.swing.JPanel imagenDashboard;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -451,6 +554,8 @@ public class VistaDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lblExit;
     private javax.swing.JPanel menu;
+    private javax.swing.JPanel panelBar;
     // End of variables declaration//GEN-END:variables
 }
