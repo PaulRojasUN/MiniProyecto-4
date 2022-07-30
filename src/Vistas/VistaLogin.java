@@ -55,12 +55,15 @@ public class VistaLogin extends javax.swing.JFrame {
         btnIniciar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         btnIniciar.setForeground(new java.awt.Color(0, 86, 158));
         btnIniciar.setText("INICIAR");
+        btnIniciar.setBorderPainted(false);
+        btnIniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 300, 180, 40));
 
         btnClose.setBackground(new java.awt.Color(176, 230, 253));
         btnClose.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnClose.setForeground(new java.awt.Color(176, 230, 253));
         btnClose.setText("X");
+        btnClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCloseMouseClicked(evt);
