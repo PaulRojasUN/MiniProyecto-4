@@ -4,6 +4,9 @@
  */
 package unimarket;
 
+import java.io.IOException;
+import modelo.modeloPrin;
+
 /**
  *
  * @author Paul
@@ -13,8 +16,8 @@ public class UniMarket {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws IOException {
+        modeloPrin modelo = new modeloPrin();
     }
     
 }
