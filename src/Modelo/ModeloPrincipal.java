@@ -20,7 +20,7 @@ import java.util.StringTokenizer;
  *
  * @author Paul
  */
-public class modeloPrin 
+public class ModeloPrincipal 
 {
     //Lista de productos con los que cuenta la tienda con su respectiva cantidad
     ArrayList<Producto> listaProductos = new ArrayList<Producto>();
@@ -32,7 +32,7 @@ public class modeloPrin
     //Lista de clientes.
     ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
     
-    public modeloPrin() throws IOException
+    public ModeloPrincipal() throws IOException
     {
         try 
         {

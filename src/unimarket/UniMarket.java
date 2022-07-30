@@ -5,10 +5,9 @@
 package unimarket;
 
 import Controller.ControllerPrincipal;
-import Modelo.Modelo;
 import Vistas.VistaLogin;
 import java.io.IOException;
-import modelo.modeloPrin;
+import modelo.ModeloPrincipal;
 
 
 /**
@@ -20,11 +19,11 @@ public class UniMarket {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
        /* Activacion temporal de la vista */
        
         VistaLogin vista = new VistaLogin();
-        modeloPrin modelo = new modeloPrin();
+        ModeloPrincipal modelo = new ModeloPrincipal();
         
         ControllerPrincipal controller = new ControllerPrincipal(modelo,vista);
     }

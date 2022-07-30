@@ -4,8 +4,9 @@
  */
 package Controller;
 
-import Modelo.Modelo;
+
 import Vistas.VistaLogin;
+import modelo.ModeloPrincipal;
 
 /**
  *
@@ -13,10 +14,10 @@ import Vistas.VistaLogin;
  */
 public class ControllerPrincipal {
     
-    private Modelo modelo;
+    private ModeloPrincipal modelo;
     private VistaLogin vista;
 
-    public ControllerPrincipal(Modelo modelo, VistaLogin vista) {
+    public ControllerPrincipal(ModeloPrincipal modelo, VistaLogin vista) {
         this.modelo = modelo;
         this.vista = vista;
         
