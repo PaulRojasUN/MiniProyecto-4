@@ -26,18 +26,141 @@ public class PanelTienda extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaCompra = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listaProductos = new javax.swing.JList<>();
+        lblListaProductos = new javax.swing.JLabel();
+        lblListaCompras = new javax.swing.JLabel();
+        txtCantidad = new javax.swing.JTextField();
+        lblCantidad = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        txtPrecio = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtCantidadProducto = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(750, 430));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("TIENDA");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, -1, -1));
+        jScrollPane1.setViewportView(listaCompra);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 230, 270));
+
+        listaProductos.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(listaProductos);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 230, 310));
+
+        lblListaProductos.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblListaProductos.setText("LISTA DE PRODUCTOS");
+        add(lblListaProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        lblListaCompras.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblListaCompras.setText("LISTA DE COMPRAS");
+        add(lblListaCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, -1));
+
+        txtCantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCantidadActionPerformed(evt);
+            }
+        });
+        add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 120, -1));
+
+        lblCantidad.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        lblCantidad.setText("Cantidad: ");
+        add(lblCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, -1, -1));
+
+        jButton1.setBackground(new java.awt.Color(176, 230, 253));
+        jButton1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 86, 158));
+        jButton1.setBorder(null);
+        jButton1.setLabel("AGREGAR"); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 120, 70));
+
+        jButton2.setBackground(new java.awt.Color(176, 230, 253));
+        jButton2.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 86, 158));
+        jButton2.setText("BORRAR");
+        jButton2.setBorder(null);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 380, 70, 40));
+
+        jButton3.setBackground(new java.awt.Color(176, 230, 253));
+        jButton3.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 86, 158));
+        jButton3.setText("CAMBIAR CANTIDAD");
+        jButton3.setBorder(null);
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 150, 40));
+
+        jLabel1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel1.setText("Precio:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, -1, -1));
+
+        txtPrecio.setEnabled(false);
+        add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, 100, -1));
+
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel2.setText("No. Productos:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, -1, -1));
+
+        txtCantidadProducto.setEnabled(false);
+        add(txtCantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 180, 100, -1));
+
+        jButton4.setBackground(new java.awt.Color(176, 230, 253));
+        jButton4.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(0, 86, 158));
+        jButton4.setText("VENDER");
+        jButton4.setBorder(null);
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 380, 100, 40));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCantidadActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblCantidad;
+    private javax.swing.JLabel lblListaCompras;
+    private javax.swing.JLabel lblListaProductos;
+    private javax.swing.JList<String> listaCompra;
+    private javax.swing.JList<String> listaProductos;
+    private javax.swing.JTextField txtCantidad;
+    private javax.swing.JTextField txtCantidadProducto;
+    private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 }
