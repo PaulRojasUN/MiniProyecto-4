@@ -7,6 +7,9 @@ package unimarket;
 import Controller.ControllerPrincipal;
 import Modelo.Modelo;
 import Vistas.VistaLogin;
+import java.io.IOException;
+import modelo.modeloPrin;
+
 
 /**
  *
@@ -21,7 +24,7 @@ public class UniMarket {
        /* Activacion temporal de la vista */
        
         VistaLogin vista = new VistaLogin();
-        Modelo modelo = new Modelo();
+        modeloPrin modelo = new modeloPrin();
         
         ControllerPrincipal controller = new ControllerPrincipal(modelo,vista);
     }
