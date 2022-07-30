@@ -22,8 +22,14 @@ import java.util.StringTokenizer;
  */
 public class modeloPrin 
 {
+    //Lista de productos con los que cuenta la tienda con su respectiva cantidad
     ArrayList<Producto> listaProductos = new ArrayList<Producto>();
+    
+    //Lista de proveedores. Contiene la lista de las descripciones de los 
+    //productos que ofrece
     ArrayList<Proveedor> listaProveedores = new ArrayList<Proveedor>();
+    
+    //Lista de clientes.
     ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
     
     public modeloPrin() throws IOException
@@ -38,10 +44,9 @@ public class modeloPrin
         {
             System.out.println("Ha ocurrido un error al cargar los archivos");
         }
-        //guardarEstadoProveedores();
     }
     
-    
+    //Importa los datos de los productos a la estructura de datos
     public void importarProductos(String _path) throws FileNotFoundException, IOException
     {
         FileReader fr = new FileReader(_path);
@@ -73,7 +78,7 @@ public class modeloPrin
     }
     
     
-    
+    //Importa los datos de los proveedores a la estructura de datos
     public void importarProveedores(String _path) throws FileNotFoundException, 
             IOException
     {
@@ -93,20 +98,16 @@ public class modeloPrin
         String auxPreComProd;
         String auxPreVenProd;
         ArrayList<ArrayList<String>> auxListaProd;
-        //ArrayList<String> auxListaProd2;
         
         
         String auxString; //String auxiliar para recorrer la lista de productos que
-        //proveedor vende
         String auxString2;
         
         StringTokenizer auxSt;//StringTokenizer auxiliar para recorrer la lista de productos que
-        //proveedor vende
         StringTokenizer auxSt2;
         while( (line = br.readLine()) != null)
         {
             auxListaProd = new ArrayList<ArrayList<String>>();
-            //auxListaProd2 = new ArrayList<String>();
             
             auxString = "";
             auxString2 = "";
@@ -117,13 +118,13 @@ public class modeloPrin
             tel = parseInt(st.nextToken());
             
             auxString = st.nextToken();
-            auxString.substring(1, auxString.length()
+            auxString = auxString.substring(1, auxString.length()
                     - 1);//Se retira los corchetes
             auxSt = new StringTokenizer(auxString, ":");
             while (auxSt.hasMoreTokens())
             {
                 auxString2 = auxSt.nextToken();
-                auxString2.substring(1, auxString2.length()
+                auxString2 = auxString2.substring(1, auxString2.length()
                     - 1); // Se retira los parentesis
                 auxSt2 = new StringTokenizer(auxString2, ";");
                 auxCodProd = auxSt2.nextToken();
@@ -140,7 +141,7 @@ public class modeloPrin
     }
     
     
-    
+    //Importa los datos de los clientes a la estructura de datos
     public void importarClientes(String _path) throws FileNotFoundException, 
             IOException
     {
@@ -166,7 +167,8 @@ public class modeloPrin
         }
     }
     
-    
+    //Guarda todos los datos de la estructura de datos en el archivo de 
+    //productos
     public void guardarEstadoProductos() throws IOException
     {
         try
@@ -189,6 +191,8 @@ public class modeloPrin
         }
     }
     
+    //Guarda todos los datos de la estructura de datos en el archivo de 
+    //proveedores
     public void guardarEstadoProveedores() throws IOException
     {
         try
@@ -203,12 +207,11 @@ public class modeloPrin
                 auxString = "";
                 for (ArrayList<String> lista: pr.getListaProdProv())
                 {
-                    auxString = auxString+"("+lista.get(0)+","+lista.get(1)+","+lista.get(2)+","+lista.get(3)+","+lista.get(4)+")"+":";
+                    auxString = auxString+"("+lista.get(0)+";"+lista.get(1)+";"+lista.get(2)+";"+lista.get(3)+";"+lista.get(4)+")"+":";
                 }
                 pw.print(pr.getNit()+","+pr.getNombre()+","+pr.getTel()+
                         ","+"["+auxString+"]"+"\n");
             }
-            pw.print("Impreso");
             archivo.flush();
             archivo.close();
         }
@@ -216,6 +219,60 @@ public class modeloPrin
         {
            System.out.println("Algo salió mal al guardar el archivo");
         }
+    }
+    
+    //Guarda todos los datos de la estructura de datos en el archivo de 
+    //clentes
+    public void guardarEstadoClientes() throws IOException
+    {
+        try
+        {
+            FileWriter archivo = new FileWriter("src\\archivos\\clientes.txt", false);
+            PrintWriter pw = new PrintWriter(archivo);
+            
+                    
+            for (Cliente cl:listaClientes)
+            {
+                    pw.print(cl.getId()+","+cl.getNombre()+","+cl.getEdad()+
+                       ","+cl.getTel()+"\n");
+            }
+            archivo.flush();
+            archivo.close();
+        }
+        catch (Exception E)
+        {
+           System.out.println("Algo salió mal al guardar el archivo");
+        }
+    }
+    
+    public Producto getProducto(int _index)
+    {
+        return listaProductos.get(_index);
+    }
+    
+    public Proveedor getProveedor(int _index)
+    {
+        return listaProveedores.get(_index);
+    }
+    
+    public Cliente getCliente(int _index)
+    {
+        return listaClientes.get(_index);
+    }
+    
+    public void borrarProducto(int _index)
+    {
+        listaProductos.remove(_index);
+    }
+    
+    public void borrarProveedor(int _index)
+    {
+        listaProveedores.remove(_index);
+    }
+    
+    public void borrarCliente(int _index)
+    {
+        listaClientes.remove(_index);
     }
     
 }

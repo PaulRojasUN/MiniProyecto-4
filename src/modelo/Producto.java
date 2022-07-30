@@ -8,6 +8,7 @@ package modelo;
  *
  * @author Paul
  */
+
 public class Producto
 {
     String nombre;
