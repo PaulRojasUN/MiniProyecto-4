@@ -26,7 +26,7 @@ public class VistaDashboard extends javax.swing.JFrame {
     }
     
     void resetColorClaro(JPanel panel){
-        panel.setBackground(new Color(28, 152, 237));
+        panel.setBackground(new Color(28, 152, 237));     
     }
     
     void setColorOscuro(JPanel panel){
@@ -297,15 +297,15 @@ public class VistaDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnTiendaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTiendaMouseEntered
-        if(btnTienda.getBackground().getRGB() == RGBAZULCLARO)
+        if(btnTienda.getBackground().getRGB() == RGBAZULOSCURO)
         setColorOscuro(btnTienda);
     }//GEN-LAST:event_btnTiendaMouseEntered
 
     private void btnTiendaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTiendaMouseExited
        
  
-       if(btnClientes.getBackground().getRGB() != RGBAZULCLARO || btnProveedores.getBackground().getRGB() != RGBAZULCLARO
-            || btnProductos.getBackground().getRGB() != RGBAZULCLARO || btnRegistros.getBackground().getRGB() != RGBAZULCLARO){
+       if(btnClientes.getBackground().getRGB() != RGBAZULOSCURO || btnProveedores.getBackground().getRGB() != RGBAZULOSCURO
+            || btnProductos.getBackground().getRGB() != RGBAZULOSCURO || btnRegistros.getBackground().getRGB() != RGBAZULOSCURO){
             resetColorClaro(btnTienda);
         }   
         
@@ -318,7 +318,7 @@ public class VistaDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTiendaMousePressed
 
     private void btnClientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseEntered
-        if(btnClientes.getBackground().getRGB() == RGBAZULCLARO){
+        if(btnClientes.getBackground().getRGB() == RGBAZULOSCURO){
             setColorOscuro(btnClientes);
         }
         
@@ -326,8 +326,8 @@ public class VistaDashboard extends javax.swing.JFrame {
 
     private void btnClientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseExited
        
-        if(btnTienda.getBackground().getRGB() != RGBAZULCLARO || btnProveedores.getBackground().getRGB() != RGBAZULCLARO
-            || btnProductos.getBackground().getRGB() != RGBAZULCLARO || btnRegistros.getBackground().getRGB() != RGBAZULCLARO){
+        if(btnTienda.getBackground().getRGB() != RGBAZULOSCURO || btnProveedores.getBackground().getRGB() != RGBAZULOSCURO
+            || btnProductos.getBackground().getRGB() != RGBAZULOSCURO || btnRegistros.getBackground().getRGB() != RGBAZULOSCURO){
             resetColorClaro(btnClientes);
         }
 
@@ -341,39 +341,60 @@ public class VistaDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClientesMousePressed
 
     private void btnProveedoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProveedoresMouseEntered
-        // TODO add your handling code here:
+        if(btnProveedores.getBackground().getRGB() == RGBAZULOSCURO){
+            setColorOscuro(btnProveedores);
+        }
     }//GEN-LAST:event_btnProveedoresMouseEntered
 
     private void btnProveedoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProveedoresMouseExited
-        // TODO add your handling code here:
+        if(btnTienda.getBackground().getRGB() != RGBAZULOSCURO || btnClientes.getBackground().getRGB() != RGBAZULOSCURO
+            || btnProductos.getBackground().getRGB() != RGBAZULOSCURO || btnRegistros.getBackground().getRGB() != RGBAZULOSCURO){
+            resetColorClaro(btnProveedores);
+        }
     }//GEN-LAST:event_btnProveedoresMouseExited
 
     private void btnProveedoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProveedoresMousePressed
-        // TODO add your handling code here:
+        PanelProveedores panelProveedores = new PanelProveedores();
+        mostrarBotonProveedoresActivado();
+        realizarCambioPanelDashboard(panelProveedores);
     }//GEN-LAST:event_btnProveedoresMousePressed
 
     private void btnProductosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMouseEntered
-        // TODO add your handling code here:
+        if(btnProductos.getBackground().getRGB() == RGBAZULOSCURO){
+            setColorOscuro(btnProductos);
+        }
     }//GEN-LAST:event_btnProductosMouseEntered
 
     private void btnProductosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMouseExited
-        // TODO add your handling code here:
+        if(btnTienda.getBackground().getRGB() != RGBAZULOSCURO || btnClientes.getBackground().getRGB() != RGBAZULOSCURO
+            || btnProveedores.getBackground().getRGB() != RGBAZULOSCURO || btnRegistros.getBackground().getRGB() != RGBAZULOSCURO){
+            resetColorClaro(btnProductos);
+        }
     }//GEN-LAST:event_btnProductosMouseExited
 
     private void btnProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMousePressed
-        // TODO add your handling code here:
+        PanelProductos panelProductos = new PanelProductos();
+        mostrarBotonProductosActivado();
+        realizarCambioPanelDashboard(panelProductos);
     }//GEN-LAST:event_btnProductosMousePressed
 
     private void btnRegistrosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrosMouseEntered
-        // TODO add your handling code here:
+        if(btnRegistros.getBackground().getRGB() == RGBAZULOSCURO){
+            setColorOscuro(btnRegistros);
+        }
     }//GEN-LAST:event_btnRegistrosMouseEntered
 
     private void btnRegistrosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrosMouseExited
-        // TODO add your handling code here:
+        if(btnTienda.getBackground().getRGB() != RGBAZULOSCURO || btnClientes.getBackground().getRGB() != RGBAZULOSCURO
+            || btnProveedores.getBackground().getRGB() != RGBAZULOSCURO || btnProductos.getBackground().getRGB() != RGBAZULOSCURO){
+            resetColorClaro(btnRegistros);
+        }
     }//GEN-LAST:event_btnRegistrosMouseExited
 
     private void btnRegistrosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrosMousePressed
-        // TODO add your handling code here:
+        PanelRegistros panelRegistros = new PanelRegistros();
+        mostrarBotonRegistrosActivado();
+        realizarCambioPanelDashboard(panelRegistros);
     }//GEN-LAST:event_btnRegistrosMousePressed
 
     /**
