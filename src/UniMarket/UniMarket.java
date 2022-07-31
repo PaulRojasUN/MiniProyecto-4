@@ -21,7 +21,7 @@ public class UniMarket {
      */
     public static void main(String[] args) throws IOException {
        /* Activacion temporal de la vista */
-       
+         
         VistaLogin vista = new VistaLogin();
         ModeloPrincipal modelo = new ModeloPrincipal();
         
