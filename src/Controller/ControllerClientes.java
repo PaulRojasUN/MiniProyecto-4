@@ -11,7 +11,7 @@ import modelo.ModeloPrincipal;
  *
  * @author Paul
  */
-public class ControllerClientes 
+public class ControllerClientes
 {
     private ModeloPrincipal modelo;
     private PanelClientes panelClientes;
