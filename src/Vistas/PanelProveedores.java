@@ -28,11 +28,11 @@ public class PanelProveedores extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(255, 51, 51));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("PROVEEDORES");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 410, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 

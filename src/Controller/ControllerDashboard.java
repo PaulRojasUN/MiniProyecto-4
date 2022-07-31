@@ -4,7 +4,12 @@
  */
 package Controller;
 
+import Vistas.PanelTienda;
 import Vistas.VistaDashboard;
+import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import modelo.ModeloPrincipal;
 
 /**
@@ -21,6 +26,20 @@ public class ControllerDashboard {
         
         vista.setVisible(true);
         vista.setLocationRelativeTo(null);
+        
+        PanelTienda tienda = vista.getPanelTienda();
+        tienda.addListaProductosListener(new JListListener());
+
+
+    }
+    
+    class JListListener implements ListSelectionListener{
+
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            System.out.println("Hola mundo");
+        }
+        
     }
     
     
