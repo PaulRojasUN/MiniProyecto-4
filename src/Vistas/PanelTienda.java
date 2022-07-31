@@ -26,8 +26,7 @@ public class PanelTienda extends javax.swing.JPanel {
         listaProductos.setModel(modelo);
     }
     
-    public String getProductoSeleccionado()
-    {
+    public String getProductoSeleccionado(){
         return listaProductos.getSelectedValue();
     }
     
@@ -112,7 +111,7 @@ public class PanelTienda extends javax.swing.JPanel {
 
         jScrollPane1.setViewportView(listaCompra);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 230, 270));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 50, 230, 320));
 
         listaProductos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -121,26 +120,26 @@ public class PanelTienda extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(listaProductos);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 230, 310));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 230, 360));
 
-        lblListaProductos.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblListaProductos.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lblListaProductos.setText("LISTA DE PRODUCTOS");
-        add(lblListaProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+        add(lblListaProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        lblListaCompras.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblListaCompras.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lblListaCompras.setText("LISTA DE COMPRAS");
-        add(lblListaCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, -1));
+        add(lblListaCompras, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, -1, -1));
 
         txtCantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCantidadActionPerformed(evt);
             }
         });
-        add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 120, -1));
+        add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 120, -1));
 
         lblCantidad.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         lblCantidad.setText("Cantidad: ");
-        add(lblCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, -1, -1));
+        add(lblCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, -1, -1));
 
         btnAgregarCantidad.setBackground(new java.awt.Color(176, 230, 253));
         btnAgregarCantidad.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
@@ -152,7 +151,7 @@ public class PanelTienda extends javax.swing.JPanel {
                 btnAgregarCantidadActionPerformed(evt);
             }
         });
-        add(btnAgregarCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 120, 70));
+        add(btnAgregarCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 120, 70));
 
         btnBorrarElementoLista.setBackground(new java.awt.Color(176, 230, 253));
         btnBorrarElementoLista.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
@@ -192,6 +191,7 @@ public class PanelTienda extends javax.swing.JPanel {
         btnVenderProductos.setForeground(new java.awt.Color(0, 86, 158));
         btnVenderProductos.setText("VENDER");
         btnVenderProductos.setBorder(null);
+        btnVenderProductos.setEnabled(false);
         add(btnVenderProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 380, 100, 40));
     }// </editor-fold>//GEN-END:initComponents
 
