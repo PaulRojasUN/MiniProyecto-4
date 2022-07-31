@@ -5,6 +5,7 @@
 package Controller;
 
 
+import Vistas.PanelTienda;
 import Vistas.VistaDashboard;
 import Vistas.VistaLogin;
 import java.awt.event.ActionEvent;
@@ -38,6 +39,10 @@ public class ControllerPrincipal {
             if(e.getActionCommand().equalsIgnoreCase("INICIAR")){
                 vista.dispose();
                 VistaDashboard dashboard = new VistaDashboard();
+                
+                PanelTienda panelTienda = new PanelTienda();
+                dashboard.crearPanelTienda(panelTienda);
+                
                 ControllerDashboard controllerDashboard = new ControllerDashboard(modelo,dashboard);
            }
  

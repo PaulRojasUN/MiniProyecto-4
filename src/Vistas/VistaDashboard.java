@@ -18,13 +18,18 @@ public class VistaDashboard extends javax.swing.JFrame {
     
     public final int RGBAZULOSCURO = -14903059;
     public final int RGBAZULCLARO = -16755042;
-    PanelTienda panelTienda;
+    PanelTienda panelTienda;// = new PanelTienda();
 
     
     public VistaDashboard() {
         initComponents();
         setSize(1020, 640);
 
+    }
+    
+    public void crearPanelTienda(PanelTienda _panel)
+    {
+        panelTienda = _panel;
     }
     
     void resetColorClaro(JPanel panel){
@@ -388,7 +393,7 @@ public class VistaDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTiendaMouseExited
 
     private void btnTiendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTiendaMousePressed
-        panelTienda = new PanelTienda();
+        //panelTienda = new PanelTienda();
         mostrarBotonTiendaActivado();
         realizarCambioPanelDashboard(panelTienda);
         cambiarImagenPrincipal("Tienda");
