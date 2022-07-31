@@ -42,7 +42,6 @@ public class ControllerPrincipal {
                 
                 PanelTienda panelTienda = new PanelTienda();
                 dashboard.crearPanelTienda(panelTienda);
-                
                 ControllerDashboard controllerDashboard = new ControllerDashboard(modelo,dashboard);
            }
  

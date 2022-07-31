@@ -105,6 +105,10 @@ public class VistaDashboard extends javax.swing.JFrame {
         btnTienda.addMouseListener(mouseListenControles);
     }
     
+    public void addBtnProductosMouseEvent(MouseListener mouseListenControles)
+    {
+        btnProductos.addMouseListener(mouseListenControles);
+    }
     
 
     /**
@@ -397,8 +401,11 @@ public class VistaDashboard extends javax.swing.JFrame {
         mostrarBotonTiendaActivado();
         realizarCambioPanelDashboard(panelTienda);
         cambiarImagenPrincipal("Tienda");
+        
     }//GEN-LAST:event_btnTiendaMousePressed
 
+    
+    
     private void btnClientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMouseEntered
         if(btnClientes.getBackground().getRGB() == RGBAZULOSCURO){
             setColorOscuro(btnClientes);
