@@ -5,6 +5,10 @@
 package Controller;
 
 
+import Vistas.PanelClientes;
+import Vistas.PanelProductos;
+import Vistas.PanelProveedores;
+import Vistas.PanelRegistros;
 import Vistas.PanelTienda;
 import Vistas.VistaDashboard;
 import Vistas.VistaLogin;
@@ -41,7 +45,16 @@ public class ControllerPrincipal {
                 VistaDashboard dashboard = new VistaDashboard();
                 
                 PanelTienda panelTienda = new PanelTienda();
+                PanelClientes panelClientes = new PanelClientes();
+                PanelProductos panelProductos= new PanelProductos();
+                PanelProveedores panelProveedores = new PanelProveedores();
+                PanelRegistros panelRegistros = new PanelRegistros();
+                
                 dashboard.crearPanelTienda(panelTienda);
+                dashboard.crearPanelClientes(panelClientes);
+                dashboard.crearPanelProductos(panelProductos);
+                dashboard.crearPanelProveedores(panelProveedores);
+                dashboard.crearPanelRegistros(panelRegistros);
                 
                 ControllerDashboard controllerDashboard = new ControllerDashboard(modelo,dashboard);
            }
