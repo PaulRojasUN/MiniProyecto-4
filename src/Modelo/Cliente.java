@@ -42,10 +42,12 @@ public class Cliente
     public void setTel(int tel) {
         this.tel = tel;
     }
+    
     int id;
     String nombre;
     int edad;
     int tel;
+    
     public Cliente(int _id, String _nombre, int _edad, int _tel)
     {
         this.id = _id;

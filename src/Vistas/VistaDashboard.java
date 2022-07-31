@@ -6,6 +6,7 @@ package Vistas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -17,10 +18,9 @@ public class VistaDashboard extends javax.swing.JFrame {
     
     public final int RGBAZULOSCURO = -14903059;
     public final int RGBAZULCLARO = -16755042;
+    PanelTienda panelTienda;
 
-    /**
-     * Creates new form VistaDashboard
-     */
+    
     public VistaDashboard() {
         initComponents();
         setSize(1020, 640);
@@ -94,6 +94,10 @@ public class VistaDashboard extends javax.swing.JFrame {
     
     void cambiarImagenPrincipal(String titulo){
         backgoundImagen.setIcon(new ImageIcon("src/Imagenes/backgound" + titulo + ".png"));
+    }
+    
+    public void addBtnTiendaMouseEvent(MouseListener mouseListenControles){
+        btnTienda.addMouseListener(mouseListenControles);
     }
     
     
@@ -171,6 +175,7 @@ public class VistaDashboard extends javax.swing.JFrame {
         btnTienda.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, 30));
 
         menu.add(btnTienda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 270, 50));
+        btnTienda.getAccessibleContext().setAccessibleName("btnTienda");
 
         btnClientes.setBackground(new java.awt.Color(28, 152, 237));
         btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -383,7 +388,7 @@ public class VistaDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTiendaMouseExited
 
     private void btnTiendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTiendaMousePressed
-        PanelTienda panelTienda = new PanelTienda();
+        panelTienda = new PanelTienda();
         mostrarBotonTiendaActivado();
         realizarCambioPanelDashboard(panelTienda);
         cambiarImagenPrincipal("Tienda");
@@ -532,6 +537,12 @@ public class VistaDashboard extends javax.swing.JFrame {
         });
     }
 
+    public PanelTienda getPanelTienda() {
+        return panelTienda;
+    }
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgoundImagen;
     private javax.swing.JPanel background;
