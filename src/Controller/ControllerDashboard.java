@@ -30,12 +30,19 @@ public class ControllerDashboard {
         vista.setVisible(true);
         vista.setLocationRelativeTo(null);
         
-        PanelTienda tienda = vista.getPanelTienda();
+        //ControllerTienda controladorTienda = new ControllerTienda(modelo, vista.getPanelTienda());
+  
+        /*
+        ControllerTienda controladorTienda = new ControllerTienda(modelo, tienda);
+        
         tienda.addListaProductosListener(new JListListener());
+        */
         vista.addBtnTiendaMouseEvent(new BtnMouseTiendaListener());
         vista.addBtnProductosMouseEvent(new BtnMouseProductosListener());
+        vista.addProveedoresMouseEvent(new BtnMouseProveedoresListener());
+        vista.addRegistrosMouseEvent(new BtnMouseRegistrosListener());
+        vista.addClientesMouseEvent(new BtnMouseClientesListener());
         
-
     }
     
     class BtnMouseProductosListener implements MouseListener
@@ -49,6 +56,7 @@ public class ControllerDashboard {
         @Override
         public void mousePressed(MouseEvent e) {
              System.out.println("Productos");
+             ControllerProductos controladorProductos = new ControllerProductos(modelo, vista.getPanelProductos());
           }
 
         @Override
@@ -74,14 +82,14 @@ public class ControllerDashboard {
        
         @Override
         public void mouseClicked(MouseEvent e) {
-            //System.out.println("Clicked");
 //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
             System.out.println("Tienda");
-                
+            ControllerTienda controladorTienda = new ControllerTienda(modelo, vista.getPanelTienda());
+            //vista.getPanelTienda().addListaProductosListener(new JListListener());   
            }
 
         @Override
@@ -103,15 +111,100 @@ public class ControllerDashboard {
     
     
     
-    class JListListener implements ListSelectionListener{
+    class BtnMouseClientesListener implements MouseListener
+    {
 
         @Override
-        public void valueChanged(ListSelectionEvent e) {
-            System.out.println("Hola mundo");
+        public void mouseClicked(MouseEvent e) {
+           // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+             System.out.println("Clientes");
+             ControllerClientes controladorClientes = new ControllerClientes(modelo, vista.getPanelClientes());
+          }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+           // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+          //  throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
         }
         
     }
     
     
+    class BtnMouseProveedoresListener implements MouseListener
+    {
+       
+        @Override
+        public void mouseClicked(MouseEvent e) {
+//throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+             System.out.println("Proveedores");
+            ControllerProveedores controladorProveedores = new ControllerProveedores(modelo, vista.getPanelProveedores());
+            //vista.getPanelTienda().addListaProductosListener(new JListListener());   
+           }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+           // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+           // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+        
+    }
     
+    
+    class BtnMouseRegistrosListener implements MouseListener
+    {
+       
+        @Override
+        public void mouseClicked(MouseEvent e) {
+//throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+             System.out.println("Registros");
+            ControllerRegistros controladorRegistros = new ControllerRegistros(modelo, vista.getPanelRegistros());
+            //vista.getPanelTienda().addListaProductosListener(new JListListener());   
+           }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+           // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+           // throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+        
+    }
 }

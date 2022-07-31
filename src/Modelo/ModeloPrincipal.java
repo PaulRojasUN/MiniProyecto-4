@@ -275,4 +275,15 @@ public class ModeloPrincipal
         listaClientes.remove(_index);
     }
     
+    public ArrayList<String> getListaStringProductos()
+    {
+        ArrayList<String> lista = new ArrayList<String>();
+        for (Producto pr : listaProductos)
+        {
+            lista.add(pr.getNombre());
+        }
+        
+        return lista;
+    }
+    
 }

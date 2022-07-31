@@ -18,8 +18,14 @@ public class VistaDashboard extends javax.swing.JFrame {
     
     public final int RGBAZULOSCURO = -14903059;
     public final int RGBAZULCLARO = -16755042;
-    PanelTienda panelTienda;// = new PanelTienda();
-
+    
+    // = new PanelTienda();
+    PanelClientes panelClientes;
+    PanelProductos panelProductos;
+    PanelProveedores panelProveedores;
+    PanelRegistros panelRegistros;
+    PanelTienda panelTienda;
+    
     
     public VistaDashboard() {
         initComponents();
@@ -31,6 +37,32 @@ public class VistaDashboard extends javax.swing.JFrame {
     {
         panelTienda = _panel;
     }
+    
+    public void crearPanelCliente(PanelClientes _panel)
+    {
+        panelClientes = _panel;
+    }
+    
+    public void crearPanelProductos(PanelProductos _panel)
+    {
+        panelProductos = _panel;
+    }
+    
+    public void crearPanelProveedores(PanelProveedores _panel)
+    {
+        panelProveedores = _panel;
+    }
+    
+    public void crearPanelRegistros(PanelRegistros _panel)
+    {
+        panelRegistros = _panel;
+    }
+    
+    public void crearPanelClientes(PanelClientes _panel)
+    {
+        panelClientes = _panel;
+    }
+    
     
     void resetColorClaro(JPanel panel){
         panel.setBackground(new Color(28, 152, 237));     
@@ -105,9 +137,24 @@ public class VistaDashboard extends javax.swing.JFrame {
         btnTienda.addMouseListener(mouseListenControles);
     }
     
+    public void addClientesMouseEvent(MouseListener mouseListenControles)
+    {
+        btnClientes.addMouseListener(mouseListenControles);
+    }
+    
     public void addBtnProductosMouseEvent(MouseListener mouseListenControles)
     {
         btnProductos.addMouseListener(mouseListenControles);
+    }
+    
+    public void addProveedoresMouseEvent(MouseListener mouseListenControles)
+    {
+        btnProveedores.addMouseListener(mouseListenControles);
+    }
+    
+    public void addRegistrosMouseEvent(MouseListener mouseListenControles)
+    {
+        btnRegistros.addMouseListener(mouseListenControles);
     }
     
 
@@ -327,7 +374,7 @@ public class VistaDashboard extends javax.swing.JFrame {
         lblExit.setFont(new java.awt.Font("Microsoft JhengHei", 0, 24)); // NOI18N
         lblExit.setForeground(new java.awt.Color(176, 230, 253));
         lblExit.setText("  X");
-        lblExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblExit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lblExit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -552,6 +599,28 @@ public class VistaDashboard extends javax.swing.JFrame {
     public PanelTienda getPanelTienda() {
         return panelTienda;
     }
+    
+    public PanelProductos getPanelProductos()
+    {
+        return panelProductos;
+    }
+    
+    public PanelProveedores getPanelProveedores()
+    {
+        return panelProveedores;
+    }
+    
+    public PanelClientes getPanelClientes()
+    {
+        return panelClientes;
+    }
+    
+    public PanelRegistros getPanelRegistros()
+    {
+        return panelRegistros;
+    }
+    
+    
     
     
     

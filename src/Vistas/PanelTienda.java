@@ -24,11 +24,15 @@ public class PanelTienda extends javax.swing.JPanel {
         initComponents();
         modelo = new DefaultListModel();
         listaProductos.setModel(modelo);
-        modelo.addElement("Hola");
-        modelo.addElement("HolaMundo");
+    }
+    
+    public String getProductoSeleccionado()
+    {
+        return listaProductos.getSelectedValue();
     }
     
     public void llenarListaProductos(ArrayList<String> productos){
+        modelo.removeAllElements();
         for (String producto : productos)
             {
                 modelo.addElement(producto);
