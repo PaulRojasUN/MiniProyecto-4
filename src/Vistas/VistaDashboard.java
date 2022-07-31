@@ -300,7 +300,7 @@ public class VistaDashboard extends javax.swing.JFrame {
 
         imagenDashboard.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        backgoundImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/backgoundTienda.png"))); // NOI18N
+        backgoundImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/backgoundUnimarket.png"))); // NOI18N
         backgoundImagen.setText("jLabel3");
         imagenDashboard.add(backgoundImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 750, 170));
 
