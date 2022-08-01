@@ -54,11 +54,22 @@ public class ControllerTienda {
             int cantidad;
             int codigo;
             try 
-            {
+            { 
                 cantidad = parseInt(panelTienda.getTxtCantidad());
-                codigo = parseInt(panelTienda.getProductoSeleccionado().substring(0, 6));
-                panelTienda.addItemListaCompras(modelo.getProductoCodigo(codigo).getNombre() + " x "+cantidad);
-                System.out.println(modelo.getProductoCodigo(codigo).getNombre());
+                if(cantidad > 0)
+                {
+                   
+                    codigo = parseInt(panelTienda.getProductoSeleccionado().substring(0, 6));
+                    panelTienda.addItemListaCompras(modelo.itemListaCompra(codigo, cantidad));
+                    System.out.println("H"+panelTienda.getListaDeCompras().get(0));
+                    panelTienda.setTxtPrecioTotal(modelo.calcularTotal(panelTienda.getListaDeCompras()));
+                    panelTienda.setTxtNumeroTotalDeProductos(modelo.calcularCantidadProductosTotal(panelTienda.getListaDeCompras()));
+                }
+                else
+                {
+                    System.out.println("Asigne un número mayor que cero");
+                    panelTienda.setTxtCantidad("");
+                }
             } 
             catch (Exception E)
             {

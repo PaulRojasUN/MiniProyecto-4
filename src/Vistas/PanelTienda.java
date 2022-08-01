@@ -28,6 +28,17 @@ public class PanelTienda extends javax.swing.JPanel {
         btnVenderProductos.setEnabled(estado);
     }
 
+    public ArrayList<String> getListaDeCompras()
+    {
+        ArrayList<String> auxLista = new ArrayList<String>();
+        int size = modeloCompra.size();
+        for (int i = 0; i < size; i++)
+        {
+            auxLista.add((String) modeloCompra.elementAt(i));
+        }
+        return auxLista;
+    }
+    
     /**
      * Creates new form PanelTienda
      */
@@ -60,11 +71,11 @@ public class PanelTienda extends javax.swing.JPanel {
         return Integer.parseInt(txtNumeroDeProductos.getText());
     }
     
-    public void setPrecioTotal(int precioTotal){
+    public void setTxtPrecioTotal(float precioTotal){
         txtPrecioTotal.setText(String.valueOf(precioTotal));
     }
     
-    public void setNumeroTotalDeProductos(int numeroTotalProductos){
+    public void setTxtNumeroTotalDeProductos(int numeroTotalProductos){
         txtNumeroDeProductos.setText(String.valueOf(numeroTotalProductos));
     }
     
@@ -188,6 +199,7 @@ public class PanelTienda extends javax.swing.JPanel {
         jLabel1.setText("Precio Total:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, -1, -1));
 
+        txtPrecioTotal.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtPrecioTotal.setEnabled(false);
         add(txtPrecioTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, 100, -1));
 
@@ -195,6 +207,7 @@ public class PanelTienda extends javax.swing.JPanel {
         jLabel2.setText("No. Productos:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, -1, -1));
 
+        txtNumeroDeProductos.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtNumeroDeProductos.setEnabled(false);
         add(txtNumeroDeProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 180, 100, -1));
 

@@ -303,4 +303,34 @@ public class ModeloPrincipal
         
     }
     
+    public float calcularTotal(ArrayList<String> _lista)
+    {
+        float total = 0f;
+        for (String item : _lista)
+        {
+            total += parseFloat(item.substring(item.indexOf("=") + 2));
+        }
+        return total;
+    }
+    
+    public String itemListaCompra(int codigo, int _cantidad)
+    {
+        Producto auxProduct;
+        auxProduct = getProductoCodigo(codigo);
+        return (auxProduct.getNombre() + " x " + _cantidad + " = "+
+                (auxProduct.getPrecioVenta()*_cantidad));
+    }
+    
+    public int calcularCantidadProductosTotal(ArrayList<String> _lista)
+    {
+        int cantidad = 0;
+        for (String item : _lista)
+        {
+            cantidad += parseFloat(item.substring(item.indexOf("x") + 2, 
+                    item.indexOf("=")-1));
+        }
+        return cantidad;
+    }
+    
+    
 }
