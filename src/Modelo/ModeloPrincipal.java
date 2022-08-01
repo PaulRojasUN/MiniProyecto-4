@@ -280,10 +280,27 @@ public class ModeloPrincipal
         ArrayList<String> lista = new ArrayList<String>();
         for (Producto pr : listaProductos)
         {
-            lista.add(pr.getNombre());
+            lista.add(pr.getCodigo()+ " - " + pr.getNombre()+" - $"+
+                    pr.getPrecioVenta());
         }
         
         return lista;
+    }
+    
+    public Producto getProductoCodigo(int _codigo)
+    {
+        Boolean encontrado = false;
+        for (Producto pr: listaProductos)
+        {
+            if (pr.getCodigo() == _codigo)
+            {
+                encontrado = true;
+                return pr;
+            }
+        }
+            System.out.println("No se halló el código");
+            return null;
+        
     }
     
 }
