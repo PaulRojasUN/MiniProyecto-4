@@ -6,50 +6,22 @@ package Vistas;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.DefaultListModel;
 
 /**
  *
  * @author RYZEN
  */
-public class PanelClientes extends javax.swing.JPanel {
-    DefaultListModel modeloClientes;
-    
-    public PanelClientes() {
-        initComponents();
-        //listaClientes.setModel(modeloClientes);     
-    }
-    
-    public void cambiarTextoActualizar(){    
-        if("ACTUALIZAR".equals(btnActualizarCliente.getText())){
-            btnActualizarCliente.setText("ACEPTAR");
-        }else{
-            btnActualizarCliente.setText("ACTUALIZAR");
-        }
-    }
+public class PanelCrearCliente extends javax.swing.JPanel {
 
     /**
-     * Creates new form PanelClientes
+     * Creates new form PanelCrearCliente
      */
-    public void cambiarEstadoCampos(boolean estado){
-        txtNombresCliente.setEnabled(estado);
-        txtApellidosCliente.setEnabled(estado);
-        txtCorreoCliente.setEnabled(estado);
-        txtTelefonoCliente.setEnabled(estado);
-        comboGeneroCliente.setEnabled(estado);
-        txtEdadCliente.setEnabled(estado);
-        txtNumeroComprasCliente.setEnabled(estado);
+    public PanelCrearCliente() {
+        initComponents();
     }
     
-    public void habilitarBotonActualizar(boolean estado){
-        btnActualizarCliente.setEnabled(estado);
-    }
     
-    public void habilitarBotonBorrar(boolean estado){
-        btnBorrarCliente.setEnabled(estado);
-    }
-    
-    public void habilitarBotonCrear(boolean estado){
+    public void activarBotonCrear(boolean estado){
         btnCrearCliente.setEnabled(estado);
     }
     
@@ -112,24 +84,12 @@ public class PanelClientes extends javax.swing.JPanel {
         return comboGeneroCliente.getSelectedItem().toString();
     }
     
-    public String getClienteSeleccionado(){
-        return listaClientes.getSelectedValue();
+    public void addBtnVolverListener(ActionListener listenControles){
+        btnVolver.addActionListener(listenControles);
     }
     
-    public void llenarListaClientes(ArrayList<String> clientes){
-        modeloClientes.removeAllElements();
-        for (String cliente : clientes)
-            {
-                modeloClientes.addElement(cliente);
-            }
-    }
-    
-    public void addBtnActualizarListener(ActionListener listenControles){
-        btnActualizarCliente.addActionListener(listenControles);
-    }
-    
-    public void addBtnBorrarListener(ActionListener listenControles){
-        btnBorrarCliente.addActionListener(listenControles);
+    public void addBtnCancelarListener(ActionListener listenControles){
+        btnCancelar.addActionListener(listenControles);
     }
     
     public void addBtnCrearListener(ActionListener listenControles){
@@ -145,9 +105,6 @@ public class PanelClientes extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        listaClientes = new javax.swing.JList<>();
         lblListaClientes = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblCorreo = new javax.swing.JLabel();
@@ -164,29 +121,16 @@ public class PanelClientes extends javax.swing.JPanel {
         txtEdadCliente = new javax.swing.JTextField();
         lblEdad1 = new javax.swing.JLabel();
         txtNumeroComprasCliente = new javax.swing.JTextField();
+        btnCancelar = new javax.swing.JButton();
         btnCrearCliente = new javax.swing.JButton();
-        btnActualizarCliente = new javax.swing.JButton();
-        btnBorrarCliente = new javax.swing.JButton();
-        lblListaClientes1 = new javax.swing.JLabel();
-
-        jLabel2.setText("jLabel2");
+        btnVolver = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(750, 430));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        listaClientes.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(listaClientes);
-
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 230, 350));
-
         lblListaClientes.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        lblListaClientes.setText("INFORMACIÓN");
-        add(lblListaClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
+        lblListaClientes.setText("CREAR CLIENTE");
+        add(lblListaClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(176, 230, 253));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -194,29 +138,21 @@ public class PanelClientes extends javax.swing.JPanel {
         lblCorreo.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblCorreo.setText("  Correo:");
         jPanel1.add(lblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1));
-
-        txtApellidosCliente.setEnabled(false);
         jPanel1.add(txtApellidosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 190, -1));
 
         lblNombres.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblNombres.setText("Nombres:");
         jPanel1.add(lblNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
-
-        txtNombresCliente.setEnabled(false);
         jPanel1.add(txtNombresCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 190, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         jLabel3.setText("Apellidos:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
-
-        txtCorreoCliente.setEnabled(false);
         jPanel1.add(txtCorreoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 190, -1));
 
         lblEdad.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblEdad.setText(" No. Compras:");
         jPanel1.add(lblEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
-
-        txtTelefonoCliente.setEnabled(false);
         jPanel1.add(txtTelefonoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 190, -1));
 
         lblTelefono1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
@@ -224,72 +160,58 @@ public class PanelClientes extends javax.swing.JPanel {
         jPanel1.add(lblTelefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
 
         comboGeneroCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboGeneroCliente.setEnabled(false);
         jPanel1.add(comboGeneroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 190, -1));
 
         lblGenero1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblGenero1.setText("Género:");
         jPanel1.add(lblGenero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
-
-        txtEdadCliente.setEnabled(false);
         jPanel1.add(txtEdadCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 190, -1));
 
         lblEdad1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblEdad1.setText("Edad:");
         jPanel1.add(lblEdad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, -1, -1));
-
-        txtNumeroComprasCliente.setEnabled(false);
         jPanel1.add(txtNumeroComprasCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 190, -1));
+
+        btnCancelar.setBackground(new java.awt.Color(0, 86, 158));
+        btnCancelar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setText("CANCELAR");
+        btnCancelar.setBorder(null);
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 120, 40));
 
         btnCrearCliente.setBackground(new java.awt.Color(0, 86, 158));
         btnCrearCliente.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         btnCrearCliente.setForeground(new java.awt.Color(255, 255, 255));
         btnCrearCliente.setText("CREAR");
         btnCrearCliente.setBorder(null);
-        jPanel1.add(btnCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 120, 40));
+        btnCrearCliente.setEnabled(false);
+        jPanel1.add(btnCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 120, 40));
 
-        btnActualizarCliente.setBackground(new java.awt.Color(0, 86, 158));
-        btnActualizarCliente.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        btnActualizarCliente.setForeground(new java.awt.Color(255, 255, 255));
-        btnActualizarCliente.setText("ACTUALIZAR");
-        btnActualizarCliente.setBorder(null);
-        btnActualizarCliente.setEnabled(false);
-        jPanel1.add(btnActualizarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 120, 40));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 440, 350));
 
-        btnBorrarCliente.setBackground(new java.awt.Color(0, 86, 158));
-        btnBorrarCliente.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        btnBorrarCliente.setForeground(new java.awt.Color(255, 255, 255));
-        btnBorrarCliente.setText("BORRAR");
-        btnBorrarCliente.setBorder(null);
-        btnBorrarCliente.setEnabled(false);
-        jPanel1.add(btnBorrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 120, 40));
-
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 440, 350));
-
-        lblListaClientes1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        lblListaClientes1.setText("LISTA DE CLIENTES");
-        add(lblListaClientes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        btnVolver.setBackground(new java.awt.Color(0, 86, 158));
+        btnVolver.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver.setText("VOLVER");
+        btnVolver.setBorder(null);
+        add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 40));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizarCliente;
-    private javax.swing.JButton btnBorrarCliente;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCrearCliente;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> comboGeneroCliente;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblEdad;
     private javax.swing.JLabel lblEdad1;
     private javax.swing.JLabel lblGenero1;
     private javax.swing.JLabel lblListaClientes;
-    private javax.swing.JLabel lblListaClientes1;
     private javax.swing.JLabel lblNombres;
     private javax.swing.JLabel lblTelefono1;
-    private javax.swing.JList<String> listaClientes;
     private javax.swing.JTextField txtApellidosCliente;
     private javax.swing.JTextField txtCorreoCliente;
     private javax.swing.JTextField txtEdadCliente;

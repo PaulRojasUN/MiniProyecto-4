@@ -6,52 +6,21 @@ package Vistas;
 
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.DefaultListModel;
 
 /**
  *
  * @author RYZEN
  */
-public class PanelProductos extends javax.swing.JPanel {
-    DefaultListModel modeloProductos;
+public class PanelComprarProducto extends javax.swing.JPanel {
 
     /**
-     * Creates new form PanelProductos
+     * Creates new form PanelComprarProducto
      */
-    public PanelProductos() {
+    public PanelComprarProducto() {
         initComponents();
-        //listaProductos.setModel(modeloProductos);
     }
     
-    public void cambiarTextoActualizar(){    
-        if("ACTUALIZAR".equals(btnActualizarProducto.getText())){
-            btnActualizarProducto.setText("ACEPTAR");
-        }else{
-            btnActualizarProducto.setText("ACTUALIZAR");
-        }
-    }
-    
-    public void cambiarEstadoCampos(boolean estado){
-        txtNombreProducto.setEnabled(estado);
-        comboProvProducto.setEnabled(estado);
-        txtVendidosProducto.setEnabled(estado);
-        txtInventarioProducto.setEnabled(estado);
-        txtPrecioProducto.setEnabled(estado);
-    }
-    
-    public void habilitarBotonActualizar(boolean estado){
-        btnActualizarProducto.setEnabled(estado);
-    }
-    
-    public void habilitarBotonBorrar(boolean estado){
-        btnBorrarProducto.setEnabled(estado);
-    }
-    
-    public void habilitarBotonCrear(boolean estado){
-        btnCrearProducto.setEnabled(estado);
-    }
-    
-    public void habilitarBotonComprarProducto(boolean estado){
+    public void activarBotonComprar(boolean estado){
         btnComprarProducto.setEnabled(estado);
     }
     
@@ -87,19 +56,6 @@ public class PanelProductos extends javax.swing.JPanel {
         txtPrecioProducto.setText(String.valueOf(precio));
     }
     
-    
-    public String getProductoSeleccionado(){
-        return listaProducto.getSelectedValue();
-    }
-    
-    public void llenarListaProductos(ArrayList<String> productos){
-        modeloProductos.removeAllElements();
-        for (String producto : productos)
-            {
-                modeloProductos.addElement(producto);
-            }
-    }
-    
     public void llenarComboProveedores(ArrayList<String> proveedores){
         for (String genero : proveedores)
             {
@@ -111,18 +67,17 @@ public class PanelProductos extends javax.swing.JPanel {
         return comboProvProducto.getSelectedItem().toString();
     }
     
-    public void addBtnActualizarListener(ActionListener listenControles){
-        btnActualizarProducto.addActionListener(listenControles);
+    public void addBtnComprarProductoListener(ActionListener listenControles){
+        btnComprarProducto.addActionListener(listenControles);
     }
     
-    public void addBtnBorrarListener(ActionListener listenControles){
-        btnBorrarProducto.addActionListener(listenControles);
+    public void addBtnVolverListener(ActionListener listenControles){
+        btnVolver.addActionListener(listenControles);
     }
     
-    public void addBtnCrearListener(ActionListener listenControles){
-        btnCrearProducto.addActionListener(listenControles);
+    public void addBtnCancelarListener(ActionListener listenControles){
+        btnCancelar.addActionListener(listenControles);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -133,8 +88,6 @@ public class PanelProductos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        listaProducto = new javax.swing.JList<>();
         lblListaClientes = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblCorreo = new javax.swing.JLabel();
@@ -143,31 +96,22 @@ public class PanelProductos extends javax.swing.JPanel {
         txtVendidosProducto = new javax.swing.JTextField();
         lblTelefono1 = new javax.swing.JLabel();
         txtInventarioProducto = new javax.swing.JTextField();
-        btnCrearProducto = new javax.swing.JButton();
-        btnActualizarProducto = new javax.swing.JButton();
-        btnBorrarProducto = new javax.swing.JButton();
         lblNumeroVentas = new javax.swing.JLabel();
         lblNumeroVentas1 = new javax.swing.JLabel();
         txtPrecioProducto = new javax.swing.JTextField();
         comboProvProducto = new javax.swing.JComboBox<>();
+        btnCancelar = new javax.swing.JButton();
         btnComprarProducto = new javax.swing.JButton();
-        lblListaProveedores = new javax.swing.JLabel();
+        lblNumeroVentas2 = new javax.swing.JLabel();
+        txtCantidadCompra = new javax.swing.JTextField();
+        btnVolver = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        listaProducto.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(listaProducto);
-
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 230, 350));
-
         lblListaClientes.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        lblListaClientes.setText("INFORMACIÓN");
-        add(lblListaClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
+        lblListaClientes.setText("COMPRAR PRODUCTO");
+        add(lblListaClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(176, 230, 253));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -193,36 +137,13 @@ public class PanelProductos extends javax.swing.JPanel {
         txtInventarioProducto.setEnabled(false);
         jPanel1.add(txtInventarioProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 190, -1));
 
-        btnCrearProducto.setBackground(new java.awt.Color(0, 86, 158));
-        btnCrearProducto.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        btnCrearProducto.setForeground(new java.awt.Color(255, 255, 255));
-        btnCrearProducto.setText("CREAR");
-        btnCrearProducto.setBorder(null);
-        jPanel1.add(btnCrearProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 120, 40));
-
-        btnActualizarProducto.setBackground(new java.awt.Color(0, 86, 158));
-        btnActualizarProducto.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        btnActualizarProducto.setForeground(new java.awt.Color(255, 255, 255));
-        btnActualizarProducto.setText("ACTUALIZAR");
-        btnActualizarProducto.setBorder(null);
-        btnActualizarProducto.setEnabled(false);
-        jPanel1.add(btnActualizarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 120, 40));
-
-        btnBorrarProducto.setBackground(new java.awt.Color(0, 86, 158));
-        btnBorrarProducto.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        btnBorrarProducto.setForeground(new java.awt.Color(255, 255, 255));
-        btnBorrarProducto.setText("BORRAR");
-        btnBorrarProducto.setBorder(null);
-        btnBorrarProducto.setEnabled(false);
-        jPanel1.add(btnBorrarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 120, 40));
-
         lblNumeroVentas.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblNumeroVentas.setText("  Invetario:");
         jPanel1.add(lblNumeroVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
 
         lblNumeroVentas1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        lblNumeroVentas1.setText("   Precio:");
-        jPanel1.add(lblNumeroVentas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
+        lblNumeroVentas1.setText("Cantidad:");
+        jPanel1.add(lblNumeroVentas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
 
         txtPrecioProducto.setEnabled(false);
         jPanel1.add(txtPrecioProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 190, -1));
@@ -231,38 +152,60 @@ public class PanelProductos extends javax.swing.JPanel {
         comboProvProducto.setEnabled(false);
         jPanel1.add(comboProvProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 190, -1));
 
+        btnCancelar.setBackground(new java.awt.Color(0, 86, 158));
+        btnCancelar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setText("CANCELAR");
+        btnCancelar.setBorder(null);
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 120, 40));
+
         btnComprarProducto.setBackground(new java.awt.Color(0, 86, 158));
         btnComprarProducto.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         btnComprarProducto.setForeground(new java.awt.Color(255, 255, 255));
-        btnComprarProducto.setText("COMPRAR PRODUCTO");
+        btnComprarProducto.setText("COMPRAR");
         btnComprarProducto.setBorder(null);
         btnComprarProducto.setEnabled(false);
-        jPanel1.add(btnComprarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 390, 40));
+        btnComprarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComprarProductoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnComprarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 120, 40));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 440, 350));
+        lblNumeroVentas2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblNumeroVentas2.setText("   Precio:");
+        jPanel1.add(lblNumeroVentas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
+        jPanel1.add(txtCantidadCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 190, -1));
 
-        lblListaProveedores.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        lblListaProveedores.setText("LISTA DE PRODUCTOS");
-        add(lblListaProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 440, 350));
+
+        btnVolver.setBackground(new java.awt.Color(0, 86, 158));
+        btnVolver.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver.setText("VOLVER");
+        btnVolver.setBorder(null);
+        add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 40));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnComprarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnComprarProductoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizarProducto;
-    private javax.swing.JButton btnBorrarProducto;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnComprarProducto;
-    private javax.swing.JButton btnCrearProducto;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> comboProvProducto;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblListaClientes;
-    private javax.swing.JLabel lblListaProveedores;
     private javax.swing.JLabel lblNombres;
     private javax.swing.JLabel lblNumeroVentas;
     private javax.swing.JLabel lblNumeroVentas1;
+    private javax.swing.JLabel lblNumeroVentas2;
     private javax.swing.JLabel lblTelefono1;
-    private javax.swing.JList<String> listaProducto;
+    private javax.swing.JTextField txtCantidadCompra;
     private javax.swing.JTextField txtInventarioProducto;
     private javax.swing.JTextField txtNombreProducto;
     private javax.swing.JTextField txtPrecioProducto;

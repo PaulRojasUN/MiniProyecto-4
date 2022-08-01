@@ -18,6 +18,15 @@ import javax.swing.event.ListSelectionListener;
 public class PanelTienda extends javax.swing.JPanel {
     DefaultListModel modelo;
     DefaultListModel modeloCompra;
+    
+    public void cambiarEstadoBotones(boolean estado){
+        btnBorrarElementoLista.setEnabled(estado);
+        btnCambiarCantidadLista.setEnabled(estado);
+    }
+    
+    public void cambiarEstadoBotonVender(boolean estado){
+        btnVenderProductos.setEnabled(estado);
+    }
 
     /**
      * Creates new form PanelTienda
@@ -159,6 +168,7 @@ public class PanelTienda extends javax.swing.JPanel {
         btnBorrarElementoLista.setForeground(new java.awt.Color(0, 86, 158));
         btnBorrarElementoLista.setText("BORRAR");
         btnBorrarElementoLista.setBorder(null);
+        btnBorrarElementoLista.setEnabled(false);
         btnBorrarElementoLista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBorrarElementoListaActionPerformed(evt);
@@ -171,6 +181,7 @@ public class PanelTienda extends javax.swing.JPanel {
         btnCambiarCantidadLista.setForeground(new java.awt.Color(0, 86, 158));
         btnCambiarCantidadLista.setText("CAMBIAR CANTIDAD");
         btnCambiarCantidadLista.setBorder(null);
+        btnCambiarCantidadLista.setEnabled(false);
         add(btnCambiarCantidadLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 150, 40));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N

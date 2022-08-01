@@ -186,6 +186,7 @@ public class VistaDashboard extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         imagenDashboard = new javax.swing.JPanel();
         backgoundImagen = new javax.swing.JLabel();
         btnExit = new javax.swing.JPanel();
@@ -341,15 +342,17 @@ public class VistaDashboard extends javax.swing.JFrame {
 
         content.setBackground(new java.awt.Color(204, 204, 204));
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/backgoundDashboard.png"))); // NOI18N
+
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
         content.setLayout(contentLayout);
         contentLayout.setHorizontalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 430, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         background.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 750, 430));
@@ -374,7 +377,7 @@ public class VistaDashboard extends javax.swing.JFrame {
         lblExit.setFont(new java.awt.Font("Microsoft JhengHei", 0, 24)); // NOI18N
         lblExit.setForeground(new java.awt.Color(176, 230, 253));
         lblExit.setText("  X");
-        lblExit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblExit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -403,7 +406,7 @@ public class VistaDashboard extends javax.swing.JFrame {
 
         imagenDashboard.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, 40, 40));
 
-        panelBar.setBackground(new java.awt.Color(255, 255, 255));
+        panelBar.setBackground(new java.awt.Color(28, 152, 237));
         panelBar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelBarMouseEntered(evt);
@@ -645,6 +648,7 @@ public class VistaDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lblExit;
     private javax.swing.JPanel menu;
