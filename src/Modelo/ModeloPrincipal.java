@@ -154,6 +154,9 @@ public class ModeloPrincipal
         String nombre;
         int edad;
         int tel;
+        String correoE;
+        String genero;
+        int noCompras;
         
         while( (line = br.readLine()) != null)
         {
@@ -162,8 +165,12 @@ public class ModeloPrincipal
             nombre = st.nextToken();
             edad = parseInt(st.nextToken());
             tel = parseInt(st.nextToken());
+            correoE = st.nextToken();
+            genero = st.nextToken();
+            noCompras = parseInt(st.nextToken());
             
-            listaClientes.add(new Cliente(id, nombre, edad, tel));
+            listaClientes.add(new Cliente(id, nombre, edad, tel, correoE, genero,
+            noCompras));
         }
     }
     
@@ -280,11 +287,26 @@ public class ModeloPrincipal
         ArrayList<String> lista = new ArrayList<String>();
         for (Producto pr : listaProductos)
         {
-            lista.add(pr.getCodigo()+ " - " + pr.getNombre()+" - $"+
+            lista.add(pr.getCant()+ "u - " + pr.getNombre()+" - $"+
                     pr.getPrecioVenta());
         }
         
         return lista;
+    }
+    
+    public void sumarUnidadesProducto(String _nombre, int _cant)
+    {
+        getProductoNombre(_nombre).sumarCant(_cant);
+    }
+    
+    public void restarUnidadesProducto(String _nombre, int _cant)
+    {
+        getProductoNombre(_nombre).restarCant(_cant);
+    }
+    
+    public String getNuevoItemProductos(String _item, int _cant)
+    {
+        return _cant+_item.substring(_item.indexOf("u"));
     }
     
     public Producto getProductoCodigo(int _codigo)
@@ -299,6 +321,22 @@ public class ModeloPrincipal
             }
         }
             System.out.println("No se halló el código");
+            return null;
+        
+    }
+    
+    public Producto getProductoNombre(String _nombre)
+    {
+        Boolean encontrado = false;
+        for (Producto pr: listaProductos)
+        {
+            if (pr.getNombre().equals(_nombre))
+            {
+                encontrado = true;
+                return pr;
+            }
+        }
+            System.out.println("No se halló el nombre");
             return null;
         
     }
@@ -332,13 +370,29 @@ public class ModeloPrincipal
         return cantidad;
     }
     
-    public int identificarItemCompras(ArrayList<String> _lista, String _nombre)
+    public int identificarItemCompra(ArrayList<String> _lista, String _nombre)
     {
         int index = -1;//El -1 indica que no lo encontró.
         String nombreProducto;
         for (int i = 0; i < _lista.size(); i++)
         {
             nombreProducto = _lista.get(i).substring(0, _lista.get(i).indexOf("x")-1);
+            if (nombreProducto.equals(_nombre))
+            {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+    
+    public int identificarItemProducto(ArrayList<String> _lista, String _nombre)
+    {
+        int index = -1;//El -1 indica que no lo encontró.
+        String nombreProducto;
+        for (int i = 0; i < _lista.size(); i++)
+        {
+            nombreProducto = _lista.get(i).substring(_lista.get(i).indexOf("-")+2, _lista.get(i).indexOf("$")-3);
             if (nombreProducto.equals(_nombre))
             {
                 index = i;

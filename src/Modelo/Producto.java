@@ -76,5 +76,15 @@ public class Producto
         this.cant = cant;
     }
     
+    public void sumarCant(int _cant)
+    {
+        this.cant += _cant;
+    }
+    
+    public void restarCant(int _cant)
+    {
+        this.cant -= _cant;
+    }
+    
     
 }

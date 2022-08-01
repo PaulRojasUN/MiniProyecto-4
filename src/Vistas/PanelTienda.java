@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -39,6 +40,28 @@ public class PanelTienda extends javax.swing.JPanel {
         return auxLista;
     }
     
+    public int crearInputPane()
+    {
+        return Integer.parseInt(JOptionPane.showInputDialog("Ingrese la nueva cantidad"));
+    }
+    
+    
+    public String getItemListaDeProductos(int _index)
+    {
+        return (String) modelo.getElementAt(_index);
+    }
+    
+    public ArrayList<String> getListaDeProductos()
+    {
+        ArrayList<String> auxLista = new ArrayList<String>();
+        int size = modelo.size();
+        for (int i = 0; i < size; i++)
+        {
+            auxLista.add((String) modelo.elementAt(i));
+        }
+        return auxLista;
+    }
+    
     /**
      * Creates new form PanelTienda
      */
@@ -59,9 +82,19 @@ public class PanelTienda extends javax.swing.JPanel {
         return modeloCompra.size();
     }
     
+    public void quitarElementoCompras(int _index)
+    {
+        modeloCompra.remove(_index);
+    }
+    
     public String getCompraSeleccionada()
     {
         return listaCompra.getSelectedValue();
+    }
+    
+    public void setItemProducto(String _item, int _index)
+    {
+        modelo.setElementAt(_item, _index);
     }
     
     public void setItemCompra(String _item, int _index)
