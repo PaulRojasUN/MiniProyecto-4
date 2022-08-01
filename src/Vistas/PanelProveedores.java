@@ -53,12 +53,12 @@ public class PanelProveedores extends javax.swing.JPanel {
         btnCrearProv.setEnabled(estado);
     }
     
-    public String getNombres(){
+    public String getNombre(){
         return txtNombreProv.getText();
     }
     
-    public void setNombres(String nombres){
-        txtNombreProv.setText(nombres);
+    public void setNombre(String nombre){
+        txtNombreProv.setText(nombre);
     }
     
     public String getCorreo(){
@@ -235,7 +235,7 @@ public class PanelProveedores extends javax.swing.JPanel {
 
         lblListaProveedores.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblListaProveedores.setText("LISTA DE PROVEEDORES");
-        add(lblListaProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+        add(lblListaProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 

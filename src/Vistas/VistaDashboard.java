@@ -374,7 +374,7 @@ public class VistaDashboard extends javax.swing.JFrame {
         lblExit.setFont(new java.awt.Font("Microsoft JhengHei", 0, 24)); // NOI18N
         lblExit.setForeground(new java.awt.Color(176, 230, 253));
         lblExit.setText("  X");
-        lblExit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblExit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -403,7 +403,7 @@ public class VistaDashboard extends javax.swing.JFrame {
 
         imagenDashboard.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 0, 40, 40));
 
-        panelBar.setBackground(new java.awt.Color(255, 255, 255));
+        panelBar.setBackground(new java.awt.Color(28, 152, 237));
         panelBar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelBarMouseEntered(evt);
