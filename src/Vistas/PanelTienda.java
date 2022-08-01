@@ -5,6 +5,7 @@
 package Vistas;
 
 import java.awt.event.ActionListener;
+import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.event.ListSelectionEvent;
@@ -16,6 +17,7 @@ import javax.swing.event.ListSelectionListener;
  */
 public class PanelTienda extends javax.swing.JPanel {
     DefaultListModel modelo;
+    DefaultListModel modeloCompra;
 
     /**
      * Creates new form PanelTienda
@@ -24,6 +26,9 @@ public class PanelTienda extends javax.swing.JPanel {
         initComponents();
         modelo = new DefaultListModel();
         listaProductos.setModel(modelo);
+        
+        modeloCompra = new DefaultListModel();
+        listaCompra.setModel(modeloCompra);
     }
     
     public String getProductoSeleccionado()
@@ -200,13 +205,43 @@ public class PanelTienda extends javax.swing.JPanel {
     }//GEN-LAST:event_txtCantidadActionPerformed
 
     private void btnAgregarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCantidadActionPerformed
-        // TODO add your handling code here:
+/*
+        int cantidad;
+        int codigo;
+        try 
+        {
+            cantidad = parseInt(txtCantidad.getText());
+            codigo = parseInt(getProductoSeleccionado().substring(0, 6));
+            // System.out.println(m);
+        } 
+        catch (Exception E)
+        {
+            System.out.println("Ingrese una cantidad númerica entera y seleccione un item");
+            txtCantidad.setText("");
+        }*/
     }//GEN-LAST:event_btnAgregarCantidadActionPerformed
 
     private void btnBorrarElementoListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarElementoListaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBorrarElementoListaActionPerformed
 
+    public void addItemListaCompras(String _item)
+    {
+        modeloCompra.addElement(_item);
+    }        
+     
+    
+ 
+    public void setTxtCantidad(String _text)
+    {
+        txtCantidad.setText(_text);
+    }
+    
+    public String getTxtCantidad()
+    {
+        return txtCantidad.getText();
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarCantidad;

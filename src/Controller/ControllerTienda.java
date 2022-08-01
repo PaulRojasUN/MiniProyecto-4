@@ -5,6 +5,9 @@
 package Controller;
 
 import Vistas.PanelTienda;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import static java.lang.Integer.parseInt;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelo.ModeloPrincipal;
@@ -22,10 +25,15 @@ public class ControllerTienda {
         panelTienda = _panelTienda;
         
         
-        panelTienda.llenarListaProductos(modelo.getListaStringProductos());
+        
         panelTienda.addListaProductosListener(new JListListener());
+        panelTienda.addBtnAgregarListener(new BtnAgregarListener());
     }
     
+    public void actualizarPanel()
+    {
+        panelTienda.llenarListaProductos(modelo.getListaStringProductos());
+    }
     
     class JListListener implements ListSelectionListener
     {
@@ -34,6 +42,29 @@ public class ControllerTienda {
         public void valueChanged(ListSelectionEvent e) 
         {
             System.out.println("Seleccionó: "+panelTienda.getProductoSeleccionado());
+        }
+    }
+    
+    class BtnAgregarListener implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            int cantidad;
+            int codigo;
+            try 
+            {
+                cantidad = parseInt(panelTienda.getTxtCantidad());
+                codigo = parseInt(panelTienda.getProductoSeleccionado().substring(0, 6));
+                panelTienda.addItemListaCompras(modelo.getProductoCodigo(codigo).getNombre() + " x "+cantidad);
+                System.out.println(modelo.getProductoCodigo(codigo).getNombre());
+            } 
+            catch (Exception E)
+            {
+                System.out.println("Ingrese una cantidad númerica entera y seleccione un item");
+                panelTienda.setTxtCantidad("");
+            }
         }
         
     }

@@ -22,7 +22,13 @@ import modelo.ModeloPrincipal;
 public class ControllerDashboard {
     private ModeloPrincipal modelo;
     private VistaDashboard vista;
-
+    
+    private ControllerTienda controladorTienda;
+    private ControllerProductos controladorProductos;
+    private ControllerClientes controladorClientes;
+    private ControllerProveedores controladorProveedores;
+    private ControllerRegistros controladorRegistros;
+    
     public ControllerDashboard(ModeloPrincipal modelo, VistaDashboard vista) {
         this.modelo = modelo;
         this.vista = vista;
@@ -30,19 +36,27 @@ public class ControllerDashboard {
         vista.setVisible(true);
         vista.setLocationRelativeTo(null);
         
-        //ControllerTienda controladorTienda = new ControllerTienda(modelo, vista.getPanelTienda());
-  
-        /*
-        ControllerTienda controladorTienda = new ControllerTienda(modelo, tienda);
+        agregarListenersBtnDashBoard();
         
-        tienda.addListaProductosListener(new JListListener());
-        */
+        crearControladoresPaneles();
+    }
+    
+    private void agregarListenersBtnDashBoard()
+    {
         vista.addBtnTiendaMouseEvent(new BtnMouseTiendaListener());
         vista.addBtnProductosMouseEvent(new BtnMouseProductosListener());
         vista.addProveedoresMouseEvent(new BtnMouseProveedoresListener());
         vista.addRegistrosMouseEvent(new BtnMouseRegistrosListener());
         vista.addClientesMouseEvent(new BtnMouseClientesListener());
-        
+    }
+    
+    private void crearControladoresPaneles()
+    {
+        controladorTienda = new ControllerTienda(modelo, vista.getPanelTienda());
+        controladorProductos = new ControllerProductos(modelo, vista.getPanelProductos());
+        controladorClientes = new ControllerClientes(modelo, vista.getPanelClientes());
+        controladorRegistros = new ControllerRegistros(modelo, vista.getPanelRegistros());
+        controladorProveedores = new ControllerProveedores(modelo, vista.getPanelProveedores());
     }
     
     class BtnMouseProductosListener implements MouseListener
@@ -56,7 +70,7 @@ public class ControllerDashboard {
         @Override
         public void mousePressed(MouseEvent e) {
              System.out.println("Productos");
-             ControllerProductos controladorProductos = new ControllerProductos(modelo, vista.getPanelProductos());
+             controladorProductos = new ControllerProductos(modelo, vista.getPanelProductos());
           }
 
         @Override
@@ -88,7 +102,7 @@ public class ControllerDashboard {
         @Override
         public void mousePressed(MouseEvent e) {
             System.out.println("Tienda");
-            ControllerTienda controladorTienda = new ControllerTienda(modelo, vista.getPanelTienda());
+            controladorTienda.actualizarPanel();
             //vista.getPanelTienda().addListaProductosListener(new JListListener());   
            }
 
@@ -122,7 +136,7 @@ public class ControllerDashboard {
         @Override
         public void mousePressed(MouseEvent e) {
              System.out.println("Clientes");
-             ControllerClientes controladorClientes = new ControllerClientes(modelo, vista.getPanelClientes());
+            controladorClientes = new ControllerClientes(modelo, vista.getPanelClientes());
           }
 
         @Override
@@ -154,7 +168,7 @@ public class ControllerDashboard {
         @Override
         public void mousePressed(MouseEvent e) {
              System.out.println("Proveedores");
-            ControllerProveedores controladorProveedores = new ControllerProveedores(modelo, vista.getPanelProveedores());
+            controladorProveedores = new ControllerProveedores(modelo, vista.getPanelProveedores());
             //vista.getPanelTienda().addListaProductosListener(new JListListener());   
            }
 
