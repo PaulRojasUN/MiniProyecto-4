@@ -20,7 +20,7 @@ public class PanelClientes extends javax.swing.JPanel {
      */
     public PanelClientes() {
         initComponents();
-        listaClientes.setModel(modeloClientes);     
+        //listaClientes.setModel(modeloClientes);     
     }
     
     public String getNombres(){
@@ -211,17 +211,26 @@ public class PanelClientes extends javax.swing.JPanel {
         txtNumeroComprasCliente.setEnabled(false);
         jPanel1.add(txtNumeroComprasCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 190, -1));
 
+        btnCrearCliente.setBackground(new java.awt.Color(0, 86, 158));
         btnCrearCliente.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnCrearCliente.setForeground(new java.awt.Color(255, 255, 255));
         btnCrearCliente.setText("CREAR");
+        btnCrearCliente.setBorder(null);
         jPanel1.add(btnCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 120, 40));
 
+        btnActualizarCliente.setBackground(new java.awt.Color(0, 86, 158));
         btnActualizarCliente.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnActualizarCliente.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizarCliente.setText("ACTUALIZAR");
+        btnActualizarCliente.setBorder(null);
         btnActualizarCliente.setEnabled(false);
         jPanel1.add(btnActualizarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 120, 40));
 
+        btnBorrarCliente.setBackground(new java.awt.Color(0, 86, 158));
         btnBorrarCliente.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnBorrarCliente.setForeground(new java.awt.Color(255, 255, 255));
         btnBorrarCliente.setText("BORRAR");
+        btnBorrarCliente.setBorder(null);
         btnBorrarCliente.setEnabled(false);
         jPanel1.add(btnBorrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 120, 40));
 
