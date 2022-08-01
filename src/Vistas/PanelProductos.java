@@ -51,6 +51,10 @@ public class PanelProductos extends javax.swing.JPanel {
         btnCrearProducto.setEnabled(estado);
     }
     
+    public void habilitarBotonComprarProducto(boolean estado){
+        btnComprarProducto.setEnabled(estado);
+    }
+    
     public String getNombre(){
         return txtNombreProducto.getText();
     }
@@ -146,6 +150,7 @@ public class PanelProductos extends javax.swing.JPanel {
         lblNumeroVentas1 = new javax.swing.JLabel();
         txtPrecioProducto = new javax.swing.JTextField();
         comboProvProducto = new javax.swing.JComboBox<>();
+        btnComprarProducto = new javax.swing.JButton();
         lblListaProveedores = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -226,6 +231,14 @@ public class PanelProductos extends javax.swing.JPanel {
         comboProvProducto.setEnabled(false);
         jPanel1.add(comboProvProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 190, -1));
 
+        btnComprarProducto.setBackground(new java.awt.Color(0, 86, 158));
+        btnComprarProducto.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnComprarProducto.setForeground(new java.awt.Color(255, 255, 255));
+        btnComprarProducto.setText("COMPRAR PRODUCTO");
+        btnComprarProducto.setBorder(null);
+        btnComprarProducto.setEnabled(false);
+        jPanel1.add(btnComprarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 390, 40));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 440, 350));
 
         lblListaProveedores.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
@@ -237,6 +250,7 @@ public class PanelProductos extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizarProducto;
     private javax.swing.JButton btnBorrarProducto;
+    private javax.swing.JButton btnComprarProducto;
     private javax.swing.JButton btnCrearProducto;
     private javax.swing.JComboBox<String> comboProvProducto;
     private javax.swing.JPanel jPanel1;
