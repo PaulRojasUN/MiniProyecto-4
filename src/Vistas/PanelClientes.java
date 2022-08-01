@@ -4,17 +4,106 @@
  */
 package Vistas;
 
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author RYZEN
  */
 public class PanelClientes extends javax.swing.JPanel {
+    DefaultListModel modeloClientes;
 
     /**
      * Creates new form PanelClientes
      */
     public PanelClientes() {
         initComponents();
+        //listaClientes.setModel(modeloClientes);     
+    }
+    
+    public String getNombres(){
+        return txtNombresCliente.getText();
+    }
+    
+    public void setNombres(String nombres){
+        txtNombresCliente.setText(nombres);
+    }
+    
+    public String getApellidos(){
+        return txtApellidosCliente.getText();
+    }
+    
+    public void setApellidos(String apellidos){
+        txtApellidosCliente.setText(apellidos);
+    }
+    
+    public String getCorreo(){
+        return txtCorreoCliente.getText();
+    }
+    
+    public void setCorreo(String correo){
+        txtCorreoCliente.setText(correo);
+    }
+    
+    public String getTelefono(){
+        return txtTelefonoCliente.getText();
+    }
+    
+    public void setTelefono(String telefono){
+        txtTelefonoCliente.setText(telefono);
+    }
+    
+    public int getEdad(){
+        return Integer.parseInt(txtEdadCliente.getText());
+    }
+    
+    public void setEdad(int edad){
+        txtEdadCliente.setText(String.valueOf(edad));
+    }
+    
+    public int getNumeroCompras(){
+        return Integer.parseInt(txtNumeroComprasCliente.getText());
+    }
+    
+    public void setNumeroCompras(int numeroCompras){
+        txtNumeroComprasCliente.setText(String.valueOf(numeroCompras));
+    }
+    
+    public void llenarComboGenero(ArrayList<String> generos){
+        for (String genero : generos)
+            {
+                comboGeneroCliente.addItem(genero);
+            }
+    }
+    
+    public String getGeneroSeleccionado(){
+        return comboGeneroCliente.getSelectedItem().toString();
+    }
+    
+    public String getClienteSeleccionado(){
+        return listaClientes.getSelectedValue();
+    }
+    
+    public void llenarListaClientes(ArrayList<String> clientes){
+        modeloClientes.removeAllElements();
+        for (String cliente : clientes)
+            {
+                modeloClientes.addElement(cliente);
+            }
+    }
+    
+    public void addBtnActualizarListener(ActionListener listenControles){
+        btnActualizarCliente.addActionListener(listenControles);
+    }
+    
+    public void addBtnBorrarListener(ActionListener listenControles){
+        btnBorrarCliente.addActionListener(listenControles);
+    }
+    
+    public void addBtnCrearListener(ActionListener listenControles){
+        btnCrearCliente.addActionListener(listenControles);
     }
 
     /**
@@ -26,12 +115,156 @@ public class PanelClientes extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listaClientes = new javax.swing.JList<>();
+        lblListaClientes = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lblCorreo = new javax.swing.JLabel();
+        txtApellidosCliente = new javax.swing.JTextField();
+        lblNombres = new javax.swing.JLabel();
+        txtNombresCliente = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtCorreoCliente = new javax.swing.JTextField();
+        lblEdad = new javax.swing.JLabel();
+        txtTelefonoCliente = new javax.swing.JTextField();
+        lblTelefono1 = new javax.swing.JLabel();
+        comboGeneroCliente = new javax.swing.JComboBox<>();
+        lblGenero1 = new javax.swing.JLabel();
+        txtEdadCliente = new javax.swing.JTextField();
+        lblEdad1 = new javax.swing.JLabel();
+        txtNumeroComprasCliente = new javax.swing.JTextField();
+        btnCrearCliente = new javax.swing.JButton();
+        btnActualizarCliente = new javax.swing.JButton();
+        btnBorrarCliente = new javax.swing.JButton();
+        lblListaClientes1 = new javax.swing.JLabel();
+
+        jLabel2.setText("jLabel2");
+
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(750, 430));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        listaClientes.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(listaClientes);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 230, 350));
+
+        lblListaClientes.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblListaClientes.setText("INFORMACIÓN");
+        add(lblListaClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(176, 230, 253));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblCorreo.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblCorreo.setText("  Correo:");
+        jPanel1.add(lblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1));
+
+        txtApellidosCliente.setEnabled(false);
+        jPanel1.add(txtApellidosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 190, -1));
+
+        lblNombres.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblNombres.setText("Nombres:");
+        jPanel1.add(lblNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+
+        txtNombresCliente.setEnabled(false);
+        jPanel1.add(txtNombresCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 190, -1));
+
+        jLabel3.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jLabel3.setText("Apellidos:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
+
+        txtCorreoCliente.setEnabled(false);
+        jPanel1.add(txtCorreoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 190, -1));
+
+        lblEdad.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblEdad.setText(" No. Compras:");
+        jPanel1.add(lblEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+
+        txtTelefonoCliente.setEnabled(false);
+        jPanel1.add(txtTelefonoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 190, -1));
+
+        lblTelefono1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblTelefono1.setText("Teléfono:");
+        jPanel1.add(lblTelefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
+
+        comboGeneroCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboGeneroCliente.setEnabled(false);
+        jPanel1.add(comboGeneroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 190, -1));
+
+        lblGenero1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblGenero1.setText("Género:");
+        jPanel1.add(lblGenero1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
+
+        txtEdadCliente.setEnabled(false);
+        jPanel1.add(txtEdadCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 190, -1));
+
+        lblEdad1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblEdad1.setText("Edad:");
+        jPanel1.add(lblEdad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, -1, -1));
+
+        txtNumeroComprasCliente.setEnabled(false);
+        jPanel1.add(txtNumeroComprasCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 190, -1));
+
+        btnCrearCliente.setBackground(new java.awt.Color(0, 86, 158));
+        btnCrearCliente.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnCrearCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnCrearCliente.setText("CREAR");
+        btnCrearCliente.setBorder(null);
+        jPanel1.add(btnCrearCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 120, 40));
+
+        btnActualizarCliente.setBackground(new java.awt.Color(0, 86, 158));
+        btnActualizarCliente.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnActualizarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizarCliente.setText("ACTUALIZAR");
+        btnActualizarCliente.setBorder(null);
+        btnActualizarCliente.setEnabled(false);
+        jPanel1.add(btnActualizarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 120, 40));
+
+        btnBorrarCliente.setBackground(new java.awt.Color(0, 86, 158));
+        btnBorrarCliente.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnBorrarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrarCliente.setText("BORRAR");
+        btnBorrarCliente.setBorder(null);
+        btnBorrarCliente.setEnabled(false);
+        jPanel1.add(btnBorrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 120, 40));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 440, 350));
+
+        lblListaClientes1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblListaClientes1.setText("LISTA DE CLIENTES");
+        add(lblListaClientes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizarCliente;
+    private javax.swing.JButton btnBorrarCliente;
+    private javax.swing.JButton btnCrearCliente;
+    private javax.swing.JComboBox<String> comboGeneroCliente;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblEdad;
+    private javax.swing.JLabel lblEdad1;
+    private javax.swing.JLabel lblGenero1;
+    private javax.swing.JLabel lblListaClientes;
+    private javax.swing.JLabel lblListaClientes1;
+    private javax.swing.JLabel lblNombres;
+    private javax.swing.JLabel lblTelefono1;
+    private javax.swing.JList<String> listaClientes;
+    private javax.swing.JTextField txtApellidosCliente;
+    private javax.swing.JTextField txtCorreoCliente;
+    private javax.swing.JTextField txtEdadCliente;
+    private javax.swing.JTextField txtNombresCliente;
+    private javax.swing.JTextField txtNumeroComprasCliente;
+    private javax.swing.JTextField txtTelefonoCliente;
     // End of variables declaration//GEN-END:variables
 }

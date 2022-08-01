@@ -33,12 +33,8 @@ public class PanelTiendaVender extends javax.swing.JPanel {
             }
     }
     
-    public int getPrecioPagar(){
-        return Integer.parseInt(txtPrecioPagar.getText());
-    }
-    
-    public void setPPrecioPagar(int precioPagar){
-        txtPrecioPagar.setText(String.valueOf(precioPagar));
+    public String getMetodoPagoSeleccionado(){
+        return comboMetodoPago.getSelectedItem().toString();
     }
     
     public String getProductoSeleccionado(){
@@ -71,6 +67,10 @@ public class PanelTiendaVender extends javax.swing.JPanel {
     
     public void activarBotonVerCliente(boolean estado){
         btnVerCliente.setEnabled(estado); 
+    }
+    
+    public int getPrecioPagar(){
+        return Integer.parseInt(txtPrecioPagar.getText());
     }
     
     public void setPrecioPagar(int precioTotal){

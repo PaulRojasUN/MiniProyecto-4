@@ -38,10 +38,6 @@ public class PanelTienda extends javax.swing.JPanel {
             }
     }
     
-    public String getValorSeleccionadoListaProductos(){
-        return "Hola";
-    }
-    
     public void activarBotonAgregar(boolean estado){
         btnAgregarCantidad.setEnabled(estado); 
     }
