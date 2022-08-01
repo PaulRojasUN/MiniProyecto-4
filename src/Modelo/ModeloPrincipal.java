@@ -332,5 +332,43 @@ public class ModeloPrincipal
         return cantidad;
     }
     
+    public int identificarItemCompras(ArrayList<String> _lista, String _nombre)
+    {
+        int index = -1;//El -1 indica que no lo encontró.
+        String nombreProducto;
+        for (int i = 0; i < _lista.size(); i++)
+        {
+            nombreProducto = _lista.get(i).substring(0, _lista.get(i).indexOf("x")-1);
+            if (nombreProducto.equals(_nombre))
+            {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+    
+    public String getCantidadCompraCambiada(String _item, int _cantidad)
+    {
+        String item;
+        float precio;
+        precio = parseFloat(_item.substring(_item.indexOf("=")+2)) / parseFloat(_item.substring(_item.indexOf("x")+2, 
+                _item.indexOf("=")-1));
+        item = _item.substring(0, _item.indexOf("x")+2)+_cantidad+_item.substring(_item.indexOf("=")-1, _item.indexOf("=")+2) + (precio*_cantidad);
+        return item;
+    }
+    
+    public String getCantidadCompraCambiadaSuma(String _item, int _cantidad)
+    {
+        String item;
+        float precio;
+        precio = parseFloat(_item.substring(_item.indexOf("=")+2)) / parseFloat(_item.substring(_item.indexOf("x")+2, 
+                _item.indexOf("=")-1));
+        int cantidadNueva;
+        cantidadNueva = parseInt(_item.substring(_item.indexOf("x")+2, _item.indexOf("=")-1))+_cantidad;
+        item = _item.substring(0, _item.indexOf("x")+2)+cantidadNueva+
+                _item.substring(_item.indexOf("=")-1, _item.indexOf("=")+2) + (precio*cantidadNueva);
+        return item;
+    }
     
 }

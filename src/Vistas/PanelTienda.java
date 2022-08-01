@@ -46,13 +46,27 @@ public class PanelTienda extends javax.swing.JPanel {
         initComponents();
         modelo = new DefaultListModel();
         listaProductos.setModel(modelo);
-        
         modeloCompra = new DefaultListModel();
         listaCompra.setModel(modeloCompra);
     }
     
     public String getProductoSeleccionado(){
         return listaProductos.getSelectedValue();
+    }
+    
+    public int getCantidadProductosCompra()
+    {
+        return modeloCompra.size();
+    }
+    
+    public String getCompraSeleccionada()
+    {
+        return listaCompra.getSelectedValue();
+    }
+    
+    public void setItemCompra(String _item, int _index)
+    {
+        modeloCompra.setElementAt(_item, _index);
     }
     
     public void llenarListaProductos(ArrayList<String> productos){
@@ -98,6 +112,11 @@ public class PanelTienda extends javax.swing.JPanel {
     public void addListaProductosListener(ListSelectionListener listenSelectionController){
         listaProductos.addListSelectionListener(listenSelectionController);
     }
+    
+    public void addListaComprasListener(ListSelectionListener listenSelectionController){
+        listaCompra.addListSelectionListener(listenSelectionController);
+    }
+    
     
 
     /**
@@ -167,11 +186,6 @@ public class PanelTienda extends javax.swing.JPanel {
         btnAgregarCantidad.setForeground(new java.awt.Color(0, 86, 158));
         btnAgregarCantidad.setBorder(null);
         btnAgregarCantidad.setLabel("AGREGAR"); // NOI18N
-        btnAgregarCantidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarCantidadActionPerformed(evt);
-            }
-        });
         add(btnAgregarCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 120, 70));
 
         btnBorrarElementoLista.setBackground(new java.awt.Color(176, 230, 253));
@@ -224,27 +238,11 @@ public class PanelTienda extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantidadActionPerformed
 
-    private void btnAgregarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCantidadActionPerformed
-/*
-        int cantidad;
-        int codigo;
-        try 
-        {
-            cantidad = parseInt(txtCantidad.getText());
-            codigo = parseInt(getProductoSeleccionado().substring(0, 6));
-            // System.out.println(m);
-        } 
-        catch (Exception E)
-        {
-            System.out.println("Ingrese una cantidad númerica entera y seleccione un item");
-            txtCantidad.setText("");
-        }*/
-    }//GEN-LAST:event_btnAgregarCantidadActionPerformed
-
     private void btnBorrarElementoListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarElementoListaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBorrarElementoListaActionPerformed
 
+    
     public void addItemListaCompras(String _item)
     {
         modeloCompra.addElement(_item);
