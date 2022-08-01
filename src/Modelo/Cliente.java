@@ -47,12 +47,19 @@ public class Cliente
     String nombre;
     int edad;
     int tel;
+    String correoE;
+    String genero;
+    int noCompras;
     
-    public Cliente(int _id, String _nombre, int _edad, int _tel)
+    public Cliente(int _id, String _nombre, int _edad, int _tel, String _correoE
+    , String _genero, int _noCompras)
     {
         this.id = _id;
         this.nombre = _nombre;
         this.edad = _edad;
         this.tel = _tel;
+        this.correoE = _correoE;
+        this.genero = _genero;
+        this.noCompras = _noCompras;
     }
 }

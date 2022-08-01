@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -28,6 +29,39 @@ public class PanelTienda extends javax.swing.JPanel {
         btnVenderProductos.setEnabled(estado);
     }
 
+    public ArrayList<String> getListaDeCompras()
+    {
+        ArrayList<String> auxLista = new ArrayList<String>();
+        int size = modeloCompra.size();
+        for (int i = 0; i < size; i++)
+        {
+            auxLista.add((String) modeloCompra.elementAt(i));
+        }
+        return auxLista;
+    }
+    
+    public int crearInputPane()
+    {
+        return Integer.parseInt(JOptionPane.showInputDialog("Ingrese la nueva cantidad"));
+    }
+    
+    
+    public String getItemListaDeProductos(int _index)
+    {
+        return (String) modelo.getElementAt(_index);
+    }
+    
+    public ArrayList<String> getListaDeProductos()
+    {
+        ArrayList<String> auxLista = new ArrayList<String>();
+        int size = modelo.size();
+        for (int i = 0; i < size; i++)
+        {
+            auxLista.add((String) modelo.elementAt(i));
+        }
+        return auxLista;
+    }
+    
     /**
      * Creates new form PanelTienda
      */
@@ -35,13 +69,37 @@ public class PanelTienda extends javax.swing.JPanel {
         initComponents();
         modelo = new DefaultListModel();
         listaProductos.setModel(modelo);
-        
         modeloCompra = new DefaultListModel();
         listaCompra.setModel(modeloCompra);
     }
     
     public String getProductoSeleccionado(){
         return listaProductos.getSelectedValue();
+    }
+    
+    public int getCantidadProductosCompra()
+    {
+        return modeloCompra.size();
+    }
+    
+    public void quitarElementoCompras(int _index)
+    {
+        modeloCompra.remove(_index);
+    }
+    
+    public String getCompraSeleccionada()
+    {
+        return listaCompra.getSelectedValue();
+    }
+    
+    public void setItemProducto(String _item, int _index)
+    {
+        modelo.setElementAt(_item, _index);
+    }
+    
+    public void setItemCompra(String _item, int _index)
+    {
+        modeloCompra.setElementAt(_item, _index);
     }
     
     public void llenarListaProductos(ArrayList<String> productos){
@@ -60,11 +118,11 @@ public class PanelTienda extends javax.swing.JPanel {
         return Integer.parseInt(txtNumeroDeProductos.getText());
     }
     
-    public void setPrecioTotal(int precioTotal){
+    public void setTxtPrecioTotal(float precioTotal){
         txtPrecioTotal.setText(String.valueOf(precioTotal));
     }
     
-    public void setNumeroTotalDeProductos(int numeroTotalProductos){
+    public void setTxtNumeroTotalDeProductos(int numeroTotalProductos){
         txtNumeroDeProductos.setText(String.valueOf(numeroTotalProductos));
     }
     
@@ -87,6 +145,11 @@ public class PanelTienda extends javax.swing.JPanel {
     public void addListaProductosListener(ListSelectionListener listenSelectionController){
         listaProductos.addListSelectionListener(listenSelectionController);
     }
+    
+    public void addListaComprasListener(ListSelectionListener listenSelectionController){
+        listaCompra.addListSelectionListener(listenSelectionController);
+    }
+    
     
 
     /**
@@ -156,11 +219,6 @@ public class PanelTienda extends javax.swing.JPanel {
         btnAgregarCantidad.setForeground(new java.awt.Color(0, 86, 158));
         btnAgregarCantidad.setBorder(null);
         btnAgregarCantidad.setLabel("AGREGAR"); // NOI18N
-        btnAgregarCantidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarCantidadActionPerformed(evt);
-            }
-        });
         add(btnAgregarCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 120, 70));
 
         btnBorrarElementoLista.setBackground(new java.awt.Color(176, 230, 253));
@@ -188,6 +246,7 @@ public class PanelTienda extends javax.swing.JPanel {
         jLabel1.setText("Precio Total:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, -1, -1));
 
+        txtPrecioTotal.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtPrecioTotal.setEnabled(false);
         add(txtPrecioTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 120, 100, -1));
 
@@ -195,6 +254,7 @@ public class PanelTienda extends javax.swing.JPanel {
         jLabel2.setText("No. Productos:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, -1, -1));
 
+        txtNumeroDeProductos.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtNumeroDeProductos.setEnabled(false);
         add(txtNumeroDeProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 180, 100, -1));
 
@@ -211,27 +271,11 @@ public class PanelTienda extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantidadActionPerformed
 
-    private void btnAgregarCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCantidadActionPerformed
-/*
-        int cantidad;
-        int codigo;
-        try 
-        {
-            cantidad = parseInt(txtCantidad.getText());
-            codigo = parseInt(getProductoSeleccionado().substring(0, 6));
-            // System.out.println(m);
-        } 
-        catch (Exception E)
-        {
-            System.out.println("Ingrese una cantidad númerica entera y seleccione un item");
-            txtCantidad.setText("");
-        }*/
-    }//GEN-LAST:event_btnAgregarCantidadActionPerformed
-
     private void btnBorrarElementoListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarElementoListaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBorrarElementoListaActionPerformed
 
+    
     public void addItemListaCompras(String _item)
     {
         modeloCompra.addElement(_item);
