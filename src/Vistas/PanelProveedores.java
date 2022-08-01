@@ -4,18 +4,120 @@
  */
 package Vistas;
 
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author RYZEN
  */
 public class PanelProveedores extends javax.swing.JPanel {
+    DefaultListModel modeloProveedores;
+    DefaultListModel modeloProductos;
 
     /**
      * Creates new form PanelProveedores
      */
     public PanelProveedores() {
         initComponents();
+        //listaProveedores.setModel(modeloProveedores);
+        //listaProductos.setModel(modeloProductos);
     }
+    
+    public void cambiarTextoActualizar(){    
+        if("ACTUALIZAR".equals(btnActualizarProv.getText())){
+            btnActualizarProv.setText("ACEPTAR");
+        }else{
+            btnActualizarProv.setText("ACTUALIZAR");
+        }
+    }
+    
+    
+    public void cambiarEstadoCampos(boolean estado){
+        txtNombreProv.setEnabled(estado);
+        txtCorreoProv.setEnabled(estado);
+        txtTelefonoProv.setEnabled(estado);
+        txtNumeroVentas.setEnabled(estado);
+    }
+    
+    public void habilitarBotonActualizar(boolean estado){
+        btnActualizarProv.setEnabled(estado);
+    }
+    
+    public void habilitarBotonBorrar(boolean estado){
+        btnBorrarProv.setEnabled(estado);
+    }
+    
+    public void habilitarBotonCrear(boolean estado){
+        btnCrearProv.setEnabled(estado);
+    }
+    
+    public String getNombres(){
+        return txtNombreProv.getText();
+    }
+    
+    public void setNombres(String nombres){
+        txtNombreProv.setText(nombres);
+    }
+    
+    public String getCorreo(){
+        return txtCorreoProv.getText();
+    }
+    
+    public void setCorreo(String correo){
+        txtCorreoProv.setText(correo);
+    }
+    
+    public String getTelefono(){
+        return txtTelefonoProv.getText();
+    }
+    
+    public void setTelefono(String telefono){
+        txtTelefonoProv.setText(telefono);
+    }
+    
+    public int getNumeroVentas(){
+        return Integer.parseInt(txtNumeroVentas.getText());
+    }
+    
+    public void setNumeroVentas(int numeroCompras){
+        txtNumeroVentas.setText(String.valueOf(numeroCompras));
+    }
+    
+    public String getProveedorSeleccionado(){
+        return listaProveedores.getSelectedValue();
+    }
+    
+    public void llenarListaProveedores(ArrayList<String> proveedores){
+        modeloProveedores.removeAllElements();
+        for (String proveedor : proveedores)
+            {
+                modeloProveedores.addElement(proveedor);
+            }
+    }
+    
+    public void llenarListaProductos(ArrayList<String> productos){
+        modeloProductos.removeAllElements();
+        for (String producto : productos)
+            {
+                modeloProductos.addElement(producto);
+            }
+    }
+    
+    public void addBtnActualizarListener(ActionListener listenControles){
+        btnActualizarProv.addActionListener(listenControles);
+    }
+    
+    public void addBtnBorrarListener(ActionListener listenControles){
+        btnBorrarProv.addActionListener(listenControles);
+    }
+    
+    public void addBtnCrearListener(ActionListener listenControles){
+        btnCrearProv.addActionListener(listenControles);
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,17 +128,136 @@ public class PanelProveedores extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listaProveedores = new javax.swing.JList<>();
+        lblListaClientes = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lblCorreo = new javax.swing.JLabel();
+        lblNombres = new javax.swing.JLabel();
+        txtNombreProv = new javax.swing.JTextField();
+        txtCorreoProv = new javax.swing.JTextField();
+        lblProductos = new javax.swing.JLabel();
+        txtTelefonoProv = new javax.swing.JTextField();
+        lblTelefono1 = new javax.swing.JLabel();
+        txtNumeroVentas = new javax.swing.JTextField();
+        btnCrearProv = new javax.swing.JButton();
+        btnActualizarProv = new javax.swing.JButton();
+        btnBorrarProv = new javax.swing.JButton();
+        lblNumeroVentas = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaProductos = new javax.swing.JList<>();
+        lblListaProveedores = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 51, 51));
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("PROVEEDORES");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 410, -1, -1));
+        listaProveedores.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(listaProveedores);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 230, 350));
+
+        lblListaClientes.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblListaClientes.setText("INFORMACIÓN");
+        add(lblListaClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(176, 230, 253));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblCorreo.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblCorreo.setText("  Correo:");
+        jPanel1.add(lblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
+
+        lblNombres.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblNombres.setText("  Nombre:");
+        jPanel1.add(lblNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+
+        txtNombreProv.setEnabled(false);
+        jPanel1.add(txtNombreProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 190, -1));
+
+        txtCorreoProv.setEnabled(false);
+        jPanel1.add(txtCorreoProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 190, -1));
+
+        lblProductos.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblProductos.setText("  Productos: ");
+        jPanel1.add(lblProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+
+        txtTelefonoProv.setEnabled(false);
+        jPanel1.add(txtTelefonoProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 190, -1));
+
+        lblTelefono1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblTelefono1.setText("Teléfono:");
+        jPanel1.add(lblTelefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
+
+        txtNumeroVentas.setEnabled(false);
+        jPanel1.add(txtNumeroVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 190, -1));
+
+        btnCrearProv.setBackground(new java.awt.Color(0, 86, 158));
+        btnCrearProv.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnCrearProv.setForeground(new java.awt.Color(255, 255, 255));
+        btnCrearProv.setText("CREAR");
+        btnCrearProv.setBorder(null);
+        jPanel1.add(btnCrearProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, 120, 40));
+
+        btnActualizarProv.setBackground(new java.awt.Color(0, 86, 158));
+        btnActualizarProv.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnActualizarProv.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizarProv.setText("ACTUALIZAR");
+        btnActualizarProv.setBorder(null);
+        btnActualizarProv.setEnabled(false);
+        jPanel1.add(btnActualizarProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 120, 40));
+
+        btnBorrarProv.setBackground(new java.awt.Color(0, 86, 158));
+        btnBorrarProv.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnBorrarProv.setForeground(new java.awt.Color(255, 255, 255));
+        btnBorrarProv.setText("BORRAR");
+        btnBorrarProv.setBorder(null);
+        btnBorrarProv.setEnabled(false);
+        jPanel1.add(btnBorrarProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 120, 40));
+
+        lblNumeroVentas.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblNumeroVentas.setText(" No. Ventas:");
+        jPanel1.add(lblNumeroVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+
+        listaProductos.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(listaProductos);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 190, 100));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 440, 350));
+
+        lblListaProveedores.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblListaProveedores.setText("LISTA DE PROVEEDORES");
+        add(lblListaProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnActualizarProv;
+    private javax.swing.JButton btnBorrarProv;
+    private javax.swing.JButton btnCrearProv;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblListaClientes;
+    private javax.swing.JLabel lblListaProveedores;
+    private javax.swing.JLabel lblNombres;
+    private javax.swing.JLabel lblNumeroVentas;
+    private javax.swing.JLabel lblProductos;
+    private javax.swing.JLabel lblTelefono1;
+    private javax.swing.JList<String> listaProductos;
+    private javax.swing.JList<String> listaProveedores;
+    private javax.swing.JTextField txtCorreoProv;
+    private javax.swing.JTextField txtNombreProv;
+    private javax.swing.JTextField txtNumeroVentas;
+    private javax.swing.JTextField txtTelefonoProv;
     // End of variables declaration//GEN-END:variables
 }
