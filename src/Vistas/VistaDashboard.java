@@ -25,6 +25,7 @@ public class VistaDashboard extends javax.swing.JFrame {
     PanelProveedores panelProveedores;
     PanelRegistros panelRegistros;
     PanelTienda panelTienda;
+    PanelTiendaVender panelTiendaVender;
     
     
     public VistaDashboard() {
@@ -63,6 +64,11 @@ public class VistaDashboard extends javax.swing.JFrame {
         panelClientes = _panel;
     }
     
+    public void crearPanelTiendaVender(PanelTiendaVender _panel)
+    {
+        panelTiendaVender = _panel;
+    }
+    
     
     void resetColorClaro(JPanel panel){
         panel.setBackground(new Color(28, 152, 237));     
@@ -72,7 +78,7 @@ public class VistaDashboard extends javax.swing.JFrame {
         panel.setBackground(new Color(0, 86, 158));
     }
     
-    void realizarCambioPanelDashboard(JPanel contenidoPanel){
+    public void realizarCambioPanelDashboard(JPanel contenidoPanel){
         ubicarPanelEnDashboard(contenidoPanel);
         agregarPanelSeleccionado(contenidoPanel);
     }
@@ -621,6 +627,11 @@ public class VistaDashboard extends javax.swing.JFrame {
     public PanelRegistros getPanelRegistros()
     {
         return panelRegistros;
+    }
+    
+    public PanelTiendaVender getPanelTiendaVender()
+    {
+        return panelTiendaVender;
     }
     
     
