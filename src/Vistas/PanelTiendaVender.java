@@ -7,6 +7,7 @@ package Vistas;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -22,6 +23,7 @@ public class PanelTiendaVender extends javax.swing.JPanel {
     public PanelTiendaVender() {
         initComponents();
         modeloProductos = new DefaultListModel();
+        modeloClientes = new DefaultListModel();
         listaProductos.setModel(modeloProductos);
         listaClientes.setModel(modeloClientes);
     }
@@ -45,6 +47,7 @@ public class PanelTiendaVender extends javax.swing.JPanel {
         modeloProductos.removeAllElements();
         for (String producto : productos)
             {
+                System.out.println("Pusé un elemento");
                 modeloProductos.addElement(producto);
             }
     }
@@ -52,6 +55,7 @@ public class PanelTiendaVender extends javax.swing.JPanel {
     public String getClienteSeleccionado(){
         return listaClientes.getSelectedValue();
     }
+
     
     public void llenarListaClientes(ArrayList<String> clientes){
         modeloClientes.removeAllElements();
@@ -73,7 +77,7 @@ public class PanelTiendaVender extends javax.swing.JPanel {
         return Integer.parseInt(txtPrecioPagar.getText());
     }
     
-    public void setPrecioPagar(int precioTotal){
+    public void setPrecioPagar(float precioTotal){
         txtPrecioPagar.setText(String.valueOf(precioTotal));
     }
     
@@ -91,6 +95,10 @@ public class PanelTiendaVender extends javax.swing.JPanel {
     
     public void addBtnRegresarListener(ActionListener listenControles){
         btnRegresar.addActionListener(listenControles);
+    }
+    
+    public void addListaClientesListener(ListSelectionListener listenSelectionController){
+        listaClientes.addListSelectionListener(listenSelectionController);
     }
     
     
@@ -140,6 +148,7 @@ public class PanelTiendaVender extends javax.swing.JPanel {
         Checking.setBackground(new java.awt.Color(176, 230, 253));
         Checking.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtPrecioPagar.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtPrecioPagar.setEnabled(false);
         Checking.add(txtPrecioPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 210, -1));
 
@@ -149,7 +158,7 @@ public class PanelTiendaVender extends javax.swing.JPanel {
 
         btnAceptarCompra.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         btnAceptarCompra.setText("ACEPTAR");
-        btnAceptarCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAceptarCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAceptarCompra.setEnabled(false);
         Checking.add(btnAceptarCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 390, 30));
 
@@ -189,8 +198,8 @@ public class PanelTiendaVender extends javax.swing.JPanel {
 
         btnRegresar.setBackground(new java.awt.Color(176, 230, 253));
         btnRegresar.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        btnRegresar.setText("Regresar");
-        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresar.setText("REGRESAR");
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 382, 230, 30));
     }// </editor-fold>//GEN-END:initComponents
 

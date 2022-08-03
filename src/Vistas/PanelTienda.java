@@ -134,6 +134,11 @@ public class PanelTienda extends javax.swing.JPanel {
         btnBorrarElementoLista.addActionListener(listenControles);
     }
     
+    public void addBtnVenderListener(ActionListener listenControles)
+    {
+        btnVenderProductos.addActionListener(listenControles);
+    }
+    
     public void addBtnCambiarCantidadListaListener(ActionListener listenControles){
         btnCambiarCantidadLista.addActionListener(listenControles);
     }
@@ -149,6 +154,8 @@ public class PanelTienda extends javax.swing.JPanel {
     public void addListaComprasListener(ListSelectionListener listenSelectionController){
         listaCompra.addListSelectionListener(listenSelectionController);
     }
+    
+    
     
     
 
@@ -291,6 +298,16 @@ public class PanelTienda extends javax.swing.JPanel {
     public String getTxtCantidad()
     {
         return txtCantidad.getText();
+    }
+    
+    public String getTxtPrecioTotal()
+    {
+        return txtPrecioTotal.getText();
+    }
+    
+    public void setEstadoBotonVender(Boolean _estado)
+    {
+        btnVenderProductos.setEnabled(_estado);
     }
     
 

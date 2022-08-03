@@ -294,6 +294,19 @@ public class ModeloPrincipal
         return lista;
     }
     
+    public ArrayList<String> getListaStringClientes()
+    {
+        ArrayList<String> lista = new ArrayList<String>();
+        for (Cliente cl : listaClientes)
+        {
+            lista.add(cl.getId()+ " " + cl.getNombre());
+        }
+        
+        return lista;
+    }
+    
+    
+    
     public void sumarUnidadesProducto(String _nombre, int _cant)
     {
         getProductoNombre(_nombre).sumarCant(_cant);
