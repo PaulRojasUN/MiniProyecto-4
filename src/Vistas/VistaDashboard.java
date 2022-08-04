@@ -486,7 +486,7 @@ public class VistaDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClientesMouseExited
 
     private void btnClientesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClientesMousePressed
-        PanelClientes panelClientes = new PanelClientes();
+
         mostrarBotonClientesActivado();
         realizarCambioPanelDashboard(panelClientes);
         cambiarImagenPrincipal("Clientes");
