@@ -6,7 +6,12 @@ package Controller;
 
 import Modelo.Compra;
 import Vistas.PanelTiendaVender;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import static java.lang.Integer.parseInt;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelo.ModeloPrincipal;
@@ -33,6 +38,16 @@ public class ControllerTiendaVender {
         panelTiendaVender.addBtnRegresarListener(listenControles);
     }
     
+    public void addBtnAceptarListener(ActionListener listenControles)
+    {
+        panelTiendaVender.addBtnAceptarCompraListener(listenControles);
+        panelTiendaVender.addBtnAceptarCompraListener(new BtnListener());
+    }
+    
+    public void addBtnCrearClienteListener(ActionListener listenControles)
+    {
+        panelTiendaVender.addBtnCrearClienteListener(listenControles);
+    }
     
     public void setCompra(Compra _compra)
     {
@@ -46,6 +61,32 @@ public class ControllerTiendaVender {
        panelTiendaVender.llenarListaClientes(modelo.getListaStringClientes());
     }
     
+    class BtnListener implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e) 
+        {
+           if ("ACEPTAR".equals(e.getActionCommand()))
+           {
+               try 
+               {
+                   
+                   int id;
+                   id = parseInt(panelTiendaVender.getClienteSeleccionado().substring(0, panelTiendaVender.getClienteSeleccionado().indexOf(" ")));
+                   modelo.adicionarCompraCliente(id);
+                   
+                   modelo.guardarEstadoProductos();
+                   modelo.guardarEstadoClientes();
+               } catch (IOException ex) {
+                   Logger.getLogger(ControllerTiendaVender.class.getName()).log(Level.SEVERE, null, ex);
+               }
+               
+           }
+        }
+        
+    }
+    
     class JListClientesListener implements ListSelectionListener
     {
 
@@ -56,4 +97,6 @@ public class ControllerTiendaVender {
             panelTiendaVender.activarBotonAceptarCompra(true);
         }
     }
+    
+    
 }

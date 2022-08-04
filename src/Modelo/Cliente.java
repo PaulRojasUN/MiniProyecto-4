@@ -43,6 +43,35 @@ public class Cliente
         this.tel = tel;
     }
     
+    public void addNoCompra()
+    {
+        this.noCompras++;
+    }
+
+    public String getCorreoE() {
+        return correoE;
+    }
+
+    public void setCorreoE(String correoE) {
+        this.correoE = correoE;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public int getNoCompras() {
+        return noCompras;
+    }
+
+    public void setNoCompras(int noCompras) {
+        this.noCompras = noCompras;
+    }
+    
     int id;
     String nombre;
     int edad;
