@@ -7,6 +7,7 @@ package Vistas;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -17,7 +18,8 @@ public class PanelClientes extends javax.swing.JPanel {
     
     public PanelClientes() {
         initComponents();
-        //listaClientes.setModel(modeloClientes);     
+        modeloClientes = new DefaultListModel();
+        listaClientes.setModel(modeloClientes);     
     }
     
     public void cambiarTextoActualizar(){    
@@ -136,6 +138,11 @@ public class PanelClientes extends javax.swing.JPanel {
         btnCrearCliente.addActionListener(listenControles);
     }
 
+    public void addListaClientesListener(ListSelectionListener listenSelectionController){
+        listaClientes.addListSelectionListener(listenSelectionController);
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

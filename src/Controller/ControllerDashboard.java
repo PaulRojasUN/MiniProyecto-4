@@ -4,11 +4,18 @@
  */
 package Controller;
 
+import Modelo.Compra;
 import Vistas.PanelTienda;
+import Vistas.PanelTiendaVender;
 import Vistas.VistaDashboard;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import static java.lang.Float.parseFloat;
+import static java.lang.Integer.parseInt;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -28,6 +35,10 @@ public class ControllerDashboard {
     private ControllerClientes controladorClientes;
     private ControllerProveedores controladorProveedores;
     private ControllerRegistros controladorRegistros;
+    private ControllerTiendaVender controladorTiendaVender;
+    private ControllerCrearCliente controladorCrearCliente;
+    
+    private Compra compra;
     
     public ControllerDashboard(ModeloPrincipal modelo, VistaDashboard vista) {
         this.modelo = modelo;
@@ -38,7 +49,12 @@ public class ControllerDashboard {
         
         agregarListenersBtnDashBoard();
         
+        
         crearControladoresPaneles();
+        agregarListenerBtnExtras();
+        
+        compra = new Compra();
+        
     }
     
     private void agregarListenersBtnDashBoard()
@@ -50,6 +66,15 @@ public class ControllerDashboard {
         vista.addClientesMouseEvent(new BtnMouseClientesListener());
     }
     
+    private void agregarListenerBtnExtras()
+    {
+        controladorTienda.addBtnVenderListener(new BtnListenerToTiendaVender());
+        controladorTiendaVender.addBtnRegresarListener(new BtnListenerToTienda());
+        controladorTiendaVender.addBtnAceptarListener(new BtnListenerToTienda());
+        controladorTiendaVender.addBtnCrearClienteListener(new BtnListenerToCrearCliente());
+        controladorCrearCliente.addBtnRegresarListener(new BtnListenerToTiendaVender());
+    }
+    
     private void crearControladoresPaneles()
     {
         controladorTienda = new ControllerTienda(modelo, vista.getPanelTienda());
@@ -57,6 +82,8 @@ public class ControllerDashboard {
         controladorClientes = new ControllerClientes(modelo, vista.getPanelClientes());
         controladorRegistros = new ControllerRegistros(modelo, vista.getPanelRegistros());
         controladorProveedores = new ControllerProveedores(modelo, vista.getPanelProveedores());
+        controladorTiendaVender = new ControllerTiendaVender(modelo, vista.getPanelTiendaVender());
+        controladorCrearCliente = new ControllerCrearCliente(modelo, vista.getPanelCrearCliente());
     }
     
     class BtnMouseProductosListener implements MouseListener
@@ -103,7 +130,7 @@ public class ControllerDashboard {
         public void mousePressed(MouseEvent e) {
             System.out.println("Tienda");
             controladorTienda.actualizarPanel();
-            //vista.getPanelTienda().addListaProductosListener(new JListListener());   
+              
            }
 
         @Override
@@ -136,7 +163,7 @@ public class ControllerDashboard {
         @Override
         public void mousePressed(MouseEvent e) {
              System.out.println("Clientes");
-            controladorClientes = new ControllerClientes(modelo, vista.getPanelClientes());
+            controladorClientes.actualizarPanel();
           }
 
         @Override
@@ -221,4 +248,66 @@ public class ControllerDashboard {
         }
         
     }
+    
+    
+    //Aquí se colocan los listener de los botones en los paneles que abren el panelTiendaVender
+    class BtnListenerToTiendaVender implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            if ("VENDER".equals(e.getActionCommand()))
+            {
+                compra.setListaProductos(vista.getPanelTienda().getListaDeCompras());
+                compra.setTotalCompra(parseFloat(vista.getPanelTienda().getTxtPrecioTotal()));
+                
+                 vista.realizarCambioPanelDashboard(vista.getPanelTiendaVender());
+                 controladorTiendaVender.setCompra(compra);
+                 controladorTiendaVender.actualizarPanel();
+                 
+            }
+            else if ("VOLVER".equals(e.getActionCommand()) || "CANCELAR".equals(e.getActionCommand()) 
+                    || "CREAR".equals(e.getActionCommand()))
+            {
+                controladorCrearCliente.crearCliente();
+                controladorTiendaVender.actualizarPanel();
+                vista.realizarCambioPanelDashboard(vista.getPanelTiendaVender());
+            }
+        }
+    }
+    
+    //Aquí se colocan los listener de los botones en los paneles que abren el panelTienda
+    class BtnListenerToTienda implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            if ("REGRESAR".equals(e.getActionCommand()))//Botón Regresar en panelTiendaVender
+            {
+                vista.realizarCambioPanelDashboard(vista.getPanelTienda());
+            }
+            else if ("ACEPTAR".equals(e.getActionCommand()))//Botón Aceptar en panelTiendaVender
+            {
+                vista.realizarCambioPanelDashboard(vista.getPanelTienda());
+            }
+        }
+    }
+    
+    class BtnListenerToCrearCliente implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            if ("Crear Cliente".equals(e.getActionCommand()))//Botón Regresar en panelTiendaVender
+            {
+                vista.realizarCambioPanelDashboard(vista.getPanelCrearCliente());
+                System.out.println("Creando cliente");
+            }
+        }
+    }
 }
+
+

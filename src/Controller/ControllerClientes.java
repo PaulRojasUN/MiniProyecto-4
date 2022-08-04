@@ -5,6 +5,10 @@
 package Controller;
 
 import Vistas.PanelClientes;
+import static java.lang.Integer.parseInt;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import modelo.Cliente;
 import modelo.ModeloPrincipal;
 
 /**
@@ -21,6 +25,46 @@ public class ControllerClientes
         modelo = _modelo;
         panelClientes = _panelClientes;
         
-        
+        panelClientes.addListaClientesListener(new JListComprasListener());
     }
+    
+    public void actualizarPanel()
+    {
+        panelClientes.llenarListaClientes(modelo.getListaStringClientes());
+    }
+    
+    class JListComprasListener implements ListSelectionListener
+    {
+
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            Cliente auxCliente;
+            int id;
+            String nombre;
+            int edad;
+            int tel;
+            String correoE;
+            String genero;
+            int noCompras;
+            
+            
+            id = parseInt(panelClientes.getClienteSeleccionado().substring(0, panelClientes.getClienteSeleccionado().indexOf(" ")));
+            auxCliente = modelo.identificarClienteId(id);
+            nombre = auxCliente.getNombre();
+            edad = auxCliente.getEdad();
+            tel = auxCliente.getTel();
+            correoE = auxCliente.getCorreoE();
+            genero = auxCliente.getGenero();
+            noCompras = auxCliente.getNoCompras();
+            
+            panelClientes.setNombres(nombre);
+            panelClientes.setEdad(edad);
+            panelClientes.setTelefono(tel+"");
+            panelClientes.setCorreo(correoE);
+            panelClientes.setNumeroCompras(noCompras);
+        }
+    }
+    
+    
+    
 }

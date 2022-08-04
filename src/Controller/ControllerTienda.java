@@ -41,6 +41,11 @@ public class ControllerTienda {
         panelTienda.llenarListaProductos(modelo.getListaStringProductos());
     }
     
+    public void addBtnVenderListener(ActionListener listenControles)
+    {
+        panelTienda.addBtnVenderListener(listenControles);
+    }
+    
     class JListProductosListener implements ListSelectionListener
     {
 
@@ -117,6 +122,7 @@ public class ControllerTienda {
                             panelTienda.setItemProducto(modelo.getNuevoItemProductos(panelTienda.getItemListaDeProductos(indexProducto), cantidadNueva) , indexProducto);
                             panelTienda.setTxtPrecioTotal(modelo.calcularTotal(panelTienda.getListaDeCompras()));
                             panelTienda.setTxtNumeroTotalDeProductos(modelo.calcularCantidadProductosTotal(panelTienda.getListaDeCompras()));
+                            panelTienda.setEstadoBotonVender(true);
                         }
                         else
                         {
@@ -214,8 +220,14 @@ public class ControllerTienda {
                 panelTienda.setTxtNumeroTotalDeProductos(modelo.calcularCantidadProductosTotal(panelTienda.getListaDeCompras()));
                 panelTienda.quitarElementoCompras(indexCompra);
                 
+                if (panelTienda.getCantidadProductosCompra() == 0)
+                {
+                    panelTienda.setEstadoBotonVender(false);
+                }
+                
                 panelTienda.cambiarEstadoBotones(false); 
             }
+            
         }
     }
         

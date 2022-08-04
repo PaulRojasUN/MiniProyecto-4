@@ -188,7 +188,6 @@ public class ModeloPrincipal
                         ","+pr.getPrecioCompra()+","+pr.getPrecioVenta()+","+
                         pr.getCant()+"\n");
             }
-            pw.print("Impreso");
             archivo.flush();
             archivo.close();
         }
@@ -241,7 +240,7 @@ public class ModeloPrincipal
             for (Cliente cl:listaClientes)
             {
                     pw.print(cl.getId()+","+cl.getNombre()+","+cl.getEdad()+
-                       ","+cl.getTel()+"\n");
+                       ","+cl.getTel()+","+cl.getCorreoE()+","+cl.getGenero()+","+cl.getNoCompras()+"\n");
             }
             archivo.flush();
             archivo.close();
@@ -293,6 +292,19 @@ public class ModeloPrincipal
         
         return lista;
     }
+    
+    public ArrayList<String> getListaStringClientes()
+    {
+        ArrayList<String> lista = new ArrayList<String>();
+        for (Cliente cl : listaClientes)
+        {
+            lista.add(cl.getId()+ " " + cl.getNombre());
+        }
+        
+        return lista;
+    }
+    
+    
     
     public void sumarUnidadesProducto(String _nombre, int _cant)
     {
@@ -423,6 +435,35 @@ public class ModeloPrincipal
         item = _item.substring(0, _item.indexOf("x")+2)+cantidadNueva+
                 _item.substring(_item.indexOf("=")-1, _item.indexOf("=")+2) + (precio*cantidadNueva);
         return item;
+    }
+    
+    public void adicionarCompraCliente(int _id)
+    {
+         identificarClienteId(_id).addNoCompra();
+    }
+    
+    public Cliente identificarClienteId(int _id)
+    {
+        for (Cliente cl:listaClientes)
+        {
+            if (cl.getId() == _id)
+            {
+                return cl;
+            }
+        } 
+        return null;
+    }
+    
+    public Boolean adicionarNuevoCliente(int _id, String _nombre, int _edad, int _tel, String _correoE
+    , String _genero, int _noCompras)
+    {
+        if (identificarClienteId(_id) == null)
+        {
+            listaClientes.add(new Cliente(_id, _nombre, _edad, _tel, _correoE
+    , _genero,  _noCompras));
+         return true;
+        }
+        return false;
     }
     
 }
