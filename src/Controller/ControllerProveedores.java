@@ -5,6 +5,7 @@
 package Controller;
 
 import Vistas.PanelProveedores;
+import java.awt.event.ActionListener;
 import static java.lang.Integer.parseInt;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -26,6 +27,11 @@ public class ControllerProveedores {
         panelProveedores = _panelProveedores;
         
         panelProveedores.addListaProveedoresListener(new JListComprasListener());
+    }
+    
+    public void addBtnCrearListener(ActionListener listenControles)
+    {
+        panelProveedores.addBtnCrearListener(listenControles);
     }
 
 

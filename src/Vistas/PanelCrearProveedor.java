@@ -88,6 +88,8 @@ public class PanelCrearProveedor extends javax.swing.JPanel {
         lblNumeroVentas = new javax.swing.JLabel();
         btnCrearProv = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        lblNit = new javax.swing.JLabel();
+        txtNit = new javax.swing.JTextField();
         btnVolver = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -102,23 +104,23 @@ public class PanelCrearProveedor extends javax.swing.JPanel {
 
         lblCorreo.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblCorreo.setText("  Correo:");
-        jPanel1.add(lblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
+        jPanel1.add(lblCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
 
         lblNombres.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblNombres.setText("  Nombre:");
-        jPanel1.add(lblNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
-        jPanel1.add(txtNombreProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 190, -1));
-        jPanel1.add(txtCorreoProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 190, -1));
-        jPanel1.add(txtTelefonoProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 190, -1));
+        jPanel1.add(lblNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+        jPanel1.add(txtNombreProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 190, -1));
+        jPanel1.add(txtCorreoProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 190, -1));
+        jPanel1.add(txtTelefonoProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 190, -1));
 
         lblTelefono1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblTelefono1.setText("Teléfono:");
-        jPanel1.add(lblTelefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
-        jPanel1.add(txtNumeroVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 190, -1));
+        jPanel1.add(lblTelefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
+        jPanel1.add(txtNumeroVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 190, -1));
 
         lblNumeroVentas.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        lblNumeroVentas.setText(" No. Ventas:");
-        jPanel1.add(lblNumeroVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+        lblNumeroVentas.setText(" No. Compras:");
+        jPanel1.add(lblNumeroVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
         btnCrearProv.setBackground(new java.awt.Color(0, 86, 158));
         btnCrearProv.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -134,6 +136,11 @@ public class PanelCrearProveedor extends javax.swing.JPanel {
         btnCancelar.setText("CANCELAR");
         btnCancelar.setBorder(null);
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 120, 40));
+
+        lblNit.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblNit.setText("Nit:");
+        jPanel1.add(lblNit, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, -1, -1));
+        jPanel1.add(txtNit, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 190, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 440, 350));
 
@@ -153,10 +160,12 @@ public class PanelCrearProveedor extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblListaClientes;
+    private javax.swing.JLabel lblNit;
     private javax.swing.JLabel lblNombres;
     private javax.swing.JLabel lblNumeroVentas;
     private javax.swing.JLabel lblTelefono1;
     private javax.swing.JTextField txtCorreoProv;
+    private javax.swing.JTextField txtNit;
     private javax.swing.JTextField txtNombreProv;
     private javax.swing.JTextField txtNumeroVentas;
     private javax.swing.JTextField txtTelefonoProv;

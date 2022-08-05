@@ -37,6 +37,7 @@ public class ControllerDashboard {
     private ControllerRegistros controladorRegistros;
     private ControllerTiendaVender controladorTiendaVender;
     private ControllerCrearCliente controladorCrearCliente;
+    private ControllerCrearProveedor controladorCrearProveedor;
     
     
     private Compra compra;
@@ -75,6 +76,8 @@ public class ControllerDashboard {
         controladorTiendaVender.addBtnAceptarListener(new BtnListenerToTienda());
         controladorTiendaVender.addBtnCrearClienteListener(new BtnListenerToCrearCliente());
         controladorCrearCliente.addBtnRegresarListener(new BtnListenerToTiendaVender());
+        controladorProveedores.addBtnCrearListener(new BtnListenerToCrearProveedor());
+        controladorCrearProveedor.addBtnVolverProveedorListener(new BtnListenerToProveedores());
     }
     
     private void crearControladoresPaneles()
@@ -86,6 +89,7 @@ public class ControllerDashboard {
         controladorProveedores = new ControllerProveedores(modelo, vista.getPanelProveedores());
         controladorTiendaVender = new ControllerTiendaVender(modelo, vista.getPanelTiendaVender());
         controladorCrearCliente = new ControllerCrearCliente(modelo, vista.getPanelCrearCliente());
+        controladorCrearProveedor = new ControllerCrearProveedor(modelo, vista.getPanelCrearProveedor());
     }
     
     class BtnMouseProductosListener implements MouseListener
@@ -305,6 +309,32 @@ public class ControllerDashboard {
             {
                 vista.realizarCambioPanelDashboard(vista.getPanelCrearCliente());
                 System.out.println("Creando cliente");
+            }
+        }
+    }
+    
+    class BtnListenerToCrearProveedor implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            if ("CREAR".equals(e.getActionCommand()))//Botón Regresar en panelTiendaVender
+            {
+                vista.realizarCambioPanelDashboard(vista.getPanelCrearProveedor());
+            }
+        }
+    }
+    
+    class BtnListenerToProveedores implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            if ("VOLVER".equals(e.getActionCommand()) || "CANCELAR".equals(e.getActionCommand()))//Botón Regresar en panelTiendaVender
+            {
+                vista.realizarCambioPanelDashboard(vista.getPanelProveedores());
             }
         }
     }

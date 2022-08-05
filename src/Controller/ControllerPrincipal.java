@@ -7,6 +7,7 @@ package Controller;
 
 import Vistas.PanelClientes;
 import Vistas.PanelCrearCliente;
+import Vistas.PanelCrearProveedor;
 import Vistas.PanelProductos;
 import Vistas.PanelProveedores;
 import Vistas.PanelRegistros;
@@ -53,6 +54,7 @@ public class ControllerPrincipal {
                 PanelRegistros panelRegistros = new PanelRegistros();
                 PanelTiendaVender panelTiendaVender = new PanelTiendaVender();
                 PanelCrearCliente panelCrearCliente = new PanelCrearCliente();
+                PanelCrearProveedor panelCrearProveedor = new PanelCrearProveedor();
                 
                 dashboard.crearPanelTienda(panelTienda);
                 dashboard.crearPanelClientes(panelClientes);
@@ -60,8 +62,8 @@ public class ControllerPrincipal {
                 dashboard.crearPanelProveedores(panelProveedores);
                 dashboard.crearPanelRegistros(panelRegistros);
                 dashboard.crearPanelTiendaVender(panelTiendaVender);
-                
                 dashboard.crearPanelCrearCliente(panelCrearCliente);
+                dashboard.crearPanelCrearProveedor(panelCrearProveedor);
                 
                 ControllerDashboard controllerDashboard = new ControllerDashboard(modelo,dashboard);
            }
