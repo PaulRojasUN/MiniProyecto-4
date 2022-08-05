@@ -1,2 +1,2 @@
-144331,Zucaritas 250g,Cereales en hojuelas,2500.0,3000.0,4
-213214,Arroz Florhuila 500g,1 libra de arroz,1500.0,2000.0,10
+144331,Zucaritas 250g,Cereales en hojuelas,2500.0,3000.0,4,3
+213214,Arroz Florhuila 500g,1 libra de arroz,1500.0,2000.0,10,0

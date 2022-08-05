@@ -10,7 +10,12 @@ package Controller;
  */
 
 import Vistas.PanelProductos;
+import java.util.ArrayList;
+import java.util.Arrays;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import modelo.ModeloPrincipal;
+import modelo.Producto;
 
     
 
@@ -25,7 +30,52 @@ public class ControllerProductos
         modelo = _modelo;
         panelProductos = _panelProductos;
         
-        
+        panelProductos.addListaProductoListener(new JListComprasListener());
+    }
+    
+    public void actualizarPanel()
+    {
+        panelProductos.llenarListaProductos(modelo.getListaStringProductos());
+    }
+    
+    class JListComprasListener implements ListSelectionListener
+    {
+
+       @Override
+        public void valueChanged(ListSelectionEvent e) {
+            if (panelProductos.getProductoSeleccionado()!=null)
+            {
+                Producto auxProducto;
+                String nombre;
+                nombre = panelProductos.getProductoSeleccionado().substring(panelProductos.getProductoSeleccionado().indexOf("-")+2,
+                        panelProductos.getProductoSeleccionado().indexOf("$")-3);
+                 
+                auxProducto = modelo.getProductoNombre(nombre);
+                
+                int codigo;
+                float precioCompra;
+                float precioVenta;
+                int cant;
+                int vendidos;
+                
+                
+                codigo = auxProducto.getCodigo();
+                precioCompra = auxProducto.getPrecioCompra();
+                precioVenta = auxProducto.getPrecioVenta();
+                cant = auxProducto.getCant();
+                vendidos = auxProducto.getNoVendidos();
+                
+               String nombreProv = modelo.getProveedorDeProducto(nombre).getNombre();
+               panelProductos.llenarComboProveedores(new ArrayList<String>(Arrays.asList(nombreProv)));
+                
+                panelProductos.setCodigo(codigo+"");
+                panelProductos.setNombre(nombre);
+                panelProductos.setPrecioCompra(precioCompra);
+                panelProductos.setPrecioVenta(precioVenta);
+                panelProductos.setInventario(cant);
+                panelProductos.setVendidos(vendidos+"");
+            }
+        }
     }
     
 }

@@ -102,8 +102,7 @@ public class ControllerDashboard {
 
         @Override
         public void mousePressed(MouseEvent e) {
-             System.out.println("Productos");
-             controladorProductos = new ControllerProductos(modelo, vista.getPanelProductos());
+             controladorProductos.actualizarPanel();
           }
 
         @Override

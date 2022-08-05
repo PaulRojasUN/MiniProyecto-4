@@ -60,6 +60,7 @@ public class ModeloPrincipal
         float precioCompra;
         float precioVenta;
         int cant;
+        int noVendidos;
         
         while( (line = br.readLine()) != null)
         {
@@ -70,9 +71,11 @@ public class ModeloPrincipal
             precioCompra = parseFloat(st.nextToken());
             precioVenta = parseFloat(st.nextToken());
             cant = parseInt(st.nextToken());
+            noVendidos = parseInt(st.nextToken());
+            
             
             listaProductos.add(new Producto(nombre, codigo, descripcion, 
-                    precioCompra, precioVenta, cant));
+                    precioCompra, precioVenta, cant, noVendidos));
         }
         
     }
@@ -286,6 +289,21 @@ public class ModeloPrincipal
         listaClientes.remove(_index);
     }
     
+    public Proveedor getProveedorDeProducto(String _name)
+    {
+        for (Proveedor pr: listaProveedores)
+        {
+            for (ArrayList<String> lista: pr.getListaProdProv())
+            {
+                if (_name.equals(lista.get(1)))
+                {
+                    return pr;
+                }
+            }
+        }
+        return null;
+    }
+    
     public ArrayList<String> getListaStringProductos()
     {
         ArrayList<String> lista = new ArrayList<String>();
@@ -295,6 +313,17 @@ public class ModeloPrincipal
                     pr.getPrecioVenta());
         }
         
+        return lista;
+    }
+    
+    public ArrayList<String> getNombresProveedores()
+    {
+        ArrayList<String> lista;
+        lista = new ArrayList<String>();
+        for (Proveedor pr: listaProveedores)
+        {
+            lista.add(pr.getNombre());
+        }
         return lista;
     }
     
