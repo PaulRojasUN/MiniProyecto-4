@@ -90,6 +90,8 @@ public class ModeloPrincipal
         String nit;
         String nombre;
         int tel;
+        String correoE;
+        int noCompras;
         
         //Variables auxiliares:
         String auxCodProd;
@@ -116,6 +118,9 @@ public class ModeloPrincipal
             nit = st.nextToken();
             nombre = st.nextToken();
             tel = parseInt(st.nextToken());
+            correoE = st.nextToken();
+            noCompras = parseInt(st.nextToken());
+            
             
             auxString = st.nextToken();
             auxString = auxString.substring(1, auxString.length()
@@ -136,7 +141,7 @@ public class ModeloPrincipal
             ArrayList<String>(Arrays.asList(auxCodProd,auxNombreProd, 
                 auxDescProd, auxPreComProd, auxPreVenProd)));
             }
-            listaProveedores.add(new Proveedor(nit, nombre, tel, auxListaProd));  
+            listaProveedores.add(new Proveedor(nit, nombre, tel, correoE,noCompras,auxListaProd));  
         }
     }
     
@@ -319,6 +324,42 @@ public class ModeloPrincipal
     public String getNuevoItemProductos(String _item, int _cant)
     {
         return _cant+_item.substring(_item.indexOf("u"));
+    }
+    
+    public ArrayList<String> getListaStringProveedores()
+    {
+        ArrayList<String> lista = new ArrayList<String>();
+        for (Proveedor pr : listaProveedores)
+        {
+            lista.add(pr.getNit()+ " " + pr.getNombre());
+        }
+        
+        return lista;
+    }
+    
+    public ArrayList<String> getListaStringProductosProveedores(String _nit)
+    {
+        Proveedor auxPr;
+        auxPr = identificarProveedorNit(_nit);
+        ArrayList<String> auxLista;
+        auxLista = new ArrayList<String>();
+        for (ArrayList<String> lista: auxPr.getListaProdProv())
+        {
+            auxLista.add(lista.get(0) + " " +lista.get(1));
+        }
+        return auxLista;
+    }
+    
+    public Proveedor identificarProveedorNit(String _nit)
+    {
+        for (Proveedor pr:listaProveedores)
+        {
+            if (pr.getNit().equals(_nit))
+            {
+                return pr;
+            }
+        } 
+        return null;
     }
     
     public Producto getProductoCodigo(int _codigo)

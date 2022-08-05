@@ -7,6 +7,7 @@ package Vistas;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -21,8 +22,10 @@ public class PanelProveedores extends javax.swing.JPanel {
      */
     public PanelProveedores() {
         initComponents();
-        //listaProveedores.setModel(modeloProveedores);
-        //listaProductos.setModel(modeloProductos);
+        modeloProveedores = new DefaultListModel();
+        modeloProductos = new DefaultListModel();
+        listaProveedores.setModel(modeloProveedores);
+        listaProductos.setModel(modeloProductos);
     }
     
     public void cambiarTextoActualizar(){    
@@ -89,6 +92,11 @@ public class PanelProveedores extends javax.swing.JPanel {
         return listaProveedores.getSelectedValue();
     }
     
+    public void setNit(String _txt)
+    {
+        txtProvNit.setText(_txt);
+    }
+    
     public void llenarListaProveedores(ArrayList<String> proveedores){
         modeloProveedores.removeAllElements();
         for (String proveedor : proveedores)
@@ -115,6 +123,11 @@ public class PanelProveedores extends javax.swing.JPanel {
     
     public void addBtnCrearListener(ActionListener listenControles){
         btnCrearProv.addActionListener(listenControles);
+    }
+    
+    
+    public void addListaProveedoresListener(ListSelectionListener listenSelectionController){
+        listaProveedores.addListSelectionListener(listenSelectionController);
     }
     
     
@@ -146,6 +159,8 @@ public class PanelProveedores extends javax.swing.JPanel {
         lblNumeroVentas = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaProductos = new javax.swing.JList<>();
+        lblNIT = new javax.swing.JLabel();
+        txtProvNit = new javax.swing.JTextField();
         lblListaProveedores = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -173,10 +188,10 @@ public class PanelProveedores extends javax.swing.JPanel {
 
         lblNombres.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblNombres.setText("  Nombre:");
-        jPanel1.add(lblNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+        jPanel1.add(lblNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
         txtNombreProv.setEnabled(false);
-        jPanel1.add(txtNombreProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 190, -1));
+        jPanel1.add(txtNombreProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 190, -1));
 
         txtCorreoProv.setEnabled(false);
         jPanel1.add(txtCorreoProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 190, -1));
@@ -219,7 +234,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         jPanel1.add(btnBorrarProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 120, 40));
 
         lblNumeroVentas.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        lblNumeroVentas.setText(" No. Ventas:");
+        lblNumeroVentas.setText(" No. Compras:");
         jPanel1.add(lblNumeroVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
         listaProductos.setModel(new javax.swing.AbstractListModel<String>() {
@@ -231,11 +246,18 @@ public class PanelProveedores extends javax.swing.JPanel {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 190, 100));
 
+        lblNIT.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblNIT.setText("Nit:");
+        jPanel1.add(lblNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, -1));
+
+        txtProvNit.setEnabled(false);
+        jPanel1.add(txtProvNit, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 190, -1));
+
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 440, 350));
 
         lblListaProveedores.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblListaProveedores.setText("LISTA DE PROVEEDORES");
-        add(lblListaProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+        add(lblListaProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -249,6 +271,7 @@ public class PanelProveedores extends javax.swing.JPanel {
     private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblListaClientes;
     private javax.swing.JLabel lblListaProveedores;
+    private javax.swing.JLabel lblNIT;
     private javax.swing.JLabel lblNombres;
     private javax.swing.JLabel lblNumeroVentas;
     private javax.swing.JLabel lblProductos;
@@ -258,6 +281,7 @@ public class PanelProveedores extends javax.swing.JPanel {
     private javax.swing.JTextField txtCorreoProv;
     private javax.swing.JTextField txtNombreProv;
     private javax.swing.JTextField txtNumeroVentas;
+    private javax.swing.JTextField txtProvNit;
     private javax.swing.JTextField txtTelefonoProv;
     // End of variables declaration//GEN-END:variables
 }

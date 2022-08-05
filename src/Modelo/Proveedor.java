@@ -49,14 +49,34 @@ public class Proveedor {
     String nit;
     String nombre;
     int tel;
+    String correoE;
+    int noCompras;
     
-    public Proveedor(String _nit, String _nombre, int _tel, 
+    public Proveedor(String _nit, String _nombre, int _tel,  String _correoE, int _noCompras,
             ArrayList<ArrayList<String>> _productos)
     {
         this.nit = _nit;
         this.nombre = _nombre;
         this.tel = _tel;
+        this.correoE = _correoE;
+        this.noCompras = _noCompras;
         this.listaProdProv = _productos;
+    }
+
+    public String getCorreoE() {
+        return correoE;
+    }
+
+    public void setCorreoE(String correoE) {
+        this.correoE = correoE;
+    }
+
+    public int getNoCompras() {
+        return noCompras;
+    }
+
+    public void setNoCompras(int noCompras) {
+        this.noCompras = noCompras;
     }
     
 }

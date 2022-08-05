@@ -459,7 +459,7 @@ public class VistaDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTiendaMouseExited
 
     private void btnTiendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTiendaMousePressed
-        //panelTienda = new PanelTienda();
+
         mostrarBotonTiendaActivado();
         realizarCambioPanelDashboard(panelTienda);
         cambiarImagenPrincipal("Tienda");
@@ -506,7 +506,7 @@ public class VistaDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProveedoresMouseExited
 
     private void btnProveedoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProveedoresMousePressed
-        PanelProveedores panelProveedores = new PanelProveedores();
+
         mostrarBotonProveedoresActivado();
         realizarCambioPanelDashboard(panelProveedores);
         cambiarImagenPrincipal("Proveedores");
@@ -526,7 +526,7 @@ public class VistaDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProductosMouseExited
 
     private void btnProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMousePressed
-        PanelProductos panelProductos = new PanelProductos();
+
         mostrarBotonProductosActivado();
         realizarCambioPanelDashboard(panelProductos);
         cambiarImagenPrincipal("Productos");
@@ -546,7 +546,7 @@ public class VistaDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrosMouseExited
 
     private void btnRegistrosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrosMousePressed
-        PanelRegistros panelRegistros = new PanelRegistros();
+
         mostrarBotonRegistrosActivado();
         realizarCambioPanelDashboard(panelRegistros);
         cambiarImagenPrincipal("Registos");

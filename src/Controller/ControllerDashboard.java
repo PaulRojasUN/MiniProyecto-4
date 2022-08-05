@@ -38,6 +38,7 @@ public class ControllerDashboard {
     private ControllerTiendaVender controladorTiendaVender;
     private ControllerCrearCliente controladorCrearCliente;
     
+    
     private Compra compra;
     
     public ControllerDashboard(ModeloPrincipal modelo, VistaDashboard vista) {
@@ -64,6 +65,7 @@ public class ControllerDashboard {
         vista.addProveedoresMouseEvent(new BtnMouseProveedoresListener());
         vista.addRegistrosMouseEvent(new BtnMouseRegistrosListener());
         vista.addClientesMouseEvent(new BtnMouseClientesListener());
+        vista.addProveedoresMouseEvent(new BtnMouseProveedoresListener());
     }
     
     private void agregarListenerBtnExtras()
@@ -194,9 +196,7 @@ public class ControllerDashboard {
 
         @Override
         public void mousePressed(MouseEvent e) {
-             System.out.println("Proveedores");
-            controladorProveedores = new ControllerProveedores(modelo, vista.getPanelProveedores());
-            //vista.getPanelTienda().addListaProductosListener(new JListListener());   
+            controladorProveedores.actualizarPanel();  
            }
 
         @Override
