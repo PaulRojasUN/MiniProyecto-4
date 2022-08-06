@@ -10,6 +10,8 @@ package Controller;
  */
 
 import Vistas.PanelProductos;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.event.ListSelectionEvent;
@@ -36,6 +38,12 @@ public class ControllerProductos
     public void actualizarPanel()
     {
         panelProductos.llenarListaProductos(modelo.getListaStringProductos());
+    }
+    
+    
+    public void addBtnCrearListener(ActionListener actionListener)
+    {
+        panelProductos.addBtnCrearListener(actionListener);
     }
     
     class JListComprasListener implements ListSelectionListener

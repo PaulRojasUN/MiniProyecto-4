@@ -1,2 +1,2 @@
-1234345-01,Kellogg's,31456897,kelloggsCol@gmail.com,1,[(144331;Zucaritas 250g;Cereales en hojuelas;2500;3000):(144332;Chococrispis 250g;Cereales de chocolate;2500;3000):]
-3453122-01,Florhuila S.A,33145632,florhuila@gmail.com,1,[(213214;Arroz Florhuila 500g;1 libra de arroz;1500;2000):]
+1234345-01,Kellogg's,31456897,kelloggsCol@gmail.com,1,[(144331;Zucaritas 250g;2500;3000):(144332;Chococrispis 250g;2500;3000):]
+3453122-01,Florhuila S.A,33145632,florhuila@gmail.com,1,[(213214;Arroz Florhuila 500g;1500;2000):]

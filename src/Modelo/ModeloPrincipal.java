@@ -56,7 +56,6 @@ public class ModeloPrincipal
         
         int codigo;
         String nombre;
-        String descripcion;
         float precioCompra;
         float precioVenta;
         int cant;
@@ -67,14 +66,13 @@ public class ModeloPrincipal
             st = new StringTokenizer(line, ",");
             codigo = parseInt(st.nextToken());
             nombre = st.nextToken();
-            descripcion = st.nextToken();
             precioCompra = parseFloat(st.nextToken());
             precioVenta = parseFloat(st.nextToken());
             cant = parseInt(st.nextToken());
             noVendidos = parseInt(st.nextToken());
             
             
-            listaProductos.add(new Producto(nombre, codigo, descripcion, 
+            listaProductos.add(new Producto(nombre, codigo, 
                     precioCompra, precioVenta, cant, noVendidos));
         }
         
@@ -99,7 +97,6 @@ public class ModeloPrincipal
         //Variables auxiliares:
         String auxCodProd;
         String auxNombreProd;
-        String auxDescProd;
         String auxPreComProd;
         String auxPreVenProd;
         ArrayList<ArrayList<String>> auxListaProd;
@@ -137,12 +134,10 @@ public class ModeloPrincipal
                 auxSt2 = new StringTokenizer(auxString2, ";");
                 auxCodProd = auxSt2.nextToken();
                 auxNombreProd = auxSt2.nextToken();
-                auxDescProd = auxSt2.nextToken();
                 auxPreComProd = auxSt2.nextToken();
                 auxPreVenProd = auxSt2.nextToken();
                 auxListaProd.add(new 
-            ArrayList<String>(Arrays.asList(auxCodProd,auxNombreProd, 
-                auxDescProd, auxPreComProd, auxPreVenProd)));
+            ArrayList<String>(Arrays.asList(auxCodProd,auxNombreProd, auxPreComProd, auxPreVenProd)));
             }
             listaProveedores.add(new Proveedor(nit, nombre, tel, correoE,noCompras,auxListaProd));  
         }
@@ -192,9 +187,9 @@ public class ModeloPrincipal
             PrintWriter pw = new PrintWriter(archivo);
             for (Producto pr:listaProductos)
             {
-                pw.print(pr.getCodigo()+","+pr.getNombre()+","+pr.getDescripcion()+
+                pw.print(pr.getCodigo()+","+pr.getNombre()+
                         ","+pr.getPrecioCompra()+","+pr.getPrecioVenta()+","+
-                        pr.getCant()+"\n");
+                        pr.getCant()+","+pr.getNoVendidos()+"\n");
             }
             archivo.flush();
             archivo.close();
@@ -221,10 +216,10 @@ public class ModeloPrincipal
                 auxString = "";
                 for (ArrayList<String> lista: pr.getListaProdProv())
                 {
-                    auxString = auxString+"("+lista.get(0)+";"+lista.get(1)+";"+lista.get(2)+";"+lista.get(3)+";"+lista.get(4)+")"+":";
+                    auxString = auxString+"("+lista.get(0)+";"+lista.get(1)+";"+lista.get(2)+";"+lista.get(3)+")"+":";
                 }
-                pw.print(pr.getNit()+","+pr.getNombre()+","+pr.getTel()+
-                        ","+"["+auxString+"]"+"\n");
+                pw.print(pr.getNit()+","+pr.getNombre()+","+pr.getTel()+","
+                        +pr.getCorreoE()+","+pr.getNoCompras()+","+"["+auxString+"]"+"\n");
             }
             archivo.flush();
             archivo.close();
@@ -536,4 +531,28 @@ public class ModeloPrincipal
         return false;
     }
     
-}
+    public void agregarNuevoProducto(String _nombre, int _codigo, 
+            float _precioCompra, float _precioVenta, int _cant, int _noVendidos)
+    {
+        listaProductos.add(new Producto(_nombre, _codigo, _precioCompra, _precioVenta, _cant, _noVendidos));
+    }
+    
+    
+    public void agregarProductoAProveedor(String _nit, int _codigo, 
+            String _nombre, float _precioCompra, float _precioVenta)
+    {
+        identificarProveedorNit(_nit).agregarProducto(_codigo, _nombre, _precioCompra, _precioVenta);
+    }
+    
+    public Proveedor getProveedorNombre(String _nombre)
+    {
+        for (Proveedor pr:listaProveedores)
+        {
+            if (pr.getNombre().equals(_nombre))
+            {
+                return pr;
+            }
+        } 
+        return null;
+    }
+}   

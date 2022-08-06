@@ -28,6 +28,7 @@ public class VistaDashboard extends javax.swing.JFrame {
     PanelTiendaVender panelTiendaVender;
     PanelCrearCliente panelCrearCliente;
     PanelCrearProveedor panelCrearProveedor;
+    PanelCrearProducto panelCrearProductos;
     
     
     public VistaDashboard() {
@@ -79,6 +80,11 @@ public class VistaDashboard extends javax.swing.JFrame {
     public void crearPanelCrearProveedor(PanelCrearProveedor _panel)
     {
         panelCrearProveedor = _panel;
+    }
+    
+    public void crearPanelCrearProducto(PanelCrearProducto _panel)
+    {
+        panelCrearProductos = _panel;
     }
     
     
@@ -656,6 +662,10 @@ public class VistaDashboard extends javax.swing.JFrame {
         return panelCrearProveedor;
     }
     
+    public PanelCrearProducto getPanelCrearProducto()
+    {
+        return panelCrearProductos;
+    }
     
     
     

@@ -127,7 +127,6 @@ public class PanelCrearProveedor extends javax.swing.JPanel {
         btnCrearProv.setForeground(new java.awt.Color(255, 255, 255));
         btnCrearProv.setText("CREAR");
         btnCrearProv.setBorder(null);
-        btnCrearProv.setEnabled(false);
         jPanel1.add(btnCrearProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 120, 40));
 
         btnCancelar.setBackground(new java.awt.Color(0, 86, 158));

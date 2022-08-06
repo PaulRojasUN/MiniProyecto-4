@@ -117,6 +117,7 @@ public class PanelProductos extends javax.swing.JPanel {
             }
     }
     
+    
     public void llenarComboProveedores(ArrayList<String> proveedores){
         comboProvProducto.removeAllItems();
         for (String genero : proveedores)
@@ -144,6 +145,7 @@ public class PanelProductos extends javax.swing.JPanel {
     public void addListaProductoListener(ListSelectionListener listenSelectionController){
         listaProducto.addListSelectionListener(listenSelectionController);
     }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -38,6 +38,7 @@ public class ControllerDashboard {
     private ControllerTiendaVender controladorTiendaVender;
     private ControllerCrearCliente controladorCrearCliente;
     private ControllerCrearProveedor controladorCrearProveedor;
+    private ControllerCrearProducto controladorCrearProducto;
     
     
     private Compra compra;
@@ -78,6 +79,9 @@ public class ControllerDashboard {
         controladorCrearCliente.addBtnRegresarListener(new BtnListenerToTiendaVender());
         controladorProveedores.addBtnCrearListener(new BtnListenerToCrearProveedor());
         controladorCrearProveedor.addBtnVolverProveedorListener(new BtnListenerToProveedores());
+        controladorCrearProducto.addBtnVolverListener(new BtnListenerToProductos());
+        controladorCrearProducto.addBtnCrearProductoListener(new BtnListenerToProductos());
+        controladorProductos.addBtnCrearListener(new BtnListenerToCrearProductos());
     }
     
     private void crearControladoresPaneles()
@@ -90,6 +94,7 @@ public class ControllerDashboard {
         controladorTiendaVender = new ControllerTiendaVender(modelo, vista.getPanelTiendaVender());
         controladorCrearCliente = new ControllerCrearCliente(modelo, vista.getPanelCrearCliente());
         controladorCrearProveedor = new ControllerCrearProveedor(modelo, vista.getPanelCrearProveedor());
+        controladorCrearProducto = new ControllerCrearProducto(modelo, vista.getPanelCrearProducto());
     }
     
     class BtnMouseProductosListener implements MouseListener
@@ -334,6 +339,37 @@ public class ControllerDashboard {
             if ("VOLVER".equals(e.getActionCommand()) || "CANCELAR".equals(e.getActionCommand()))//Botón Regresar en panelTiendaVender
             {
                 vista.realizarCambioPanelDashboard(vista.getPanelProveedores());
+            }
+        }
+    }
+    
+    class BtnListenerToCrearProductos implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            if ("CREAR".equals(e.getActionCommand()))//Botón Regresar en panelTiendaVender
+            {
+                controladorCrearProducto.actualizarPanel();
+                vista.realizarCambioPanelDashboard(vista.getPanelCrearProducto());
+            }
+        }
+    }
+    
+    class BtnListenerToProductos implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            if ("VOLVER".equals(e.getActionCommand()) || "CANCELAR".equals(e.getActionCommand()))//Botón Regresar en panelTiendaVender
+            {
+                vista.realizarCambioPanelDashboard(vista.getPanelProductos());
+            }
+            else if ("CREAR".equals(e.getActionCommand()))
+            {
+                vista.realizarCambioPanelDashboard(vista.getPanelProductos());
             }
         }
     }
