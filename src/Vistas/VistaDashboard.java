@@ -27,6 +27,9 @@ public class VistaDashboard extends javax.swing.JFrame {
     PanelTienda panelTienda;
     PanelTiendaVender panelTiendaVender;
     PanelCrearCliente panelCrearCliente;
+    PanelCrearProveedor panelCrearProveedor;
+    PanelCrearProducto panelCrearProductos;
+    PanelComprarProducto panelComprarProductos;
     
     
     public VistaDashboard() {
@@ -73,6 +76,21 @@ public class VistaDashboard extends javax.swing.JFrame {
     public void crearPanelCrearCliente(PanelCrearCliente _panel)
     {
         panelCrearCliente = _panel;
+    }
+    
+    public void crearPanelCrearProveedor(PanelCrearProveedor _panel)
+    {
+        panelCrearProveedor = _panel;
+    }
+    
+    public void crearPanelCrearProducto(PanelCrearProducto _panel)
+    {
+        panelCrearProductos = _panel;
+    }
+    
+    public void crearPanelComprarProducto(PanelComprarProducto _panel)
+    {
+        panelComprarProductos = _panel;
     }
     
     
@@ -459,7 +477,7 @@ public class VistaDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTiendaMouseExited
 
     private void btnTiendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTiendaMousePressed
-        //panelTienda = new PanelTienda();
+
         mostrarBotonTiendaActivado();
         realizarCambioPanelDashboard(panelTienda);
         cambiarImagenPrincipal("Tienda");
@@ -506,7 +524,7 @@ public class VistaDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProveedoresMouseExited
 
     private void btnProveedoresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProveedoresMousePressed
-        PanelProveedores panelProveedores = new PanelProveedores();
+
         mostrarBotonProveedoresActivado();
         realizarCambioPanelDashboard(panelProveedores);
         cambiarImagenPrincipal("Proveedores");
@@ -526,7 +544,7 @@ public class VistaDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProductosMouseExited
 
     private void btnProductosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductosMousePressed
-        PanelProductos panelProductos = new PanelProductos();
+
         mostrarBotonProductosActivado();
         realizarCambioPanelDashboard(panelProductos);
         cambiarImagenPrincipal("Productos");
@@ -546,7 +564,7 @@ public class VistaDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrosMouseExited
 
     private void btnRegistrosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrosMousePressed
-        PanelRegistros panelRegistros = new PanelRegistros();
+
         mostrarBotonRegistrosActivado();
         realizarCambioPanelDashboard(panelRegistros);
         cambiarImagenPrincipal("Registos");
@@ -645,8 +663,20 @@ public class VistaDashboard extends javax.swing.JFrame {
         return panelCrearCliente;
     }
     
+    public PanelCrearProveedor getPanelCrearProveedor()
+    {
+        return panelCrearProveedor;
+    }
     
+    public PanelCrearProducto getPanelCrearProducto()
+    {
+        return panelCrearProductos;
+    }
     
+    public PanelComprarProducto getPanelComprarProducto()
+    {
+        return panelComprarProductos;
+    }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

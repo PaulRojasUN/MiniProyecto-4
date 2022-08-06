@@ -5,6 +5,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -14,6 +15,12 @@ public class Proveedor {
 
     public ArrayList<ArrayList<String>> getListaProdProv() {
         return listaProdProv;
+    }
+    
+    public void agregarProducto(int _codigo, String _nombre, float _precioCompra, float _precioVenta)
+    {
+        listaProdProv.add(new ArrayList<String>(Arrays.asList(_codigo+"",
+                _nombre, _precioCompra+"", _precioVenta+"")));
     }
 
     public void setListaProdProv(ArrayList<ArrayList<String>> listaProdProv) {
@@ -40,6 +47,11 @@ public class Proveedor {
         return tel;
     }
 
+    public void agregarNoCompras()
+    {
+        noCompras++;
+    }
+    
     public void setTel(int tel) {
         this.tel = tel;
     }
@@ -49,14 +61,36 @@ public class Proveedor {
     String nit;
     String nombre;
     int tel;
+    String correoE;
+    int noCompras;
     
-    public Proveedor(String _nit, String _nombre, int _tel, 
+    public Proveedor(String _nit, String _nombre, int _tel,  String _correoE, int _noCompras,
             ArrayList<ArrayList<String>> _productos)
     {
         this.nit = _nit;
         this.nombre = _nombre;
         this.tel = _tel;
+        this.correoE = _correoE;
+        this.noCompras = _noCompras;
         this.listaProdProv = _productos;
+    }
+    
+    
+
+    public String getCorreoE() {
+        return correoE;
+    }
+
+    public void setCorreoE(String correoE) {
+        this.correoE = correoE;
+    }
+
+    public int getNoCompras() {
+        return noCompras;
+    }
+
+    public void setNoCompras(int noCompras) {
+        this.noCompras = noCompras;
     }
     
 }

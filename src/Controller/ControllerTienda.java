@@ -56,6 +56,11 @@ public class ControllerTienda {
         }
     }
     
+    public void vaciarListaCompra()
+    {
+        panelTienda.vaciarListaCompras();
+    }
+    
     class JListComprasListener implements ListSelectionListener
     {
 

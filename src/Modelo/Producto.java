@@ -13,19 +13,27 @@ public class Producto
 {
     String nombre;
     int codigo;
-    String descripcion;
     float precioCompra;
     float precioVenta;
     int cant;
-    Producto(String _nombre, int _codigo, String _descripcion, 
-            float _precioCompra, float _precioVenta, int _cant)
+    int noVendidos;
+    Producto(String _nombre, int _codigo, 
+            float _precioCompra, float _precioVenta, int _cant, int _noVendidos)
     {
         this.nombre = _nombre;
         this.codigo = _codigo;
-        this.descripcion = _descripcion;
         this.precioCompra = _precioCompra;
         this.precioVenta = _precioVenta;
         this.cant = _cant;
+        this.noVendidos = _noVendidos;
+    }
+
+    public int getNoVendidos() {
+        return noVendidos;
+    }
+
+    public void setNoVendidos(int noVendidos) {
+        this.noVendidos = noVendidos;
     }
 
     public String getNombre() {
@@ -44,13 +52,6 @@ public class Producto
         this.codigo = codigo;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
 
     public float getPrecioCompra() {
         return precioCompra;
