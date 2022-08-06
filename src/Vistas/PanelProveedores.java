@@ -97,6 +97,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         txtProvNit.setText(_txt);
     }
     
+    
     public void llenarListaProveedores(ArrayList<String> proveedores){
         modeloProveedores.removeAllElements();
         for (String proveedor : proveedores)
@@ -190,9 +191,11 @@ public class PanelProveedores extends javax.swing.JPanel {
         lblNombres.setText("  Nombre:");
         jPanel1.add(lblNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
+        txtNombreProv.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtNombreProv.setEnabled(false);
         jPanel1.add(txtNombreProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 190, -1));
 
+        txtCorreoProv.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtCorreoProv.setEnabled(false);
         jPanel1.add(txtCorreoProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 190, -1));
 
@@ -200,6 +203,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         lblProductos.setText("  Productos: ");
         jPanel1.add(lblProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
 
+        txtTelefonoProv.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtTelefonoProv.setEnabled(false);
         jPanel1.add(txtTelefonoProv, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 190, -1));
 
@@ -207,6 +211,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         lblTelefono1.setText("Teléfono:");
         jPanel1.add(lblTelefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
 
+        txtNumeroVentas.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtNumeroVentas.setEnabled(false);
         jPanel1.add(txtNumeroVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 190, -1));
 
@@ -250,7 +255,13 @@ public class PanelProveedores extends javax.swing.JPanel {
         lblNIT.setText("Nit:");
         jPanel1.add(lblNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, -1));
 
+        txtProvNit.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtProvNit.setEnabled(false);
+        txtProvNit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtProvNitActionPerformed(evt);
+            }
+        });
         jPanel1.add(txtProvNit, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 190, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 440, 350));
@@ -259,6 +270,10 @@ public class PanelProveedores extends javax.swing.JPanel {
         lblListaProveedores.setText("LISTA DE PROVEEDORES");
         add(lblListaProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtProvNitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProvNitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProvNitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

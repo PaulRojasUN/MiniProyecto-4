@@ -5,9 +5,11 @@
 package Controller;
 
 import Vistas.PanelComprarProducto;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import static java.lang.Integer.parseInt;
 import javax.lang.model.SourceVersion;
 import modelo.ModeloPrincipal;
 import modelo.Producto;
@@ -26,6 +28,7 @@ public class ControllerComprarProducto
         panelComprarProducto = _panelComprarProducto;
         
         panelComprarProducto.addComboProductosListener(new ItemListenerProductos());
+        panelComprarProducto.addBtnComprarProductoListener(new BtnListener());
     }
     
     public void addBtnVolverListener(ActionListener actionListener)
@@ -74,7 +77,43 @@ public class ControllerComprarProducto
             }
            
         }
-        
+    }
+    
+    public class BtnListener implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            if ("COMPRAR".equals(e.getActionCommand()))
+            {
+                int cantidad;
+                String nombre;
+                try
+                {
+                    nombre = panelComprarProducto.getSelectedProducto();
+                    cantidad = parseInt(panelComprarProducto.getCantidadCompra());
+                    
+                    if (cantidad > 0)
+                    {
+                        modelo.sumarUnidadesProducto(nombre, cantidad);
+                        modelo.getProveedorDeProducto(nombre).agregarNoCompras();
+
+                        modelo.guardarEstadoProductos();
+                        modelo.guardarEstadoProveedores();
+                    }
+                    else
+                    {
+                        System.out.println("Por favor, ingrese valores mayores a cero");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.out.println("Por favor, ingrese valores válidos");
+                }
+            }
+        }
+
         
     }
 }

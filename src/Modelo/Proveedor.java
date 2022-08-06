@@ -47,6 +47,11 @@ public class Proveedor {
         return tel;
     }
 
+    public void agregarNoCompras()
+    {
+        noCompras++;
+    }
+    
     public void setTel(int tel) {
         this.tel = tel;
     }

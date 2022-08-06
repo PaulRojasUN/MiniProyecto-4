@@ -68,6 +68,17 @@ public class PanelComprarProducto extends javax.swing.JPanel {
         txtPrecioProducto.setText(String.valueOf(precio));
     }
     
+    public String getCantidadCompra()
+    {
+        return txtCantidadCompra.getText();
+    }
+    
+    public void setCantidadCompra(String _cantidad)
+    {
+        txtCantidadCompra.setText(_cantidad);
+    }
+    
+    
     
     public void addBtnComprarProductoListener(ActionListener listenControles){
         btnComprarProducto.addActionListener(listenControles);
@@ -167,7 +178,6 @@ public class PanelComprarProducto extends javax.swing.JPanel {
         btnComprarProducto.setForeground(new java.awt.Color(255, 255, 255));
         btnComprarProducto.setText("COMPRAR");
         btnComprarProducto.setBorder(null);
-        btnComprarProducto.setEnabled(false);
         btnComprarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnComprarProductoActionPerformed(evt);

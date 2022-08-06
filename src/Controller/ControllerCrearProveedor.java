@@ -7,6 +7,7 @@ package Controller;
 import Vistas.PanelCrearProveedor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.lang.Integer.parseInt;
 import modelo.ModeloPrincipal;
 
 /**
@@ -22,7 +23,7 @@ public class ControllerCrearProveedor
         modelo = _modelo;
         panelCrearProveedor = _panelCrearProveedor;
         
-        
+        panelCrearProveedor.addBtnCrearListener(new BtnListener());
     }
     
     public void addBtnVolverProveedorListener(ActionListener listenControles)
@@ -39,6 +40,35 @@ public class ControllerCrearProveedor
         {
             if ("CREAR".equals(e.getActionCommand()))
             {
+                String nit;
+                String nombre;
+                String correo;
+                int tel;
+                int noCompras;
+                
+                nit = panelCrearProveedor.getNit();
+                nombre = panelCrearProveedor.getNombres();
+                correo = panelCrearProveedor.getCorreo();
+                try
+                {
+                    tel = parseInt(panelCrearProveedor.getTelefono());
+                    noCompras = panelCrearProveedor.getNumeroVentas();
+                    
+                    if (tel > 0 && noCompras > 0)
+                    {
+                        modelo.agregarNuevoProveedor(nit, nombre, tel, correo, noCompras);
+                        
+                        modelo.guardarEstadoProveedores();
+                    }
+                    else 
+                    {
+                        System.out.println("Ingrese valores mayores de cero");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.out.println("Ingrese valores válidos");
+                }
                 
             }
         }

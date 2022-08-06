@@ -546,6 +546,10 @@ public class ModeloPrincipal
         listaProductos.add(new Producto(_nombre, _codigo, _precioCompra, _precioVenta, _cant, _noVendidos));
     }
     
+    public void agregarNuevoProveedor(String _nit, String _nombre, int _tel, String correoE,int _noCompras)
+    {
+        listaProveedores.add(new Proveedor(_nit, _nombre, _tel,correoE, _noCompras, new ArrayList<ArrayList<String>>()));
+    }
     
     public void agregarProductoAProveedor(String _nit, int _codigo, 
             String _nombre, float _precioCompra, float _precioVenta)

@@ -25,6 +25,11 @@ public class PanelTienda extends javax.swing.JPanel {
         btnCambiarCantidadLista.setEnabled(estado);
     }
     
+    public void vaciarListaCompras()
+    {
+        modeloCompra.removeAllElements();
+    }
+    
     public void cambiarEstadoBotonVender(boolean estado){
         btnVenderProductos.setEnabled(estado);
     }

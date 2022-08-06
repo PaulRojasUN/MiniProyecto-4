@@ -302,6 +302,7 @@ public class ControllerDashboard {
             }
             else if ("ACEPTAR".equals(e.getActionCommand()))//Botón Aceptar en panelTiendaVender
             {
+                controladorTienda.vaciarListaCompra();
                 vista.realizarCambioPanelDashboard(vista.getPanelTienda());
             }
         }

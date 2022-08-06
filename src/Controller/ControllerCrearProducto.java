@@ -68,7 +68,8 @@ public class ControllerCrearProducto
               proveedor = panelCrearProducto.getProveedorSeleccionado();
               if (modelo.getProductoCodigo(codigo)==null && modelo.getProductoNombre(nombre)==null)
               {
-          
+                  if (codigo > 0 && precioCompra > 0 && precioVenta > 0 && cant > 0 && noVendidos >0)
+                  {
                   modelo.agregarNuevoProducto(nombre, codigo, precioCompra, precioVenta, cant, noVendidos);
                   modelo.agregarProductoAProveedor(modelo.getProveedorNombre(proveedor).getNit(),codigo,nombre, precioCompra, precioVenta);
                   modelo.guardarEstadoProductos();
@@ -80,6 +81,11 @@ public class ControllerCrearProducto
                   panelCrearProducto.setPrecioVenta("");
                   panelCrearProducto.setInventario("");
                   panelCrearProducto.setNumeroVendidos("");
+                  }
+                  else
+                  {
+                      System.out.println("Ingrese valores númericos mayores a cero");
+                  }
               }
               else
               {

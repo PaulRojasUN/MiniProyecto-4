@@ -19,6 +19,11 @@ public class PanelCrearProveedor extends javax.swing.JPanel {
         initComponents();
     }
     
+    public String getNit()
+    {
+        return txtNit.getText();
+    }
+    
     public void activarBotonCrear(boolean estado){
         btnCrearProv.setEnabled(estado);
     }
