@@ -24,6 +24,7 @@ public class PanelCrearProducto extends javax.swing.JPanel {
         btnCrearProducto.setEnabled(estado);
     }
     
+    
     public String getNombre(){
         return txtNombreProducto.getText();
     }
@@ -52,13 +53,19 @@ public class PanelCrearProducto extends javax.swing.JPanel {
         return Float.parseFloat(txtPrecioCompra.getText());
     }
     
-    public void setPrecioCompra(int precio){
+    public void setPrecioCompra(String precio)
+    {
         txtPrecioCompra.setText(String.valueOf(precio));
     }
     
     public float getPrecioVenta()
     {
         return Float.parseFloat(txtPrecioVenta.getText());
+    }
+    
+    public void setPrecioVenta(String _txt)
+    {
+        txtPrecioVenta.setText(_txt);
     }
     
     public void llenarComboProveedores(ArrayList<String> proveedores){
@@ -88,6 +95,11 @@ public class PanelCrearProducto extends javax.swing.JPanel {
     public String getCodigo()
     {
         return txtCodigo.getText();
+    }
+    
+    public void setCodigo(String _txt)
+    {
+        txtCodigo.setText(_txt);
     }
 
     /**
@@ -212,4 +224,12 @@ public class PanelCrearProducto extends javax.swing.JPanel {
     private javax.swing.JTextField txtPrecioVenta;
     private javax.swing.JTextField txtVendidosProducto;
     // End of variables declaration//GEN-END:variables
+
+    public void setInventario(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setNumeroVendidos(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

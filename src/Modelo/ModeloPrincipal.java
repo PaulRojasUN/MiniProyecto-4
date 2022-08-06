@@ -322,6 +322,17 @@ public class ModeloPrincipal
         return lista;
     }
     
+    public ArrayList<String> getNombresProductos()
+    {
+        ArrayList<String> lista;
+        lista = new ArrayList<String>();
+        for (Producto pr: listaProductos)
+        {
+            lista.add(pr.getNombre());
+        }
+        return lista;
+    }
+    
     public ArrayList<String> getListaStringClientes()
     {
         ArrayList<String> lista = new ArrayList<String>();
@@ -397,7 +408,6 @@ public class ModeloPrincipal
                 return pr;
             }
         }
-            System.out.println("No se halló el código");
             return null;
         
     }
@@ -413,7 +423,6 @@ public class ModeloPrincipal
                 return pr;
             }
         }
-            System.out.println("No se halló el nombre");
             return null;
         
     }

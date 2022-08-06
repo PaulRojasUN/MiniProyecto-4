@@ -71,9 +71,15 @@ public class ControllerCrearProducto
           
                   modelo.agregarNuevoProducto(nombre, codigo, precioCompra, precioVenta, cant, noVendidos);
                   modelo.agregarProductoAProveedor(modelo.getProveedorNombre(proveedor).getNit(),codigo,nombre, precioCompra, precioVenta);
+                  modelo.guardarEstadoProductos();
+                  modelo.guardarEstadoProveedores();
                   
-                  
-                  System.out.println("Se creó");
+                  panelCrearProducto.setCodigo("");
+                  panelCrearProducto.setNombre("");
+                  panelCrearProducto.setPrecioCompra("");
+                  panelCrearProducto.setPrecioVenta("");
+                  panelCrearProducto.setInventario("");
+                  panelCrearProducto.setNumeroVendidos("");
               }
               else
               {
@@ -83,15 +89,6 @@ public class ControllerCrearProducto
             catch (Exception ex)
             {
                 System.out.println("Ingrese valores válidos");
-            }
-            try
-            {
-                modelo.guardarEstadoProductos();
-                modelo.guardarEstadoProveedores();
-            }
-            catch(Exception ex)
-            {
-                System.out.println("afdsf");
             }
             
             

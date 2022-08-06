@@ -142,9 +142,14 @@ public class PanelProductos extends javax.swing.JPanel {
         btnCrearProducto.addActionListener(listenControles);
     }
     
+    public void addBtnComprarListener(ActionListener listenControles){
+        btnComprarProducto.addActionListener(listenControles);
+    }
+    
     public void addListaProductoListener(ListSelectionListener listenSelectionController){
         listaProducto.addListSelectionListener(listenSelectionController);
     }
+  
    
     /**
      * This method is called from within the constructor to initialize the form.
@@ -266,7 +271,6 @@ public class PanelProductos extends javax.swing.JPanel {
         btnComprarProducto.setForeground(new java.awt.Color(255, 255, 255));
         btnComprarProducto.setText("COMPRAR PRODUCTO");
         btnComprarProducto.setBorder(null);
-        btnComprarProducto.setEnabled(false);
         jPanel1.add(btnComprarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 390, 40));
 
         lblNombres1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N

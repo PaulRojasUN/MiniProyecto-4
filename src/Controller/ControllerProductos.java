@@ -46,6 +46,11 @@ public class ControllerProductos
         panelProductos.addBtnCrearListener(actionListener);
     }
     
+    public void addBtnComprarProductosListener(ActionListener actionListener)
+    {
+        panelProductos.addBtnComprarListener(actionListener);
+    }
+    
     class JListComprasListener implements ListSelectionListener
     {
 

@@ -39,6 +39,7 @@ public class ControllerDashboard {
     private ControllerCrearCliente controladorCrearCliente;
     private ControllerCrearProveedor controladorCrearProveedor;
     private ControllerCrearProducto controladorCrearProducto;
+    private ControllerComprarProducto controladorComprarProducto;
     
     
     private Compra compra;
@@ -82,6 +83,8 @@ public class ControllerDashboard {
         controladorCrearProducto.addBtnVolverListener(new BtnListenerToProductos());
         controladorCrearProducto.addBtnCrearProductoListener(new BtnListenerToProductos());
         controladorProductos.addBtnCrearListener(new BtnListenerToCrearProductos());
+        controladorProductos.addBtnComprarProductosListener(new BtnListenerToComprarProductos());
+        controladorComprarProducto.addBtnVolverListener(new BtnListenerToProductos());
     }
     
     private void crearControladoresPaneles()
@@ -95,6 +98,7 @@ public class ControllerDashboard {
         controladorCrearCliente = new ControllerCrearCliente(modelo, vista.getPanelCrearCliente());
         controladorCrearProveedor = new ControllerCrearProveedor(modelo, vista.getPanelCrearProveedor());
         controladorCrearProducto = new ControllerCrearProducto(modelo, vista.getPanelCrearProducto());
+        controladorComprarProducto = new ControllerComprarProducto(modelo, vista.getPanelComprarProducto());
     }
     
     class BtnMouseProductosListener implements MouseListener
@@ -370,6 +374,20 @@ public class ControllerDashboard {
             else if ("CREAR".equals(e.getActionCommand()))
             {
                 vista.realizarCambioPanelDashboard(vista.getPanelProductos());
+            }
+        }
+    }
+    
+    class BtnListenerToComprarProductos implements ActionListener
+    {
+
+        @Override
+        public void actionPerformed(ActionEvent e)
+        {
+            if ("COMPRAR PRODUCTO".equals(e.getActionCommand()))//Botón Regresar en panelTiendaVender
+            {
+                controladorComprarProducto.actualizarPanel();
+                vista.realizarCambioPanelDashboard(vista.getPanelComprarProducto());
             }
         }
     }
