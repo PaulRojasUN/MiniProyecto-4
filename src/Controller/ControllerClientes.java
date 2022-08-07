@@ -154,7 +154,7 @@ public class ControllerClientes
                                 auxCliente.getEdad(), auxCliente.getTel(), auxCliente.getCorreoE(),
                                 auxCliente.getGenero(), auxCliente.getNoCompras());
                     }
-                    else
+                    else 
                     {
 
                         panelClientes.vaciarCampos();
