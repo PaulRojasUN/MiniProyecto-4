@@ -39,6 +39,12 @@ public class ControllerClientes
     {
         panelClientes.vaciarCampos();
         panelClientes.llenarListaClientes(modelo.getListaStringClientes());
+        panelClientes.setBtnActualizar("ACTUALIZAR");
+    }
+    
+    public void addBtnCrearClientesListener(ActionListener actionListener)
+    {
+        panelClientes.addBtnCrearListener(actionListener);
     }
     
     class JListComprasListener implements ListSelectionListener
@@ -167,9 +173,12 @@ public class ControllerClientes
                 }
                 catch (Exception ex)
                 {
-                    ex.printStackTrace();
                     System.out.println("Ingrese datos válidos");
                 }
+                
+            }
+            else if ("CREAR".equals(e.getActionCommand()))
+            {
                 
             }
         }

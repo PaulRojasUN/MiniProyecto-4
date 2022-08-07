@@ -275,6 +275,11 @@ public class ModeloPrincipal
         listaProductos.remove(_index);
     }
     
+    public void borrarProductoObj(Producto _producto)
+    {
+        listaProductos.remove(listaProductos.indexOf(_producto));
+    }
+    
     public void borrarClienteObj(Cliente _cliente)
     {
         borrarCliente(listaClientes.indexOf(_cliente));

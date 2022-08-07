@@ -57,6 +57,11 @@ public class PanelClientes extends javax.swing.JPanel {
         txtNumeroComprasCliente.setEnabled(estado);
     }
     
+    public void setBtnActualizar(String _txt)
+    {
+        btnActualizarCliente.setText(_txt);
+    }
+    
     public void habilitarBotonActualizar(boolean estado){
         btnActualizarCliente.setEnabled(estado);
     }

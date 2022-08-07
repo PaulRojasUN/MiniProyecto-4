@@ -37,8 +37,8 @@ public class PanelCrearProducto extends javax.swing.JPanel {
         return Integer.parseInt(txtVendidosProducto.getText());
     }
     
-    public void setNumeroVendidos(int numeroVendidos){
-        txtVendidosProducto.setText(String.valueOf(numeroVendidos));
+    public void setNumeroVendidos(String numeroVendidos){
+        txtVendidosProducto.setText(numeroVendidos);
     }
     
     public int getInventario(){
@@ -226,10 +226,17 @@ public class PanelCrearProducto extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     public void setInventario(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        txtInventarioProducto.setText("");
+    }
+    
+    public void vaciarCampos()
+    {
+        setCodigo("");
+        setNombre("");
+        setPrecioCompra("");
+        setPrecioVenta("");
+        setInventario("");
+        setNumeroVendidos("");
     }
 
-    public void setNumeroVendidos(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

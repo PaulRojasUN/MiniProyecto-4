@@ -77,6 +77,7 @@ public class ControllerDashboard {
         controladorTiendaVender.addBtnRegresarListener(new BtnListenerToTienda());
         controladorTiendaVender.addBtnAceptarListener(new BtnListenerToTienda());
         controladorTiendaVender.addBtnCrearClienteListener(new BtnListenerToCrearCliente());
+        controladorClientes.addBtnCrearClientesListener(new BtnListenerToCrearCliente());
         controladorCrearCliente.addBtnRegresarListener(new BtnListenerToTiendaVender());
         controladorProveedores.addBtnCrearListener(new BtnListenerToCrearProveedor());
         controladorCrearProveedor.addBtnVolverProveedorListener(new BtnListenerToProveedores());
@@ -278,12 +279,33 @@ public class ControllerDashboard {
                  controladorTiendaVender.actualizarPanel();
                  
             }
-            else if ("VOLVER".equals(e.getActionCommand()) || "CANCELAR".equals(e.getActionCommand()) 
-                    || "CREAR".equals(e.getActionCommand()))
+            else if ("VOLVER".equals(e.getActionCommand()) || "CANCELAR".equals(e.getActionCommand()))
             {
-                controladorCrearCliente.crearCliente();
-                controladorTiendaVender.actualizarPanel();
-                vista.realizarCambioPanelDashboard(vista.getPanelTiendaVender());
+                if (controladorCrearCliente.getRuta()==1)
+                {
+                    controladorTiendaVender.actualizarPanel();
+                    vista.realizarCambioPanelDashboard(vista.getPanelTiendaVender());
+                }
+                else if (controladorCrearCliente.getRuta()==2)
+                {
+                    controladorClientes.actualizarPanel();
+                    vista.realizarCambioPanelDashboard(vista.getPanelClientes());
+                }
+            }
+            else if ("CREAR".equals(e.getActionCommand()))
+            {
+                    if (controladorCrearCliente.getRuta()==1)
+                {
+                    controladorCrearCliente.crearCliente();
+                    controladorTiendaVender.actualizarPanel();
+                    vista.realizarCambioPanelDashboard(vista.getPanelTiendaVender());
+                }
+                else if (controladorCrearCliente.getRuta()==2)
+                {
+                    controladorCrearCliente.crearCliente();
+                    controladorClientes.actualizarPanel();
+                    vista.realizarCambioPanelDashboard(vista.getPanelClientes());
+                }
             }
         }
     }
@@ -313,11 +335,16 @@ public class ControllerDashboard {
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            if ("Crear Cliente".equals(e.getActionCommand()))//Botón Regresar en panelTiendaVender
+            controladorCrearCliente.vaciarCampos();
+            if ("Crear Cliente".equals(e.getActionCommand()))//BotóN en panelTiendaVender
             {
-                vista.realizarCambioPanelDashboard(vista.getPanelCrearCliente());
-                System.out.println("Creando cliente");
+                controladorCrearCliente.asignarRuta(1);    
             }
+            else if ("CREAR".equals(e.getActionCommand()))//Botón en panelCliente
+            {
+                controladorCrearCliente.asignarRuta(2);  
+            }
+            vista.realizarCambioPanelDashboard(vista.getPanelCrearCliente());
         }
     }
     

@@ -19,12 +19,28 @@ public class ControllerCrearCliente
 {
     private ModeloPrincipal modelo;
     private PanelCrearCliente panelCrearCliente;
+    private int ruta;
     ControllerCrearCliente(ModeloPrincipal _modelo, PanelCrearCliente _panelCrearCliente)
     {
         modelo = _modelo;
         panelCrearCliente = _panelCrearCliente;
         
         panelCrearCliente.addBtnCrearListener(new BtnListener());
+    }
+    
+    public void asignarRuta(int _ruta)
+    {
+        this.ruta = _ruta;
+    }
+    
+    public void vaciarCampos()
+    {
+        panelCrearCliente.vaciarCampos();
+    }
+    
+    public int getRuta()
+    {
+        return ruta;
     }
     
     public void addBtnRegresarListener(ActionListener listenControles)
@@ -72,7 +88,6 @@ public class ControllerCrearCliente
         {
             if ("CREAR".equals(e.getActionCommand()))
             {
-                
             }
          }
         

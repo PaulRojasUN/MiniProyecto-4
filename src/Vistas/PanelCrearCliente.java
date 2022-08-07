@@ -57,6 +57,18 @@ public class PanelCrearCliente extends javax.swing.JPanel {
         txtTelefonoCliente.setText(telefono);
     }
     
+    public void vaciarCampos()
+    {
+        txtIDCliente.setText("");
+        txtNombresCliente.setText("");
+        txtApellidosCliente.setText("");
+        txtCorreoCliente.setText("");
+        txtEdadCliente.setText("");
+        txtTelefonoCliente.setText("");
+        txtNumeroComprasCliente.setText("");
+        comboGeneroCliente.setSelectedItem("No establecido");
+    }
+    
     public int getEdad(){
         return Integer.parseInt(txtEdadCliente.getText());
     }
@@ -169,7 +181,7 @@ public class PanelCrearCliente extends javax.swing.JPanel {
         lblTelefono1.setText("Teléfono:");
         jPanel1.add(lblTelefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
 
-        comboGeneroCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboGeneroCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No establecido", "M", "F" }));
         jPanel1.add(comboGeneroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 190, -1));
 
         lblGenero1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
