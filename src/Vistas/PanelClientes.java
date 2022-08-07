@@ -48,6 +48,7 @@ public class PanelClientes extends javax.swing.JPanel {
      * Creates new form PanelClientes
      */
     public void cambiarEstadoCampos(boolean estado){
+        txtID.setEnabled(estado);
         txtNombresCliente.setEnabled(estado);
         txtCorreoCliente.setEnabled(estado);
         txtTelefonoCliente.setEnabled(estado);
@@ -118,8 +119,13 @@ public class PanelClientes extends javax.swing.JPanel {
     
     public void vaciarCampos()
     {
+        txtID.setText("");
         txtNombresCliente.setText("");
-
+        txtEdadCliente.setText("");
+        txtCorreoCliente.setText("");
+        txtNumeroComprasCliente.setText("");
+        txtTelefonoCliente.setText("");
+        comboGeneroCliente.setSelectedItem("No establecido");
     }
     
     public String getGeneroSeleccionado(){

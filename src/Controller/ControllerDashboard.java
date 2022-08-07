@@ -176,7 +176,6 @@ public class ControllerDashboard {
 
         @Override
         public void mousePressed(MouseEvent e) {
-             System.out.println("Clientes");
             controladorClientes.actualizarPanel();
           }
 

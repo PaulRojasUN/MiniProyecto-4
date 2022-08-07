@@ -32,10 +32,12 @@ public class ControllerClientes
         
         panelClientes.addListaClientesListener(new JListComprasListener());
         panelClientes.addBtnBorrarListener(new BtnListener());
+        panelClientes.addBtnActualizarListener(new BtnListener());
     }
     
     public void actualizarPanel()
     {
+        panelClientes.vaciarCampos();
         panelClientes.llenarListaClientes(modelo.getListaStringClientes());
     }
     
@@ -140,22 +142,34 @@ public class ControllerClientes
                     correoE = panelClientes.getCorreo();
                     genero = panelClientes.getGeneroSeleccionado();
                     noVentas = panelClientes.getNumeroCompras();
+                          
+                    auxCliente = modelo.identificarClienteId(id);
+                    modelo.borrarClienteObj(auxCliente);
                     
-                    if (modelo.adicionarNuevoCliente(id, nombre, edad, tel, correoE, genero, noVentas) == null)
-                    {
-                        modelo.identificarClienteId(id).cambiarDatoCliente(id, nombre, edad, tel, correoE, genero, noVentas);
+                    if (modelo.adicionarNuevoCliente(nuevoId, nombre, edad, tel, correoE, genero, noVentas) == false)
+                    { 
+                        System.out.println("No puede haber dos clientes con los mismos id");
+                        System.out.println("Volviendo al estado anterior...");
+                        modelo.adicionarNuevoCliente(auxCliente.getId(), auxCliente.getNombre(), 
+                                auxCliente.getEdad(), auxCliente.getTel(), auxCliente.getCorreoE(),
+                                auxCliente.getGenero(), auxCliente.getNoCompras());
                     }
                     else
                     {
-                        System.out.println("No puede haber dos clientes con los mismos id");
+
+                        panelClientes.vaciarCampos();
+                        panelClientes.cambiarEstadoCampos(true);
+                        panelClientes.cambiarTextoActualizar();
+                        panelClientes.llenarListaClientes(modelo.getListaStringClientes());
                     }
+                    
+                    modelo.guardarEstadoClientes();
                 }
                 catch (Exception ex)
                 {
+                    ex.printStackTrace();
                     System.out.println("Ingrese datos válidos");
                 }
-                
-                
                 
             }
         }
