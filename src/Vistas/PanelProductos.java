@@ -58,6 +58,7 @@ public class PanelProductos extends javax.swing.JPanel {
         txtVendidosProducto.setEnabled(estado);
         txtInventarioProducto.setEnabled(estado);
         txtPrecioCompra.setEnabled(estado);
+        txtPrecioVenta.setEnabled(estado);
     }
     
     public void habilitarBotonActualizar(boolean estado){
@@ -84,6 +85,11 @@ public class PanelProductos extends javax.swing.JPanel {
     public void setCodigo(String _value)
     {
         txtCodigo.setText(_value);
+    }
+    
+    public String getCodigo()
+    {
+        return txtCodigo.getText();
     }
     
     public void setVendidos(String _value)
@@ -115,8 +121,9 @@ public class PanelProductos extends javax.swing.JPanel {
         txtInventarioProducto.setText(String.valueOf(numeroInventario));
     }
     
-    public int getPrecioCompra(){
-        return Integer.parseInt(txtPrecioCompra.getText());
+    public float getPrecioCompra()
+    {
+        return Float.parseFloat(txtPrecioCompra.getText());
     }
     
     public void setPrecioCompra(float _precio){
@@ -126,6 +133,11 @@ public class PanelProductos extends javax.swing.JPanel {
     public void setPrecioVenta(float _precio)
     {
         txtPrecioVenta.setText(String.valueOf(_precio));
+    }
+    
+    public String getPrecioVenta()
+    {
+        return txtPrecioVenta.getText();
     }
     
     
