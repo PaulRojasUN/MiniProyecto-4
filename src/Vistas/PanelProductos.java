@@ -22,7 +22,8 @@ public class PanelProductos extends javax.swing.JPanel {
     public PanelProductos() {
         initComponents();
         modeloProductos = new DefaultListModel();
-        listaProducto.setModel(modeloProductos);
+        listaProducto
+                .setModel(modeloProductos);
     }
     
     public void cambiarTextoActualizar(){    
@@ -142,7 +143,8 @@ public class PanelProductos extends javax.swing.JPanel {
     
     
     public String getProductoSeleccionado(){
-        return listaProducto.getSelectedValue();
+        return listaProducto
+                .getSelectedValue();
     }
     
     public void llenarListaProductos(ArrayList<String> productos){
@@ -183,7 +185,8 @@ public class PanelProductos extends javax.swing.JPanel {
     }
     
     public void addListaProductoListener(ListSelectionListener listenSelectionController){
-        listaProducto.addListSelectionListener(listenSelectionController);
+        listaProducto
+                .addListSelectionListener(listenSelectionController);
     }
   
    

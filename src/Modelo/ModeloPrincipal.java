@@ -290,6 +290,28 @@ public class ModeloPrincipal
         listaProveedores.remove(_index);
     }
     
+    public void borrarProveedorObj(Proveedor _proveedor)
+    {
+        borrarProveedor(listaProveedores.indexOf(_proveedor));
+    }
+    
+    public void borrarProductosDeProveedor(String _nombre)
+    {
+        Proveedor auxProveedor;
+        auxProveedor = getProveedorNombre(_nombre);
+        for (ArrayList<String> lista: auxProveedor.getListaProdProv())
+        {
+            for (Producto pr: listaProductos)
+            {
+                if (pr.getNombre().equals(lista.get(1)))
+                {
+                    borrarProducto(listaProductos.indexOf(pr));
+                    break;
+                }
+            }
+        }
+    }
+    
     public void borrarCliente(int _index)
     {
         listaClientes.remove(_index);
@@ -422,6 +444,8 @@ public class ModeloPrincipal
             return null;
         
     }
+    
+    
     
     public Producto getProductoNombre(String _nombre)
     {
@@ -562,6 +586,11 @@ public class ModeloPrincipal
         listaProveedores.add(new Proveedor(_nit, _nombre, _tel,correoE, _noCompras, new ArrayList<ArrayList<String>>()));
     }
     
+    public void agregarNuevoProveedorConLista(String _nit, String _nombre, int _tel, String correoE,int _noCompras, ArrayList<ArrayList<String>> lista)
+    {
+        listaProveedores.add(new Proveedor(_nit, _nombre, _tel,correoE, _noCompras, lista));
+    }
+    
     public void agregarProductoAProveedor(String _nit, int _codigo, 
             String _nombre, float _precioCompra, float _precioVenta)
     {
@@ -573,6 +602,19 @@ public class ModeloPrincipal
         for (Proveedor pr:listaProveedores)
         {
             if (pr.getNombre().equals(_nombre))
+            {
+                return pr;
+            }
+        } 
+        return null;
+    }
+    
+    
+    public Proveedor getProveedorNit(String _nit)
+    {
+        for (Proveedor pr:listaProveedores)
+        {
+            if (pr.getNit().equals(_nit))
             {
                 return pr;
             }

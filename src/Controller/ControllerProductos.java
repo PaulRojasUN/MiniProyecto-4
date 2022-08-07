@@ -157,65 +157,61 @@ public class ControllerProductos
                 int cant;
                 int vendidos; 
                
-               nuevoCodigo = parseInt(panelProductos.getCodigo());
-               nuevoNombre = panelProductos.getNombre();
-               precioCompra = panelProductos.getPrecioCompra();
-               precioVenta = parseFloat(panelProductos.getPrecioVenta());
-               cant = panelProductos.getInventario();
-               vendidos = panelProductos.getNumeroVendidos();
-               
-               Producto auxProducto;
-               
-               String nombre;
-               nombre = panelProductos.getProductoSeleccionado().substring(panelProductos.getProductoSeleccionado().indexOf("-")+2,
-                        panelProductos.getProductoSeleccionado().indexOf("$")-3);
-               
-               nuevoNombreProveedor = panelProductos.getProveedorSeleccionado();
-               nombreProveedor = modelo.getProveedorDeProducto(nombre).getNombre();
-               
-               
-               
-                auxProducto = modelo.getProductoNombre(nombre);
-                modelo.borrarProductoObj(auxProducto);
-                if (modelo.getProductoNombre(nuevoNombre) == null 
-                        && modelo.getProductoCodigo(nuevoCodigo) == null)
+                try 
                 {
-                    modelo.agregarNuevoProducto(nuevoNombre, nuevoCodigo, precioCompra, precioVenta, cant, vendidos);
-                    
-                    modelo.getProveedorNombre(nombreProveedor).removerProducto(nombre);
-                    modelo.getProveedorNombre(nuevoNombreProveedor).agregarProducto(nuevoCodigo, nuevoNombre, precioCompra, precioVenta);
-                    /*if (!nuevoNombreProveedor.equals(nombreProveedor))
-                    {
-                        modelo.getProveedorNombre(nuevoNombreProveedor).agregarProducto(nuevoCodigo, nuevoNombre, precioCompra, precioVenta);
-                        modelo.getProveedorNombre(nombreProveedor).removerProducto(nombre);
-                    }
-                    else
-                    {
-                        modelo.getProveedorNombre(nombreProveedor).removerProducto(nombre);
-                        modelo.getProveedorNombre(nuevoNombreProveedor).agregarProducto(nuevoCodigo, nuevoNombre, precioCompra, precioVenta);
-                    }*/
-                    
-                    try {
-                        modelo.guardarEstadoProductos();
-                        modelo.guardarEstadoProveedores();
-                    } catch (IOException ex) {
-                        System.out.println("Ocurrió un error guardando los archivos");
-                    }
-                    panelProductos.cambiarTextoActualizar();
-                    actualizarPanel();
-                    panelProductos.cambiarEstadoCampos(false);
-                    
+                    nuevoCodigo = parseInt(panelProductos.getCodigo());
+                    nuevoNombre = panelProductos.getNombre();
+                    precioCompra = panelProductos.getPrecioCompra();
+                    precioVenta = parseFloat(panelProductos.getPrecioVenta());
+                    cant = panelProductos.getInventario();
+                    vendidos = panelProductos.getNumeroVendidos();
+
+                    Producto auxProducto;
+
+                    String nombre;
+                    nombre = panelProductos.getProductoSeleccionado().substring(panelProductos.getProductoSeleccionado().indexOf("-")+2,
+                             panelProductos.getProductoSeleccionado().indexOf("$")-3);
+
+                    nuevoNombreProveedor = panelProductos.getProveedorSeleccionado();
+                    nombreProveedor = modelo.getProveedorDeProducto(nombre).getNombre();
+
+
+
+                     auxProducto = modelo.getProductoNombre(nombre);
+                     modelo.borrarProductoObj(auxProducto);
+                     if (modelo.getProductoNombre(nuevoNombre) == null 
+                             && modelo.getProductoCodigo(nuevoCodigo) == null)
+                     {
+                         modelo.agregarNuevoProducto(nuevoNombre, nuevoCodigo, precioCompra, precioVenta, cant, vendidos);
+
+                         modelo.getProveedorNombre(nombreProveedor).removerProducto(nombre);
+                         modelo.getProveedorNombre(nuevoNombreProveedor).agregarProducto(nuevoCodigo, nuevoNombre, precioCompra, precioVenta);
+
+                         try {
+                             modelo.guardarEstadoProductos();
+                             modelo.guardarEstadoProveedores();
+                         } catch (IOException ex) {
+                             System.out.println("Ocurrió un error guardando los archivos");
+                         }
+                         panelProductos.cambiarTextoActualizar();
+                         actualizarPanel();
+                         panelProductos.cambiarEstadoCampos(false);
+
+
+                     }
+                     else
+                     {
+                         System.out.println("No puede haber dos productos con el mismo nombre o código");
+                         modelo.agregarNuevoProducto(auxProducto.getNombre(), auxProducto.getCodigo(),
+                                 auxProducto.getPrecioCompra(), auxProducto.getPrecioVenta(),
+                                 auxProducto.getCant(), auxProducto.getNoVendidos());
+                     }
 
                 }
-                else
+                catch (Exception ex)
                 {
-                    System.out.println("No puede haber dos productos con el mismo nombre o código");
-                    modelo.agregarNuevoProducto(auxProducto.getNombre(), auxProducto.getCodigo(),
-                            auxProducto.getPrecioCompra(), auxProducto.getPrecioVenta(),
-                            auxProducto.getCant(), auxProducto.getNoVendidos());
+                    System.out.println("Ingrese datos válidos");
                 }
-                
-                
                 
                 
             }
