@@ -230,6 +230,7 @@ public class ModeloPrincipal
         }
     }
     
+    
     //Guarda todos los datos de la estructura de datos en el archivo de 
     //clentes
     public void guardarEstadoClientes() throws IOException
@@ -272,6 +273,11 @@ public class ModeloPrincipal
     public void borrarProducto(int _index)
     {
         listaProductos.remove(_index);
+    }
+    
+    public void borrarClienteObj(Cliente _cliente)
+    {
+        borrarCliente(listaClientes.indexOf(_cliente));
     }
     
     public void borrarProveedor(int _index)
