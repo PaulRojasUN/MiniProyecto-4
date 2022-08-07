@@ -110,7 +110,7 @@ public class ControllerClientes
                 
                 }
                 
-                actualizarPanel();
+                actualizarPanel(); 
                 
             }
             else if  ("ACTUALIZAR".equals(e.getActionCommand()))
