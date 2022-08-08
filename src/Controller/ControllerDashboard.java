@@ -13,9 +13,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 import static java.lang.Float.parseFloat;
 import static java.lang.Integer.parseInt;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -144,8 +147,11 @@ public class ControllerDashboard {
         @Override
         public void mousePressed(MouseEvent e) {
             System.out.println("Tienda");
-            controladorTienda.actualizarPanel();
-              
+            try {  
+                controladorTienda.actualizarPanel();
+            } catch (IOException ex) {
+                System.out.println("Ocurrió un error");
+              }
            }
 
         @Override
@@ -239,9 +245,7 @@ public class ControllerDashboard {
 
         @Override
         public void mousePressed(MouseEvent e) {
-             System.out.println("Registros");
-            ControllerRegistros controladorRegistros = new ControllerRegistros(modelo, vista.getPanelRegistros());
-            //vista.getPanelTienda().addListaProductosListener(new JListListener());   
+           controladorRegistros.actualizarPanel();
            }
 
         @Override
@@ -310,6 +314,17 @@ public class ControllerDashboard {
         }
     }
     
+    public void agregarVentas() throws IOException
+    {
+        for(String venta: compra.getListaCompras())
+        {
+            String nombre = venta.substring(0, venta.indexOf("x")-1);
+            int cant = parseInt(venta.substring(venta.indexOf("x")+2,venta.indexOf("=")-1));
+            float precio = parseFloat(venta.substring(venta.indexOf("=")+2));
+            modelo.agregarRegistro("VENTA", nombre, cant, precio);
+        }
+    }
+    
     //Aquí se colocan los listener de los botones en los paneles que abren el panelTienda
     class BtnListenerToTienda implements ActionListener
     {
@@ -323,6 +338,11 @@ public class ControllerDashboard {
             }
             else if ("ACEPTAR".equals(e.getActionCommand()))//Botón Aceptar en panelTiendaVender
             {
+                try {
+                    agregarVentas();
+                } catch (IOException ex) {
+                    Logger.getLogger(ControllerDashboard.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 controladorTienda.vaciarListaCompra();
                 vista.realizarCambioPanelDashboard(vista.getPanelTienda());
             }
@@ -419,5 +439,3 @@ public class ControllerDashboard {
         }
     }
 }
-
-
