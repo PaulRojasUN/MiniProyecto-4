@@ -32,6 +32,11 @@ public class ModeloPrincipal
     //Lista de clientes.
     ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
     
+    //Lista de Registros. Contiene información sobre las compras y ventas hechas
+    //por la tienda.
+     ArrayList<Registro> listaRegistros = new ArrayList<Registro>();
+     
+    
     public ModeloPrincipal() throws IOException
     {
         try 
@@ -39,6 +44,7 @@ public class ModeloPrincipal
             importarProductos("src\\archivos\\productos.txt");
             importarProveedores("src\\archivos\\proveedores.txt");
             importarClientes("src\\archivos\\clientes.txt");
+            importarRegistros("src\\archivos\\registros.txt");
         }
         catch (Exception E)
         {
@@ -46,6 +52,9 @@ public class ModeloPrincipal
         }
     }
     
+    
+ 
+            
     //Importa los datos de los productos a la estructura de datos
     public void importarProductos(String _path) throws FileNotFoundException, IOException
     {
@@ -177,6 +186,37 @@ public class ModeloPrincipal
         }
     }
     
+    
+    public void importarRegistros(String _path) throws FileNotFoundException, 
+            IOException
+    {
+        FileReader fr = new FileReader(_path);
+        BufferedReader br = new BufferedReader(fr);
+        StringTokenizer st;
+        String line;
+        
+        
+        String date;
+        String movimiento;
+        String nombreProducto;
+        int cant;
+        float precio;
+        
+        while( (line = br.readLine()) != null)
+        {
+            st = new StringTokenizer(line, ",");
+            date = st.nextToken();
+            movimiento = st.nextToken();
+            nombreProducto = st.nextToken();
+            cant = parseInt(st.nextToken());
+            precio = parseFloat(st.nextToken());
+            
+            listaRegistros.add(new Registro(date, movimiento, nombreProducto, cant, precio));
+        }
+        
+        
+    }
+ 
     //Guarda todos los datos de la estructura de datos en el archivo de 
     //productos
     public void guardarEstadoProductos() throws IOException
@@ -230,6 +270,7 @@ public class ModeloPrincipal
         }
     }
     
+    
     //Guarda todos los datos de la estructura de datos en el archivo de 
     //clentes
     public void guardarEstadoClientes() throws IOException
@@ -254,9 +295,59 @@ public class ModeloPrincipal
         }
     }
     
+    public void guardarEstadoRegistros() throws IOException
+    {
+        try
+        {
+            FileWriter archivo = new FileWriter("src\\archivos\\registros.txt", false);
+            PrintWriter pw = new PrintWriter(archivo);
+            
+                    
+            for (Registro rg:listaRegistros)
+            {
+                    pw.print(rg.getDate()+","+rg.getMovimiento()+","+rg.getNombreProducto()+","+rg.getCant()+","+rg.getPrecio()+"\n");
+            }
+            archivo.flush();
+            archivo.close();
+        }
+        catch (Exception E)
+        {
+           System.out.println("Algo salió mal al guardar el archivo");
+        }
+    }
+    
+    public ArrayList<ArrayList<String>> getRegistosList()
+    {
+        ArrayList<ArrayList<String>> resList = new ArrayList<ArrayList<String>>();
+        for (Registro rg: listaRegistros)
+        {
+            resList.add(new ArrayList<String>(Arrays.asList(rg.getDate(),
+                    rg.getMovimiento(),rg.getNombreProducto(),rg.getCant()+"",
+                    rg.getPrecio()+"")));
+        }
+        return resList;
+    }
+    
+    public void agregarRegistro(String _movimiento, String _nombreProducto, 
+            int _cant,float _precio) throws IOException
+    {
+        listaRegistros.add(new Registro(java.time.LocalDate.now()+"", _movimiento, 
+                _nombreProducto, _cant, _precio));
+        guardarEstadoRegistros();
+    }
+    
     public Producto getProducto(int _index)
     {
         return listaProductos.get(_index);
+    }
+    
+    public void borrarDatosProductos()
+    {
+        int cant = listaProductos.size();
+        for (int i = cant-1; i >= 0; i--)
+        {
+            listaProductos.remove(i);
+        }
     }
     
     public Proveedor getProveedor(int _index)
@@ -274,9 +365,41 @@ public class ModeloPrincipal
         listaProductos.remove(_index);
     }
     
+    public void borrarProductoObj(Producto _producto)
+    {
+        listaProductos.remove(listaProductos.indexOf(_producto));
+    }
+    
+    public void borrarClienteObj(Cliente _cliente)
+    {
+        borrarCliente(listaClientes.indexOf(_cliente));
+    }
+    
     public void borrarProveedor(int _index)
     {
         listaProveedores.remove(_index);
+    }
+    
+    public void borrarProveedorObj(Proveedor _proveedor)
+    {
+        borrarProveedor(listaProveedores.indexOf(_proveedor));
+    }
+    
+    public void borrarProductosDeProveedor(String _nombre)
+    {
+        Proveedor auxProveedor;
+        auxProveedor = getProveedorNombre(_nombre);
+        for (ArrayList<String> lista: auxProveedor.getListaProdProv())
+        {
+            for (Producto pr: listaProductos)
+            {
+                if (pr.getNombre().equals(lista.get(1)))
+                {
+                    borrarProducto(listaProductos.indexOf(pr));
+                    break;
+                }
+            }
+        }
     }
     
     public void borrarCliente(int _index)
@@ -411,6 +534,8 @@ public class ModeloPrincipal
             return null;
         
     }
+    
+    
     
     public Producto getProductoNombre(String _nombre)
     {
@@ -551,6 +676,11 @@ public class ModeloPrincipal
         listaProveedores.add(new Proveedor(_nit, _nombre, _tel,correoE, _noCompras, new ArrayList<ArrayList<String>>()));
     }
     
+    public void agregarNuevoProveedorConLista(String _nit, String _nombre, int _tel, String correoE,int _noCompras, ArrayList<ArrayList<String>> lista)
+    {
+        listaProveedores.add(new Proveedor(_nit, _nombre, _tel,correoE, _noCompras, lista));
+    }
+    
     public void agregarProductoAProveedor(String _nit, int _codigo, 
             String _nombre, float _precioCompra, float _precioVenta)
     {
@@ -568,4 +698,17 @@ public class ModeloPrincipal
         } 
         return null;
     }
-}   
+    
+    
+    public Proveedor getProveedorNit(String _nit)
+    {
+        for (Proveedor pr:listaProveedores)
+        {
+            if (pr.getNit().equals(_nit))
+            {
+                return pr;
+            }
+        } 
+        return null;
+    }
+}

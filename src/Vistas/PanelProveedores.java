@@ -36,12 +36,24 @@ public class PanelProveedores extends javax.swing.JPanel {
         }
     }
     
+    public void vaciarCampos()
+    {
+        txtNombreProv.setText("");
+        txtProvNit.setText("");
+        txtCorreoProv.setText("");
+        txtTelefonoProv.setText("");
+        txtNumeroVentas.setText("");
+        modeloProductos.removeAllElements();
+    }
+    
     
     public void cambiarEstadoCampos(boolean estado){
+        txtProvNit.setEnabled(estado);
         txtNombreProv.setEnabled(estado);
         txtCorreoProv.setEnabled(estado);
         txtTelefonoProv.setEnabled(estado);
         txtNumeroVentas.setEnabled(estado);
+        
     }
     
     public void habilitarBotonActualizar(boolean estado){
@@ -90,6 +102,11 @@ public class PanelProveedores extends javax.swing.JPanel {
     
     public String getProveedorSeleccionado(){
         return listaProveedores.getSelectedValue();
+    }
+   
+    public String getNit()
+    {
+        return txtProvNit.getText();
     }
     
     public void setNit(String _txt)
@@ -142,8 +159,6 @@ public class PanelProveedores extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        listaProveedores = new javax.swing.JList<>();
         lblListaClientes = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblCorreo = new javax.swing.JLabel();
@@ -163,18 +178,11 @@ public class PanelProveedores extends javax.swing.JPanel {
         lblNIT = new javax.swing.JLabel();
         txtProvNit = new javax.swing.JTextField();
         lblListaProveedores = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listaProveedores = new javax.swing.JList<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        listaProveedores.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(listaProveedores);
-
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 230, 350));
 
         lblListaClientes.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lblListaClientes.setText("INFORMACIÓN");
@@ -269,6 +277,15 @@ public class PanelProveedores extends javax.swing.JPanel {
         lblListaProveedores.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblListaProveedores.setText("LISTA DE PROVEEDORES");
         add(lblListaProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+
+        listaProveedores.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(listaProveedores);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 210, 350));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtProvNitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProvNitActionPerformed
@@ -282,7 +299,7 @@ public class PanelProveedores extends javax.swing.JPanel {
     private javax.swing.JButton btnCrearProv;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblListaClientes;
     private javax.swing.JLabel lblListaProveedores;

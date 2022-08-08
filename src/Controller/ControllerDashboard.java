@@ -13,9 +13,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 import static java.lang.Float.parseFloat;
 import static java.lang.Integer.parseInt;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -77,6 +80,7 @@ public class ControllerDashboard {
         controladorTiendaVender.addBtnRegresarListener(new BtnListenerToTienda());
         controladorTiendaVender.addBtnAceptarListener(new BtnListenerToTienda());
         controladorTiendaVender.addBtnCrearClienteListener(new BtnListenerToCrearCliente());
+        controladorClientes.addBtnCrearClientesListener(new BtnListenerToCrearCliente());
         controladorCrearCliente.addBtnRegresarListener(new BtnListenerToTiendaVender());
         controladorProveedores.addBtnCrearListener(new BtnListenerToCrearProveedor());
         controladorCrearProveedor.addBtnVolverProveedorListener(new BtnListenerToProveedores());
@@ -143,8 +147,11 @@ public class ControllerDashboard {
         @Override
         public void mousePressed(MouseEvent e) {
             System.out.println("Tienda");
-            controladorTienda.actualizarPanel();
-              
+            try {  
+                controladorTienda.actualizarPanel();
+            } catch (IOException ex) {
+                System.out.println("Ocurrió un error");
+              }
            }
 
         @Override
@@ -176,7 +183,6 @@ public class ControllerDashboard {
 
         @Override
         public void mousePressed(MouseEvent e) {
-             System.out.println("Clientes");
             controladorClientes.actualizarPanel();
           }
 
@@ -239,9 +245,7 @@ public class ControllerDashboard {
 
         @Override
         public void mousePressed(MouseEvent e) {
-             System.out.println("Registros");
-            ControllerRegistros controladorRegistros = new ControllerRegistros(modelo, vista.getPanelRegistros());
-            //vista.getPanelTienda().addListaProductosListener(new JListListener());   
+           controladorRegistros.actualizarPanel();
            }
 
         @Override
@@ -279,13 +283,45 @@ public class ControllerDashboard {
                  controladorTiendaVender.actualizarPanel();
                  
             }
-            else if ("VOLVER".equals(e.getActionCommand()) || "CANCELAR".equals(e.getActionCommand()) 
-                    || "CREAR".equals(e.getActionCommand()))
+            else if ("VOLVER".equals(e.getActionCommand()) || "CANCELAR".equals(e.getActionCommand()))
             {
-                controladorCrearCliente.crearCliente();
-                controladorTiendaVender.actualizarPanel();
-                vista.realizarCambioPanelDashboard(vista.getPanelTiendaVender());
+                if (controladorCrearCliente.getRuta()==1)
+                {
+                    controladorTiendaVender.actualizarPanel();
+                    vista.realizarCambioPanelDashboard(vista.getPanelTiendaVender());
+                }
+                else if (controladorCrearCliente.getRuta()==2)
+                {
+                    controladorClientes.actualizarPanel();
+                    vista.realizarCambioPanelDashboard(vista.getPanelClientes());
+                }
             }
+            else if ("CREAR".equals(e.getActionCommand()))
+            {
+                    if (controladorCrearCliente.getRuta()==1)
+                {
+                    controladorCrearCliente.crearCliente();
+                    controladorTiendaVender.actualizarPanel();
+                    vista.realizarCambioPanelDashboard(vista.getPanelTiendaVender());
+                }
+                else if (controladorCrearCliente.getRuta()==2)
+                {
+                    controladorCrearCliente.crearCliente();
+                    controladorClientes.actualizarPanel();
+                    vista.realizarCambioPanelDashboard(vista.getPanelClientes());
+                }
+            }
+        }
+    }
+    
+    public void agregarVentas() throws IOException
+    {
+        for(String venta: compra.getListaCompras())
+        {
+            String nombre = venta.substring(0, venta.indexOf("x")-1);
+            int cant = parseInt(venta.substring(venta.indexOf("x")+2,venta.indexOf("=")-1));
+            float precio = parseFloat(venta.substring(venta.indexOf("=")+2));
+            modelo.agregarRegistro("VENTA", nombre, cant, precio);
         }
     }
     
@@ -302,6 +338,11 @@ public class ControllerDashboard {
             }
             else if ("ACEPTAR".equals(e.getActionCommand()))//Botón Aceptar en panelTiendaVender
             {
+                try {
+                    agregarVentas();
+                } catch (IOException ex) {
+                    Logger.getLogger(ControllerDashboard.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 controladorTienda.vaciarListaCompra();
                 vista.realizarCambioPanelDashboard(vista.getPanelTienda());
             }
@@ -314,11 +355,16 @@ public class ControllerDashboard {
         @Override
         public void actionPerformed(ActionEvent e)
         {
-            if ("Crear Cliente".equals(e.getActionCommand()))//Botón Regresar en panelTiendaVender
+            controladorCrearCliente.vaciarCampos();
+            if ("Crear Cliente".equals(e.getActionCommand()))//BotóN en panelTiendaVender
             {
-                vista.realizarCambioPanelDashboard(vista.getPanelCrearCliente());
-                System.out.println("Creando cliente");
+                controladorCrearCliente.asignarRuta(1);    
             }
+            else if ("CREAR".equals(e.getActionCommand()))//Botón en panelCliente
+            {
+                controladorCrearCliente.asignarRuta(2);  
+            }
+            vista.realizarCambioPanelDashboard(vista.getPanelCrearCliente());
         }
     }
     
@@ -393,5 +439,3 @@ public class ControllerDashboard {
         }
     }
 }
-
-

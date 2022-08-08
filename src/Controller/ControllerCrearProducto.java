@@ -8,6 +8,7 @@ import Vistas.PanelCrearProducto;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static java.lang.Integer.parseInt;
+import javax.swing.JOptionPane;
 import modelo.ModeloPrincipal;
 
 /**
@@ -36,6 +37,11 @@ public class ControllerCrearProducto
     public void addBtnCrearProductoListener(ActionListener actionListener)
     {
        //panelCrearProducto.addBtnCrearListener(actionListener);
+    }
+    
+    public void vaciarCampos()
+    {
+        panelCrearProducto.vaciarCampos();
     }
     
     public void addBtnVolverListener(ActionListener actionListener)
@@ -75,12 +81,9 @@ public class ControllerCrearProducto
                   modelo.guardarEstadoProductos();
                   modelo.guardarEstadoProveedores();
                   
-                  panelCrearProducto.setCodigo("");
-                  panelCrearProducto.setNombre("");
-                  panelCrearProducto.setPrecioCompra("");
-                  panelCrearProducto.setPrecioVenta("");
-                  panelCrearProducto.setInventario("");
-                  panelCrearProducto.setNumeroVendidos("");
+                  vaciarCampos();
+                  
+                  JOptionPane.showMessageDialog(null, "Creado con exito");
                   }
                   else
                   {
@@ -95,6 +98,7 @@ public class ControllerCrearProducto
             catch (Exception ex)
             {
                 System.out.println("Ingrese valores válidos");
+                ex.printStackTrace();
             }
             
             

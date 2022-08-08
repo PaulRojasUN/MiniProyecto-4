@@ -72,6 +72,18 @@ public class Cliente
         this.noCompras = noCompras;
     }
     
+     public void cambiarDatoCliente(int _id, String _nombre, int _edad, int _tel,
+             String _correo, String _genero, int _noCompras)
+    {
+        setId(_id);
+        setNombre(_nombre);
+        setEdad(_edad);
+        setTel(_tel);
+        setCorreoE(_correo);
+        setGenero(_genero);
+        setNoCompras(_noCompras);
+    }
+    
     int id;
     String nombre;
     int edad;

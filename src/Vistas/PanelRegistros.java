@@ -4,6 +4,9 @@
  */
 package Vistas;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author RYZEN
@@ -13,8 +16,30 @@ public class PanelRegistros extends javax.swing.JPanel {
     /**
      * Creates new form PanelRegistros
      */
+    DefaultTableModel modeloTabla;
+    
+    /**
+     * Creates new form PanelRegistros
+     */
     public PanelRegistros() {
         initComponents();
+        modeloTabla = new DefaultTableModel();
+        modeloTabla = (DefaultTableModel)tableRegistros.getModel();
+    }
+    
+    public void llenarTabla(ArrayList<ArrayList<String>> _registros)
+    {
+        int cant = modeloTabla.getRowCount(); 
+        for (int i = cant -1; i >=0; i--)
+        {
+            modeloTabla.removeRow(i);
+        }
+        String auxString = "";
+        for (ArrayList<String> registro: _registros)
+        {
+            modeloTabla.addRow(new Object[]{registro.get(0), registro.get(1), registro.get(2),
+            registro.get(3), registro.get(4),});
+        }
     }
 
     /**
@@ -27,35 +52,14 @@ public class PanelRegistros extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableRegistros = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableRegistros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Fecha", "Movimiento", "Producto", "Cantidad", "Costo"
@@ -76,7 +80,7 @@ public class PanelRegistros extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableRegistros);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 680, 370));
     }// </editor-fold>//GEN-END:initComponents
@@ -84,6 +88,6 @@ public class PanelRegistros extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tableRegistros;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,6 +8,7 @@ import Vistas.PanelCrearProveedor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static java.lang.Integer.parseInt;
+import javax.swing.JOptionPane;
 import modelo.ModeloPrincipal;
 
 /**
@@ -59,6 +60,8 @@ public class ControllerCrearProveedor
                         modelo.agregarNuevoProveedor(nit, nombre, tel, correo, noCompras);
                         
                         modelo.guardarEstadoProveedores();
+                        
+                        JOptionPane.showMessageDialog(null, "Se ha creado con éxito");
                     }
                     else 
                     {

@@ -22,7 +22,8 @@ public class PanelProductos extends javax.swing.JPanel {
     public PanelProductos() {
         initComponents();
         modeloProductos = new DefaultListModel();
-        listaProducto.setModel(modeloProductos);
+        listaProducto
+                .setModel(modeloProductos);
     }
     
     public void cambiarTextoActualizar(){    
@@ -33,12 +34,32 @@ public class PanelProductos extends javax.swing.JPanel {
         }
     }
     
+    public void setBtnTextActualizar()
+    {
+        btnActualizarProducto.setText("ACTUALIZAR");
+    }
+    
+    public void vaciarCampos()
+    {
+        txtCodigo.setText("");
+        txtNombreProducto.setText("");
+        txtInventarioProducto.setText("");
+        txtPrecioCompra.setText("");
+        txtPrecioVenta.setText("");
+        txtVendidosProducto.setText("");
+        
+        comboProvProducto.addItem("");
+        comboProvProducto.setSelectedItem("");
+    }
+    
     public void cambiarEstadoCampos(boolean estado){
+        txtCodigo.setEnabled(estado);
         txtNombreProducto.setEnabled(estado);
         comboProvProducto.setEnabled(estado);
         txtVendidosProducto.setEnabled(estado);
         txtInventarioProducto.setEnabled(estado);
         txtPrecioCompra.setEnabled(estado);
+        txtPrecioVenta.setEnabled(estado);
     }
     
     public void habilitarBotonActualizar(boolean estado){
@@ -57,9 +78,19 @@ public class PanelProductos extends javax.swing.JPanel {
         btnComprarProducto.setEnabled(estado);
     }
     
+    public void setSelectedComboProveedores(String _txt)
+    {
+        comboProvProducto.setSelectedItem(_txt);
+    }
+    
     public void setCodigo(String _value)
     {
         txtCodigo.setText(_value);
+    }
+    
+    public String getCodigo()
+    {
+        return txtCodigo.getText();
     }
     
     public void setVendidos(String _value)
@@ -91,8 +122,9 @@ public class PanelProductos extends javax.swing.JPanel {
         txtInventarioProducto.setText(String.valueOf(numeroInventario));
     }
     
-    public int getPrecioCompra(){
-        return Integer.parseInt(txtPrecioCompra.getText());
+    public float getPrecioCompra()
+    {
+        return Float.parseFloat(txtPrecioCompra.getText());
     }
     
     public void setPrecioCompra(float _precio){
@@ -104,9 +136,15 @@ public class PanelProductos extends javax.swing.JPanel {
         txtPrecioVenta.setText(String.valueOf(_precio));
     }
     
+    public String getPrecioVenta()
+    {
+        return txtPrecioVenta.getText();
+    }
+    
     
     public String getProductoSeleccionado(){
-        return listaProducto.getSelectedValue();
+        return listaProducto
+                .getSelectedValue();
     }
     
     public void llenarListaProductos(ArrayList<String> productos){
@@ -147,7 +185,8 @@ public class PanelProductos extends javax.swing.JPanel {
     }
     
     public void addListaProductoListener(ListSelectionListener listenSelectionController){
-        listaProducto.addListSelectionListener(listenSelectionController);
+        listaProducto
+                .addListSelectionListener(listenSelectionController);
     }
   
    
@@ -211,19 +250,19 @@ public class PanelProductos extends javax.swing.JPanel {
         lblNombres.setText("  Nombre:");
         jPanel1.add(lblNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
-        txtNombreProducto.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtNombreProducto.setDisabledTextColor(new java.awt.Color(102, 102, 102));
         txtNombreProducto.setEnabled(false);
         jPanel1.add(txtNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 190, -1));
 
-        txtVendidosProducto.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtVendidosProducto.setDisabledTextColor(new java.awt.Color(102, 102, 102));
         txtVendidosProducto.setEnabled(false);
-        jPanel1.add(txtVendidosProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 190, -1));
+        jPanel1.add(txtVendidosProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 190, 20));
 
         lblTelefono1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblTelefono1.setText("  Vendidos:");
         jPanel1.add(lblTelefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
 
-        txtInventarioProducto.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtInventarioProducto.setDisabledTextColor(new java.awt.Color(102, 102, 102));
         txtInventarioProducto.setEnabled(false);
         jPanel1.add(txtInventarioProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 190, -1));
 
@@ -258,7 +297,7 @@ public class PanelProductos extends javax.swing.JPanel {
         lblNumeroVentas1.setText("   Precio Compra:");
         jPanel1.add(lblNumeroVentas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
 
-        txtPrecioCompra.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtPrecioCompra.setDisabledTextColor(new java.awt.Color(102, 102, 102));
         txtPrecioCompra.setEnabled(false);
         jPanel1.add(txtPrecioCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 190, -1));
 
@@ -277,7 +316,7 @@ public class PanelProductos extends javax.swing.JPanel {
         lblNombres1.setText("Código:");
         jPanel1.add(lblNombres1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, -1));
 
-        txtCodigo.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtCodigo.setDisabledTextColor(new java.awt.Color(102, 102, 102));
         txtCodigo.setEnabled(false);
         jPanel1.add(txtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 190, -1));
 
@@ -285,7 +324,7 @@ public class PanelProductos extends javax.swing.JPanel {
         lblPrecioVenta.setText("   Precio Venta:");
         jPanel1.add(lblPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
-        txtPrecioVenta.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtPrecioVenta.setDisabledTextColor(new java.awt.Color(102, 102, 102));
         txtPrecioVenta.setEnabled(false);
         jPanel1.add(txtPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 190, -1));
 

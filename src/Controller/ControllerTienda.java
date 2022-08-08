@@ -7,6 +7,7 @@ package Controller;
 import Vistas.PanelTienda;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import static java.lang.Integer.parseInt;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -36,9 +37,13 @@ public class ControllerTienda {
         
     }
     
-    public void actualizarPanel()
+    public void actualizarPanel() throws IOException
     {
+        modelo.borrarDatosProductos();
+        panelTienda.vaciarListaCompras();
+        modelo.importarProductos("src\\archivos\\productos.txt");
         panelTienda.llenarListaProductos(modelo.getListaStringProductos());
+        
     }
     
     public void addBtnVenderListener(ActionListener listenControles)
@@ -79,6 +84,7 @@ public class ControllerTienda {
             System.out.println("Cambio");
         }
     }
+   
     
     class BtnListener implements ActionListener
     {

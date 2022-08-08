@@ -17,6 +17,19 @@ public class Proveedor {
         return listaProdProv;
     }
     
+    public void removerProducto(String _nombre)
+    {
+        int cant = listaProdProv.size();
+        for (int i = 0; i < cant; i++)
+        {
+            if (listaProdProv.get(i).get(1).equals(_nombre))
+            {
+                listaProdProv.remove(i);
+                break;
+            }
+        }
+    }
+    
     public void agregarProducto(int _codigo, String _nombre, float _precioCompra, float _precioVenta)
     {
         listaProdProv.add(new ArrayList<String>(Arrays.asList(_codigo+"",

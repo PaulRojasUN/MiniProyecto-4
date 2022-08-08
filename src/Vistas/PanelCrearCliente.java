@@ -26,11 +26,11 @@ public class PanelCrearCliente extends javax.swing.JPanel {
     }
     
     public String getNombres(){
-        return txtIDCliente.getText();
+        return txtNombresCliente.getText();
     }
     
     public void setNombres(String nombres){
-        txtIDCliente.setText(nombres);
+        txtNombresCliente.setText(nombres);
     }
     
     public String getApellidos(){
@@ -55,6 +55,18 @@ public class PanelCrearCliente extends javax.swing.JPanel {
     
     public void setTelefono(String telefono){
         txtTelefonoCliente.setText(telefono);
+    }
+    
+    public void vaciarCampos()
+    {
+        txtIDCliente.setText("");
+        txtNombresCliente.setText("");
+        txtApellidosCliente.setText("");
+        txtCorreoCliente.setText("");
+        txtEdadCliente.setText("");
+        txtTelefonoCliente.setText("");
+        txtNumeroComprasCliente.setText("");
+        comboGeneroCliente.setSelectedItem("No establecido");
     }
     
     public int getEdad(){
@@ -88,6 +100,12 @@ public class PanelCrearCliente extends javax.swing.JPanel {
     public String getGeneroSeleccionado(){
         return comboGeneroCliente.getSelectedItem().toString();
     }
+    
+    public void setGeneroSeleccionado(String _genero){
+         comboGeneroCliente.setSelectedItem(_genero);
+    }
+    
+    
     
     public void addBtnVolverListener(ActionListener listenControles){
         btnVolver.addActionListener(listenControles);
@@ -129,7 +147,7 @@ public class PanelCrearCliente extends javax.swing.JPanel {
         btnCrearCliente = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         lblID = new javax.swing.JLabel();
-        txtNombresCliente1 = new javax.swing.JTextField();
+        txtNombresCliente = new javax.swing.JTextField();
         btnVolver = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -163,7 +181,7 @@ public class PanelCrearCliente extends javax.swing.JPanel {
         lblTelefono1.setText("Teléfono:");
         jPanel1.add(lblTelefono1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
 
-        comboGeneroCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboGeneroCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No establecido", "M", "F" }));
         jPanel1.add(comboGeneroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 190, -1));
 
         lblGenero1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
@@ -197,7 +215,7 @@ public class PanelCrearCliente extends javax.swing.JPanel {
         lblID.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         lblID.setText("ID");
         jPanel1.add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, -1));
-        jPanel1.add(txtNombresCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 190, -1));
+        jPanel1.add(txtNombresCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 190, -1));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 440, 350));
 
@@ -229,7 +247,7 @@ public class PanelCrearCliente extends javax.swing.JPanel {
     private javax.swing.JTextField txtCorreoCliente;
     private javax.swing.JTextField txtEdadCliente;
     private javax.swing.JTextField txtIDCliente;
-    private javax.swing.JTextField txtNombresCliente1;
+    private javax.swing.JTextField txtNombresCliente;
     private javax.swing.JTextField txtNumeroComprasCliente;
     private javax.swing.JTextField txtTelefonoCliente;
     // End of variables declaration//GEN-END:variables

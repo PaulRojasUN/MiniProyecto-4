@@ -12,6 +12,7 @@ import java.io.IOException;
 import static java.lang.Integer.parseInt;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import modelo.ModeloPrincipal;
@@ -20,17 +21,21 @@ import modelo.ModeloPrincipal;
  *
  * @author Paul
  */
-public class ControllerTiendaVender {
+public class ControllerTiendaVender 
+{
    
     private ModeloPrincipal modelo;
     private PanelTiendaVender panelTiendaVender;
     private Compra compra;
+    
     public ControllerTiendaVender(ModeloPrincipal _modelo, PanelTiendaVender _panelTiendaVender)
     {
+        
         this.modelo = _modelo;
         this.panelTiendaVender = _panelTiendaVender;
         
         panelTiendaVender.addListaClientesListener(new JListClientesListener());
+        panelTiendaVender.addBtnVerClienteListener(new BtnListener());
     }
     
     public void addBtnRegresarListener(ActionListener listenControles)
@@ -49,7 +54,7 @@ public class ControllerTiendaVender {
         panelTiendaVender.addBtnCrearClienteListener(listenControles);
     }
     
-    public void setCompra(Compra _compra)
+     public void setCompra(Compra _compra)
     {
         this.compra = _compra;
     }
@@ -59,6 +64,12 @@ public class ControllerTiendaVender {
        panelTiendaVender.llenarListaProductos(compra.getListaCompras());
        panelTiendaVender.setPrecioPagar(compra.getTotalCompra());
        panelTiendaVender.llenarListaClientes(modelo.getListaStringClientes());
+    }
+    
+    public void deshabilitarBotones()
+    {
+        panelTiendaVender.activarBotonAceptarCompra(false);
+        panelTiendaVender.activarBotonVerCliente(false);
     }
     
     class BtnListener implements ActionListener
@@ -76,27 +87,49 @@ public class ControllerTiendaVender {
                    id = parseInt(panelTiendaVender.getClienteSeleccionado().substring(0, panelTiendaVender.getClienteSeleccionado().indexOf(" ")));
                    modelo.adicionarCompraCliente(id);
                    
+                   
                    modelo.guardarEstadoProductos();
                    modelo.guardarEstadoClientes();
+                   
+                   JOptionPane.showMessageDialog(null, "Venta hecha con éxito");
                } catch (IOException ex) {
-                   Logger.getLogger(ControllerTiendaVender.class.getName()).log(Level.SEVERE, null, ex);
+                   System.out.println("Algo salió mal en la venta");
                }
                
+           }
+           else if ("Ver Cliente".equals(e.getActionCommand()))
+           {
+               
+                String seleccion;
+                seleccion = panelTiendaVender.getClienteSeleccionado();
+                String nombre;
+                String id;
+                nombre = seleccion.substring(seleccion.indexOf(" ")+1);
+                id = seleccion.substring(0, seleccion.indexOf(" "));
+                
+                JOptionPane.showMessageDialog(null, "Nombre: "+ nombre+"\n"
+                +"ID: " +id);
            }
         }
         
     }
     
     class JListClientesListener implements ListSelectionListener
-    {
-
+    { 
+ 
         @Override
         public void valueChanged(ListSelectionEvent e) 
         {
-            System.out.println("Seleccionó: "+panelTiendaVender.getClienteSeleccionado());
-            panelTiendaVender.activarBotonAceptarCompra(true);
+            if (panelTiendaVender.getClienteSeleccionado() != null)
+            {
+                System.out.println("Seleccionó: "+panelTiendaVender.getClienteSeleccionado());
+                panelTiendaVender.activarBotonAceptarCompra(true);
+                panelTiendaVender.activarBotonVerCliente(true);
+            }
+            else
+            {
+                deshabilitarBotones();
+            }
         }
     }
-    
-    
 }

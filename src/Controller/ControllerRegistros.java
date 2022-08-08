@@ -23,4 +23,9 @@ public class ControllerRegistros {
         
         
     }
+    
+    public void actualizarPanel()
+    {
+        panelRegistros.llenarTabla(modelo.getRegistosList());
+    }
 }

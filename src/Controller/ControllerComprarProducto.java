@@ -11,6 +11,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import static java.lang.Integer.parseInt;
 import javax.lang.model.SourceVersion;
+import javax.swing.JOptionPane;
 import modelo.ModeloPrincipal;
 import modelo.Producto;
 
@@ -45,24 +46,28 @@ public class ControllerComprarProducto
     
     public void llenarDatos()
     {
-        String nombre;
-        String proveedor;
-        int vendidos;
-        int inventario;
-        float precioCompra;
-        
-        nombre = panelComprarProducto.getSelectedProducto();
-        Producto auxProducto;
-        auxProducto = modelo.getProductoNombre(nombre);
-        proveedor = modelo.getProveedorDeProducto(nombre).getNombre();
-        vendidos = auxProducto.getNoVendidos();
-        inventario =  auxProducto.getCant();
-        precioCompra = auxProducto.getPrecioCompra();
-        
-        panelComprarProducto.setProveedor(proveedor);
-        panelComprarProducto.setNumeroVendidos(vendidos+"");
-        panelComprarProducto.setInventario(inventario+"");
-        panelComprarProducto.setPrecio(precioCompra);
+        if (panelComprarProducto.getSelectedProducto() != null)
+        {
+            
+            String nombre;
+            String proveedor;
+            int vendidos;
+            int inventario;
+            float precioCompra;
+
+            nombre = panelComprarProducto.getSelectedProducto();
+            Producto auxProducto;
+            auxProducto = modelo.getProductoNombre(nombre);
+            proveedor = modelo.getProveedorDeProducto(nombre).getNombre();
+            vendidos = auxProducto.getNoVendidos();
+            inventario =  auxProducto.getCant();
+            precioCompra = auxProducto.getPrecioCompra();
+
+            panelComprarProducto.setProveedor(proveedor);
+            panelComprarProducto.setNumeroVendidos(vendidos+"");
+            panelComprarProducto.setInventario(inventario+"");
+            panelComprarProducto.setPrecio(precioCompra);
+        }
     }
     
     public class ItemListenerProductos implements ItemListener
@@ -89,10 +94,14 @@ public class ControllerComprarProducto
             {
                 int cantidad;
                 String nombre;
+                Producto auxProduct;
+                
                 try
                 {
+                    
                     nombre = panelComprarProducto.getSelectedProducto();
                     cantidad = parseInt(panelComprarProducto.getCantidadCompra());
+                    auxProduct = modelo.getProductoNombre(nombre);
                     
                     if (cantidad > 0)
                     {
@@ -101,6 +110,10 @@ public class ControllerComprarProducto
 
                         modelo.guardarEstadoProductos();
                         modelo.guardarEstadoProveedores();
+                        JOptionPane.showMessageDialog(null, "Compra Hecha con éxito");
+                        llenarDatos();
+                        
+                        modelo.agregarRegistro("COMPRA", nombre, cantidad, auxProduct.getPrecioCompra()*cantidad);
                     }
                     else
                     {
@@ -111,6 +124,8 @@ public class ControllerComprarProducto
                 {
                     System.out.println("Por favor, ingrese valores válidos");
                 }
+                
+                
             }
         }
 
