@@ -94,10 +94,14 @@ public class ControllerComprarProducto
             {
                 int cantidad;
                 String nombre;
+                Producto auxProduct;
+                
                 try
                 {
+                    
                     nombre = panelComprarProducto.getSelectedProducto();
                     cantidad = parseInt(panelComprarProducto.getCantidadCompra());
+                    auxProduct = modelo.getProductoNombre(nombre);
                     
                     if (cantidad > 0)
                     {
@@ -108,6 +112,8 @@ public class ControllerComprarProducto
                         modelo.guardarEstadoProveedores();
                         JOptionPane.showMessageDialog(null, "Compra Hecha con éxito");
                         llenarDatos();
+                        
+                        modelo.agregarRegistro("COMPRA", nombre, cantidad, auxProduct.getPrecioCompra()*cantidad);
                     }
                     else
                     {

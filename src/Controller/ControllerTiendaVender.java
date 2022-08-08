@@ -90,6 +90,8 @@ public class ControllerTiendaVender
                    
                    modelo.guardarEstadoProductos();
                    modelo.guardarEstadoClientes();
+                   
+                   JOptionPane.showMessageDialog(null, "Venta hecha con éxito");
                } catch (IOException ex) {
                    System.out.println("Algo salió mal en la venta");
                }

@@ -162,7 +162,7 @@ public class PanelTiendaVender extends javax.swing.JPanel {
         btnAceptarCompra.setEnabled(false);
         Checking.add(btnAceptarCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 390, 30));
 
-        comboMetodoPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboMetodoPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "EFECTIVO", "TARJETA DE CRÉDITO", "TARJETA DE DÉBITO" }));
         Checking.add(comboMetodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 210, -1));
 
         lblPrecioPagar2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
